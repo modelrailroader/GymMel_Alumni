@@ -1,0 +1,4 @@
+Header always append X-Frame-Options SAMEORIGIN
+Header always append Access-Control-Allow-Origin SAMEORIGIN
+
+ErrorDocument 404 /GymMelle_Alumni/404.php
