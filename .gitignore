@@ -1,0 +1,18 @@
+# Netbeans stuff
+nbproject/private/
+nbproject/*
+
+# GitHub stuff
+#.gitignore
+
+# Node.js modules
+node_modules/*
+
+# Webpack stuff
+GymMel_Alumni/assets/dist/
+
+# Composer stuff
+GymMel_Alumni/vendor/
+
+# GymMel_Alumni stuff
+GymMel_Alumni/constants.php
