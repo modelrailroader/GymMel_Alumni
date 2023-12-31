@@ -47,9 +47,5 @@ include 'header.php';
                 <div style="margin: 40px"></div>
             </div>
 
-            <script>
-                document.title = 'Datenschutz | Alumni-Datenbank';
-            </script>
-
 <?php
 include 'footer.php';

@@ -105,9 +105,6 @@ include 'header.php';
 
         <div style="margin-top: 50px;"></div>
         <script src="assets/dist/main.js"></script>
-        <script>
-            document.title = 'Benutzer erstellen | Alumni-Datenbank';
-        </script>
 
 <?php
 include 'footer.php';

@@ -119,10 +119,6 @@ include 'header.php';
                     <button type="submit" id="submit" name="submit" class="btn btn-primary">Speichern</button>
                     <div style="margin-top: 50px"></div>
                 </form>
-                
-                <script>
-                    document.title = 'Datensatz bearbeiten | Alumni-Datenbank';
-                </script>
             </div>
 
 <?php 

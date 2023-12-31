@@ -5,9 +5,7 @@
 </footer>
 
 <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/DataTables/datatables.min.js"></script>
-<script src="js/language datatables de-DE.json"></script>
+<script type="module" src="assets/dist/main.js"></script>
 
     </body>
 </html>

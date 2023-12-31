@@ -163,10 +163,6 @@ include 'header.php';
             </div>
 
             <div style="margin-top: 50px;"></div>
-            
-            <script>
-                document.title = 'Alumni werden | Gymnasium Melle';
-            </script>
 
 <?php
 include 'footer.php';

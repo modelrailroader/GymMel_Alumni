@@ -1,3 +1,9 @@
-import { handleCreateUser } from './content/user';
+import { handleCreateUser, handleEditUser, handleShowData, handleUcp, handleShowUsers } from './content';
 
+handleShowUsers();
 handleCreateUser();
+handleEditUser();
+
+handleShowData();
+
+handleUcp();

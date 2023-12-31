@@ -71,51 +71,10 @@ include 'header.php';
         <div style="margin-top: 50px;"></div>
         
         <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/DataTables/datatables.min.js"></script>
-        <script src="js/language datatables de-DE.json"></script>
-        <script src="js/DataTables/dataTables.responsive.min.js"></script>
         
         <footer class="text-black text-center py-3" id="background-color-1">
             <p>Created by Jan Harms | <?php print(date('Y')) ?> &copy; <a href="https://www.melle-gymnasium.de">Gymnasium Melle</a> | <a href="https://www.melle-gymnasium.de/kontakt/#impressum">Impressum</a> | <a href="privacy.php">Datenschutz</a></p>
         </footer>
-        <script>
-            document.title = 'Netzwerkdatenbank | Alumni-Datenbank';
-            
-            $(document).ready(function() {
-                var table = $('#alumniTable').DataTable({
-                    "language": {
-                        "url": "js/language datatables de-DE.json"
-                    },
-                    "dom": "Bflrtip",
-                    responsive: true,
-                    "buttons": [{
-                        extend: 'copyHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                        }
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                        }
-                    }]
-                });;
-            });
-        </script>
+        <script src="assets/dist/main.js"></script>
     </body>
 </html>
-

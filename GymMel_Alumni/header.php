@@ -100,9 +100,10 @@ if(!isset($user)) {
 
         <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="vendor/twbs/bootstrap-icons/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="js/DataTables/dataTables.min.css">
-        <link rel="stylesheet" href="css/responsive.dataTables.min.css">
         <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="css/datatables.min.css">
+        <link rel="stylesheet" href="css/buttons.dataTables.css">
+        <link rel="stylesheet" href="css/responsive.dataTables.min.css">
     </head>
     <body>
         <div class="content-wrapper" style="display: flex; flex-direction: column; min-height: 100vh">

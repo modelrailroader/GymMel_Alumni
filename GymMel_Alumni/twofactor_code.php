@@ -55,10 +55,6 @@ include 'header.php';
             </div>
 
             <div style="margin-top: 50px;"></div>
-            
-            <script>
-                document.title = '2-Faktor-Authentifizierung | Alumni-Datenbank';
-            </script>
 
 <?php
 include 'footer.php';
