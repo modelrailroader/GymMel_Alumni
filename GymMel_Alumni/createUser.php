@@ -104,47 +104,8 @@ include 'header.php';
             </div>
 
         <div style="margin-top: 50px;"></div>
-
+        <script src="assets/dist/main.js"></script>
         <script>
-            function validatePassword(password) {
-                if (password.length < 8) {
-                    return 'Dein Passwort muss mindestens 8 Zeichen enthalten.';
-                }
-                else if (!/[A-Z]/.test(password)) {
-                    return 'Dein Passwort muss Groß- und Kleinbuchstaben enthalten.';
-                }
-                else if (!/[0-9]/.test(password)) {
-                    return 'Dein Passwort muss mindestens 1 Ziffer enthalten.';
-                }
-                else if (!/[^A-Za-z0-9]/.test(password)) {
-                    return 'Dein Passwort muss mindestens 1 Sonderzeichen enthalten.';
-                }
-                else {
-                    return '';
-                }
-            }
-            
-            const passwordInput = document.getElementById('password');
-            const helpTextPassword = document.getElementById('helpTextPassword');
-            const submitButton = document.getElementById('submit');
-            
-            passwordInput.addEventListener('keyup', function() {
-                helpTextPassword.textContent = validatePassword(passwordInput.value);
-            });
-            
-            const confirmPasswordInput = document.getElementById('confirmPassword');
-            const helpTextConfirmPassword = document.getElementById('helpTextConfirmPassword');
-            
-            submitButton.addEventListener('click', function() {
-                if(validatePassword(passwordInput.value) !== '') {
-                    event.preventDefault();
-                }
-                if(passwordInput.value !== confirmPasswordInput.value) {
-                    helpTextConfirmPassword.textContent = 'Die Passwörter stimmen nicht überein.';
-                    event.preventDefault();
-                }
-            });
-            
             document.title = 'Benutzer erstellen | Alumni-Datenbank';
         </script>
 

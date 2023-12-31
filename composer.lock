@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "066c8c94b081015ca89381465fa39c0b",
+    "content-hash": "7cde01fff2c195f5884d220272175aa0",
     "packages": [
         {
             "name": "a1phanumeric/php-mysql-class",
-            "version": "2.0",
+            "version": "2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/a1phanumeric/PHP-MySQL-Class.git",
-                "reference": "8930083466d1954da855fd99035131e0b60e11a8"
+                "reference": "9c189d039a68211828100bcd592fc09cb057df86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a1phanumeric/PHP-MySQL-Class/zipball/8930083466d1954da855fd99035131e0b60e11a8",
-                "reference": "8930083466d1954da855fd99035131e0b60e11a8",
+                "url": "https://api.github.com/repos/a1phanumeric/PHP-MySQL-Class/zipball/9c189d039a68211828100bcd592fc09cb057df86",
+                "reference": "9c189d039a68211828100bcd592fc09cb057df86",
                 "shasum": ""
             },
             "type": "library",
@@ -39,22 +39,22 @@
             "description": "This is a simple to use PHP MySQL class that easily bolts on to any existing PHP application, streamlining your MySQL interactions.",
             "support": {
                 "issues": "https://github.com/a1phanumeric/PHP-MySQL-Class/issues",
-                "source": "https://github.com/a1phanumeric/PHP-MySQL-Class/tree/2.0"
+                "source": "https://github.com/a1phanumeric/PHP-MySQL-Class/tree/2.1"
             },
-            "time": "2023-03-10T15:19:40+00:00"
+            "time": "2023-11-29T11:01:21+00:00"
         },
         {
             "name": "robthree/twofactorauth",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobThree/TwoFactorAuth.git",
-                "reference": "27cd1e1392d19f178398e892f59062003c8998a4"
+                "reference": "ab93dd41ced7818ecda83a37c2741ee38bb72fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobThree/TwoFactorAuth/zipball/27cd1e1392d19f178398e892f59062003c8998a4",
-                "reference": "27cd1e1392d19f178398e892f59062003c8998a4",
+                "url": "https://api.github.com/repos/RobThree/TwoFactorAuth/zipball/ab93dd41ced7818ecda83a37c2741ee38bb72fb7",
+                "reference": "ab93dd41ced7818ecda83a37c2741ee38bb72fb7",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +122,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-25T11:33:28+00:00"
+            "time": "2023-11-14T12:50:27+00:00"
         },
         {
             "name": "twbs/bootstrap",
@@ -176,16 +176,16 @@
         },
         {
             "name": "twbs/bootstrap-icons",
-            "version": "v1.11.1",
+            "version": "v1.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/icons.git",
-                "reference": "8d7bc695fb407627378cb184976b348e6a128d59"
+                "reference": "108565f11f099f177b31929e3eafc2c8d497fcd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/icons/zipball/8d7bc695fb407627378cb184976b348e6a128d59",
-                "reference": "8d7bc695fb407627378cb184976b348e6a128d59",
+                "url": "https://api.github.com/repos/twbs/icons/zipball/108565f11f099f177b31929e3eafc2c8d497fcd1",
+                "reference": "108565f11f099f177b31929e3eafc2c8d497fcd1",
                 "shasum": ""
             },
             "type": "library",
@@ -209,9 +209,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/icons/issues",
-                "source": "https://github.com/twbs/icons/tree/v1.11.1"
+                "source": "https://github.com/twbs/icons/tree/v1.11.2"
             },
-            "time": "2023-09-17T14:09:28+00:00"
+            "time": "2023-11-21T20:06:00+00:00"
         }
     ],
     "packages-dev": [],

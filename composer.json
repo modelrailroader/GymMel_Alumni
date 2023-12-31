@@ -1,8 +1,24 @@
 {
+    "name": "modelrailroader/gymmel_alumni",
+    "description": "Alumni Network Database for Gymnasium Melle",
+    "homepage": "https://www.melle-gymnasium.de/alumni",
+    "license": "MPL-2.0",
+    "type": "application",
+    "authors": [
+        {
+            "name": "Jan Harms",
+            "email": "model_railroader@gmx-topmail.de"
+        }
+    ],
     "require": {
         "twbs/bootstrap": "5.2.3",
         "a1phanumeric/php-mysql-class": "^2.0",
         "twbs/bootstrap-icons": "^1.10",
         "robthree/twofactorauth": "^2.0"
+    },
+    "config": {
+        "vendor-dir": "GymMel_Alumni/vendor",
+        "bin-dir": "GymMel_Alumni/vendor/bin",
+        "sort-packages": true
     }
 }
