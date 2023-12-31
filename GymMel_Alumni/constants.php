@@ -1,10 +1,10 @@
 <?php
 
-$db_host = '';
-$db_port = '';
-$db_user = '';
-$db_password = '';
-$db_name = '';
+$db_host = 'localhost';
+$db_port = '3306';
+$db_user = 'root';
+$db_password = 'root';
+$db_name = 'alumni_dev';
 
 // DEBUG-Modus:
 // True: Alle Fehler werden angezeigt
