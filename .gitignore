@@ -3,7 +3,7 @@ nbproject/private/
 nbproject/*
 
 # GitHub stuff
-#.gitignore
+.gitignore
 
 # Node.js modules
 node_modules/*
