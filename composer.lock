@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cde01fff2c195f5884d220272175aa0",
+    "content-hash": "513441dd1f0b0d2c844038624642ed47",
     "packages": [
         {
             "name": "a1phanumeric/php-mysql-class",
@@ -123,95 +123,6 @@
                 }
             ],
             "time": "2023-11-14T12:50:27+00:00"
-        },
-        {
-            "name": "twbs/bootstrap",
-            "version": "v5.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "cb021439c683d9805e2864c58095b92d405e9b11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/cb021439c683d9805e2864c58095b92d405e9b11",
-                "reference": "cb021439c683d9805e2864c58095b92d405e9b11",
-                "shasum": ""
-            },
-            "replace": {
-                "twitter/bootstrap": "self.version"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                },
-                {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                }
-            ],
-            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "https://getbootstrap.com/",
-            "keywords": [
-                "JS",
-                "css",
-                "framework",
-                "front-end",
-                "mobile-first",
-                "responsive",
-                "sass",
-                "web"
-            ],
-            "support": {
-                "issues": "https://github.com/twbs/bootstrap/issues",
-                "source": "https://github.com/twbs/bootstrap/tree/v5.2.3"
-            },
-            "time": "2022-11-21T18:19:01+00:00"
-        },
-        {
-            "name": "twbs/bootstrap-icons",
-            "version": "v1.11.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/icons.git",
-                "reference": "108565f11f099f177b31929e3eafc2c8d497fcd1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/icons/zipball/108565f11f099f177b31929e3eafc2c8d497fcd1",
-                "reference": "108565f11f099f177b31929e3eafc2c8d497fcd1",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "Official open source SVG icon library for Bootstrap",
-            "homepage": "https://icons.getbootstrap.com/",
-            "keywords": [
-                "bootstrap",
-                "icon font",
-                "icons",
-                "svg"
-            ],
-            "support": {
-                "issues": "https://github.com/twbs/icons/issues",
-                "source": "https://github.com/twbs/icons/tree/v1.11.2"
-            },
-            "time": "2023-11-21T20:06:00+00:00"
         }
     ],
     "packages-dev": [],

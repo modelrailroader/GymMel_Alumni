@@ -11,9 +11,7 @@
         }
     ],
     "require": {
-        "twbs/bootstrap": "5.2.3",
         "a1phanumeric/php-mysql-class": "^2.0",
-        "twbs/bootstrap-icons": "^1.10",
         "robthree/twofactorauth": "^2.0"
     },
     "config": {
