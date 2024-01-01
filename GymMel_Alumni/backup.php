@@ -1,10 +1,17 @@
 <?php
 include 'constants.php';
-include_once(__DIR__.'/vendor/autoload.php');
-include_once(__DIR__.'/src/Logs.php');
-include_once(__DIR__.'/src/Backup.php');
+include_once('./vendor/autoload.php');
+include_once('./src/User.php');
+include_once('./src/Template.php');
 
 use src\User;
+use src\Template;
+
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
+$loader = new FilesystemLoader('./assets/templates');
+$twig = new Environment($loader);
 
 if(session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -15,25 +22,15 @@ if(!$user->authenticateWithSession()) {
     exit();
 }
 include 'header.php';
-?>
 
-            <div class="container mt-5">
-            <?php if(isset($success_message)) { print($success_message); } ?>
-            <h1>Backup erstellen</h1>
-            <div style="margin-top: 40px"></div>
-            <p>Auf dieser Seite kann ein Backup der Datenbank heruntergeladen werden.
-            </br>Für den Import des Backups beachten Sie bitte die Dokumentation.</p>
-            <div style="margin-top: 30px"></div>
+$template = new Template('./assets/templates');
+$template->setTemplate('backup.twig');
 
-            <a href="downloadBackup.php"><button type="submit" class="btn btn-primary">Backup herunterladen</button></a>
-            
-            </div>
-            
+$templateVars = [
+    'success_message' => $success_message
+];
 
-        <div style="margin-top: 50px;"></div>
-        <script>
-            document.title = 'Backup erstellen | Alumni-Datenbank';
-        </script>
-<?php
+echo $template->render($templateVars);
+
 include 'footer.php';
 

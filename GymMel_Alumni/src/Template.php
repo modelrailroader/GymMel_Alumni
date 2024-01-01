@@ -22,11 +22,12 @@ class Template
     public function setTemplate(string $templateName): bool
     {
         $this->template = $templateName;
+        return true;
     }
     
-    public function render(array $templateVars): bool
+    public function render(array $templateVars): string
     {
-        $this->twig->render($this->template, $templateVars);
+        return $this->twig->render($this->template, $templateVars);
     }
 }
 
