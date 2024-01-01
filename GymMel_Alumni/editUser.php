@@ -4,10 +4,12 @@ include_once(__DIR__ . '/vendor/autoload.php');
 include_once(__DIR__ . '/src/User.php');
 include_once(__DIR__ . '/src/Alert.php');
 include_once(__DIR__ . '/src/Logs.php');
+include_once(__DIR__ . '/src/Template.php');
 
 use src\User;
 use src\Alert;
 use src\Logs;
+use src\Template;
 
 $alert = new Alert();
 
@@ -60,95 +62,19 @@ if (isset($id)) {
 }
 
 include 'header.php';
-?>
 
-            <div class="container mt-5">
-                <?php
-                if (isset($success_message)) {
-                    print($success_message);
-                }
-                ?>
-                <h1>Benutzer bearbeiten</h1>
-                <div style="margin-top: 40px"></div>
-                <form action="<?php print($_SERVER['PHP_SELF']) ?>" method="post">
-                    <input type="hidden" value="<?php
-                    if (isset($id_get)) {
-                        print($id_get);
-                    } else {
-                        print($id);
-                    }
-                    ?>" id="userid" name="userid">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">
-                            <i class="bi bi-person"></i>&nbsp; Benutzername:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="text" class="form-control" id="username" name="username" value="<?php print($data['username']) ?>" required>
-                            <div class="required-icon">
-                                <div class="text">*</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">
-                            <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="text" class="form-control" id="email" name="email" value="<?php print($data['email']) ?>" required>
-                            <div class="required-icon">
-                                <div class="text">*</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <input type="checkbox" class="form-check-input" id="newPassword" name="newPassword">
-                        <label class="form-check-label" for="newPassword">Neues Passwort?</label>
-                    </div>
-                    <div class="mb-3" id="passwordDiv" style="display: none">
-                        <label for="password" class="form-label">
-                            <i class="bi bi-key"></i>&nbsp; Passwort:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="password" class="form-control" id="password" name="password">
-                            <div class="required-icon"><div class="text">*</div></div>
-                        </div>
-                        <small id="helpTextPassword" name="helpTextPassword" style="color: red"></small>
-                    </div>
-                    <div class="mb-3" id="confirmPasswordDiv" style="display: none">
-                        <label for="confirmPassword" class="form-label">
-                            <i class="bi bi-key"></i>&nbsp; Passwort bestätigen:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                            <div class="required-icon"><div class="text">*</div></div>
-                        </div>
-                        <small id="helpTextConfirmPassword" name="helpTextConfirmPassword" style="color: red"></small>
-                    </div>
-                    <div class="mb-3">
-                        <input type="checkbox" class="form-check-input" id="2fa" name="2fa" <?php
-                    if ($data['2fa'] === 1) {
-                        print('checked');
-                    }
-                    ?>>
-                        <label class="form-check-label" for="2fa">2-Faktor-Authentifizierung</label>
-                    </div>
-                    <?php
-                    if ($data['2fa'] === 1) {
-                        print('
-                    <div class="mb-3">
-                        <input type="checkbox" class="form-check-input" id="new_2fa" name="new_2fa">
-                        <label class="form-check-label" for="new_2fa">Aktuelle 2-Faktor-Authentifizierung löschen?</label>
-                    </div>');
-                    }
-                    ?>
-                    <div style="margin-top: 20px"></div>
+$template = new Template('./assets/templates');
+$template->setTemplate('editUser.twig');
 
-                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Speichern</button>
-                </form>
-            </div>
+$templateVars = [
+    'success_message' => $success_message,
+    'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS),
+    'username' => $data['username'],
+    'email' => $data['email'],
+    '2fa_activated' => ($data['2fa'] === 1) ? 'checked' : '',
+    'userid' => isset($id_get) ? $id_get : $id
+];
 
-            <div style="margin-top: 50px;"></div>
-            <script src="assets/dist/main.js"></script>
+echo $template->render($templateVars);
 
-<?php
 include 'footer.php';
