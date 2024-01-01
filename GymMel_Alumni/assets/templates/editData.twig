@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    {% if success_message is defined %}
+        {{ success_message }}
+    {% endif %}
+    <h1>Datensatz bearbeiten</h1>
+    <div style="margin-top: 30px"></div>
+    <form action="{{ php_self }}" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">
+                <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:
+            </label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">
+                <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
+            </label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="ausbildung" class="form-label">
+                <i class="bi bi-book"></i>&nbsp; Studium/Ausbildung:
+            </label>
+            <input type="text" class="form-control" id="studies" name="studies" value="{{ studies }}">
+        </div>
+        <div class="mb-3">
+            <label for="beruf" class="form-label">
+                <i class="bi bi-briefcase"></i>&nbsp; Beruf/Tätigkeit:
+            </label>
+            <input type="text" class="form-control" id="job" name="job" value="{{ job }}">
+        </div>
+        <div class="mb-3">
+            <label for="firma" class="form-label">
+                <i class="bi bi-building"></i>&nbsp; Aktueller Arbeitgeber:in:
+            </label>
+            <input type="text" class="form-control" id="company" name="company" value="{{ company }}">
+        </div>
+        <div class="mb-3">
+            <label for="registrierungszeitpunkt" class="form-label">
+                <i class="bi bi-calendar-date"></i>&nbsp; Registrierung
+            </label>
+            <input type="text" class="form-control" id="date_registered" name="date_registered" value="{{ date_registered }}" readonly>
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="transfer_privacy" name="transfer_privacy" {{ transfer_privacy }}>
+                <label class="form-check-label" for="datenschutz">Weitergabe der Daten an Schüler:innen</label>
+            </div>
+        </div>
+        <input type="hidden" id="id" name="id" value="{{ dataid }}">
+        <div style="margin-top: 20px"></div>
+        <button type="submit" id="submit" name="submit" class="btn btn-primary">Speichern</button>
+        <div style="margin-top: 50px"></div>
+    </form>
+</div>
