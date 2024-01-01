@@ -45,7 +45,7 @@ $template = new Template('./assets/templates');
 $template->setTemplate('createUser.twig');
 
 $templateVars = [
-    'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF'),
+    'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS),
     'success_message' => $success_message
 ];
 
