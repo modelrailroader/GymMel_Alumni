@@ -1,9 +1,10 @@
 import { handleCreateUser, handleEditUser, handleShowData, handleUcp, handleShowUsers } from './content';
 
+// User administration
 handleShowUsers();
 handleCreateUser();
 handleEditUser();
-
-handleShowData();
-
 handleUcp();
+
+// Network administration
+handleShowData();

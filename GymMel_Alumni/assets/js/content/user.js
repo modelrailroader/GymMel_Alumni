@@ -47,6 +47,7 @@ export const handleEditUser = () => {
     const helpTextConfirmPasswordInput = document.getElementById('helpTextConfirmPassword');
     const helpTextPasswordInput = document.getElementById('helpTextPassword');
 
+    // Set new password
     if (newPassword) {
         newPassword.addEventListener('change', function () {
             if (this.checked) {
@@ -62,6 +63,7 @@ export const handleEditUser = () => {
             }
         });
 
+        // Reset 2fa
         const twofactor_active = document.getElementById('2fa');
         const twofactor_new = document.getElementById('new_2fa');
 
@@ -79,6 +81,7 @@ export const handleEditUser = () => {
             });
         }
 
+        // Validate password
         const confirmPasswordInput = document.getElementById('confirmPassword');
         const passwordInput = document.getElementById('password');
 
@@ -86,12 +89,13 @@ export const handleEditUser = () => {
             helpTextPasswordInput.textContent = validatePassword(passwordInput.value);
         });
 
+        // Validate password and check if password and confirmPassword are equal if submit button is triggered
         submitButton.addEventListener('click', function () {
             if (newPassword.checked) {
                 if (validatePassword(passwordInput.value) !== '') {
                     event.preventDefault();
                 }
-                if (passwordInput.value !== confirmPasswordInput.value) {
+                else if (passwordInput.value !== confirmPasswordInput.value) {
                     helpTextConfirmPasswordInput.textContent = 'Die Passwörter stimmen nicht überein.';
                     event.preventDefault();
                 }

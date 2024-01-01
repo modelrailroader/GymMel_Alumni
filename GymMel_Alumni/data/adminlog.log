@@ -1,3 +1,5 @@
 [31.12.2023 - 14:07:09], 127.0.0.1, The user was logged in., UserId: 1, User: Jan
 [31.12.2023 - 14:07:28], 127.0.0.1, The user ggg was successfully created., UserId: 1, User: Jan
 [31.12.2023 - 14:14:47], 127.0.0.1, The user ggg was successfully created., UserId: 1, User: Jan
+[01.01.2024 - 13:58:40], 127.0.0.1, The user was logged in., UserId: 1, User: Jan
+[01.01.2024 - 14:11:08], 127.0.0.1, A database-backup was successfully created and provided for download., UserId: 1, User: Jan
