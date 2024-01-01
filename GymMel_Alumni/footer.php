@@ -1,11 +1,9 @@
-<!-- Dieser Footer wird in allen Dateien, bis auf 'showData.php' und 'users.php' verwendet. -->
+<?php
+include_once(__DIR__.'/src/Template.php');
 
-<footer class="text-black text-center py-3" id="background-color-1">
-    <p>Created by Jan Harms | <?php print(date('Y')) ?> &copy; <a href="https://www.melle-gymnasium.de">Gymnasium Melle</a> | <a href="https://www.melle-gymnasium.de/kontakt/#impressum">Impressum</a> | <a href="privacy.php">Datenschutz</a></p>
-</footer>
+use src\Template;
 
-<script type="module" src="assets/dist/main.js"></script>
+$template = new Template('./assets/templates');
+$template->setTemplate('footer.twig');
 
-    </body>
-</html>
-
+echo $template->render([]);
