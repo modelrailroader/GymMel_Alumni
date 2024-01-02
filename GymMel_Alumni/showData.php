@@ -5,11 +5,13 @@ include_once(__DIR__.'/src/User.php');
 include_once(__DIR__.'/src/DataHelper.php');
 include_once(__DIR__.'/src/Alert.php');
 include_once(__DIR__.'/src/Logs.php');
+include_once(__DIR__.'/src/Template.php');
 
 use src\User;
 use src\DataHelper;
 use src\Alert;
 use src\Logs;
+use src\Template;
 
 if(session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -35,44 +37,18 @@ if($action === 'delete') {
     }
 }
 
+$data = $dataHelper->getAllAlumniData();
+
 include 'header.php';
-?>
-            
-            <div class="container mt-5">
-            <?php 
-            if (isset($success_message)) {
-                print($success_message);
-            }
-            ?>
-            <h1>Netzwerkdatenbank</h1>
-            <div style="margin-top: 40px"></div>
 
-            <table id="alumniTable" class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th data-priority="1">Name</th>
-                        <th data-priority="2">E-Mail-Adresse</th>
-                        <th>Beruf</th>
-                        <th>Ausbildung</th>
-                        <th>Unternehmen</th>
-                        <th>Registrierung</th>
-                        <th>Weitergabe der Daten</th>
-                        <th data-priority="3" data-orderable="false">Bearbeiten</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    print($dataHelper->renderTree());
-                    ?>
-                </tbody>
-            </table>
-        </div>
+$template = new Template('./assets/templates');
+$template->setTemplate('showData.twig');
 
-        <div style="margin-top: 50px;"></div>
-        
-        <footer class="text-black text-center py-3" id="background-color-1">
-            <p>Created by Jan Harms | <?php print(date('Y')) ?> &copy; <a href="https://www.melle-gymnasium.de">Gymnasium Melle</a> | <a href="https://www.melle-gymnasium.de/kontakt/#impressum">Impressum</a> | <a href="privacy.php">Datenschutz</a></p>
-        </footer>
-        <script src="assets/dist/main.js"></script>
-    </body>
-</html>
+$templateVars = [
+    'data' => $data,
+    'success_message' => isset($success_message) ? $success_message : ''
+];
+
+echo $template->render($templateVars);
+
+include 'footer.php';
