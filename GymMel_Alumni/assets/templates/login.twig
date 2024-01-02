@@ -1,6 +1,6 @@
 <div class="container">
     {% if success_message != '' %}
-        {{ success_message }}
+        {{ success_message|raw }}
     {% endif %}
     <div class="container mt-5 justify-content-center align-items-center" style="max-width: 500px; display: flex">
         <div class="login-form" style="width: 100%; border: 0.5px solid #ccc; border-radius: 10px; padding: 40px">

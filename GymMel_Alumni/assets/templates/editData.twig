@@ -1,6 +1,6 @@
 <div class="container mt-5">
     {% if success_message != '' %}
-        {{ success_message }}
+        {{ success_message|raw }}
     {% endif %}
     <h1>Datensatz bearbeiten</h1>
     <div style="margin-top: 30px"></div>

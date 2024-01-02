@@ -1,7 +1,7 @@
             
             <div class="container mt-5">
             {% if success_message != '' %}
-                {{ success_message }}
+                {{ success_message|raw }}
             {% endif %}
             <h1>Benutzer erstellen</h1>
             <div style="margin-top: 40px"></div>
