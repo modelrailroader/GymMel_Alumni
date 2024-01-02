@@ -2,11 +2,12 @@ import { Modal } from 'bootstrap';
 import { validatePassword } from '../utils/password.js';
 
 export const handleUcp = () => {
-    const passwordInput = document.getElementById('password');
-    const helpTextPassword = document.getElementById('helpTextPassword');
-    const submitButton = document.getElementById('submit');
+    const ucpForm = document.getElementById('ucpForm');
+    if (ucpForm) {
+        const passwordInput = document.getElementById('password');
+        const helpTextPassword = document.getElementById('helpTextPassword');
+        const submitButton = document.getElementById('submit');
 
-    if (passwordInput) {
         passwordInput.addEventListener('keyup', function () {
             helpTextPassword.textContent = validatePassword(passwordInput.value);
         });
