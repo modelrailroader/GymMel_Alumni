@@ -4,10 +4,12 @@ include_once(__DIR__.'/vendor/autoload.php');
 include_once(__DIR__.'/src/User.php');
 include_once(__DIR__.'/src/Alert.php');
 include_once(__DIR__.'/src/Logs.php');
+include_once(__DIR__.'/src/Template.php');
 
 use src\User;
 use src\Alert;
 use src\Logs;
+use src\Template;
 
 $user = new User();
 $alert = new Alert();
@@ -33,33 +35,15 @@ if(!is_null($username)) {
 }
 
 include 'header.php';
-?>
 
-            <div class="container">
-            <?php
-            if(isset($success_message)) {
-                print($success_message);
-            } ?>
-            <div class="container mt-5 justify-content-center align-items-center" style="max-width: 500px; display: flex">
-                <div class="login-form" style="width: 100%; border: 0.5px solid #ccc; border-radius: 10px; padding: 40px">
-                    <h2>Passwort vergessen</h2>
-                    <div style="margin-top: 20px"></div>
-                    <p>Wenn du dein Passwort vergessen hast, kannst du hier deinen Benutzernamen eingeben, um ein neues Passwort zugesendet zu bekommen.</p>
-                    <div style="margin-top: 20px"></div>
-                    <form action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
-                        <div class="mb-3">
-                            <label for="username" class="form-label">
-                                <i class="fas fa-user"></i> Benutzername:
-                            </label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div style="margin-top: 20px;"></div>
-                        <button type="submit" id="submit" name="submit" class="btn btn-primary">Absenden</button>
-                    </form>
-                </div>
-              </div>
-            </div>
+$template = new Template('./assets/templates');
+$template->setTemplate('forgetPassword.twig');
 
-            <div style="margin-top: 50px;"></div>
-<?php
+$templateVars = [
+    'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS),
+    'success_message' => isset($success_message) ? $success_message : ''
+];
+
+echo $template->render($templateVars);
+
 include 'footer.php';
