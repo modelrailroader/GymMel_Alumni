@@ -27,39 +27,6 @@ class DataHelper
         return $this->dbclient->fetch($query);
     }
     
-    // Renders the table tree to display the alumni data in showData.php
-    public function renderTree(): string 
-    {
-        $data = $this->getAllAlumniData();
-        $tree = '';
-        foreach($data as $item) {
-            $part = sprintf('<tr>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td><a href="editData.php?id=%d"><i class="bi bi-pencil-square"></i></a>&nbsp; 
-                        <a href="showData.php?id=%d&action=delete" onclick="return confirm(\'Wollen Sie den Eintrag %s wirklich löschen?\');">
-                        <i class="bi bi-trash3"></i></a></td>
-                    </tr>',
-                    $item['name'],
-                    $item['email'],
-                    $item['job'],
-                    $item['studies'],
-                    $item['company'],
-                    date('d.m.Y - H:i', $item['date_registered']),
-                    ($item['transfer_privacy']===1) ? 'Ja' : 'Nein',
-                    $item['id'],
-                    $item['id'],
-                    $item['name']);
-            $tree .= $part;
-        }
-        return $tree;
-    }
-    
     // Returns 'checked' if the transfer_privacy of a given data-array is true.
     public function getTransferPrivacyFromData(array $data): string 
     {
