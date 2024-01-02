@@ -229,40 +229,10 @@ class User
     // Returns all Users.
     public function getAllUsers(): array 
     {
-        $query = 'SELECT `username`, `email`, `2fa`, `userid`, `last_login` FROM `alumni_users`';
+        $query = 'SELECT `username`, `email`, `2fa` AS `twofactor`, `userid`, `last_login` FROM `alumni_users`';
         return $this->dbclient->fetchAll($query);
     }
-    
-    // Returns the table-tree of all users shown in users.php
-    public function renderTree(): string 
-    {
-        $data = $this->getAllUsers();
-        $tree = '';
-        foreach($data as $item) {
-            $part = sprintf('<tr>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td><a href="editUser.php?id=%d"><i class="bi bi-pencil-square"></i></a>&nbsp; 
-                        <a href="users.php?id=%d&action=delete" onclick="return confirm(\'Wollen Sie den Benutzer %s wirklich löschen?\');">
-                        %s</a></td>
-                    </tr>',
-                    $item['userid'],
-                    $item['username'],
-                    $item['email'],
-                    ($item['2fa'] === 1) ? 'Aktiviert' : 'Deaktiviert',
-                    date('d.m.Y - H:i', $item['last_login']),
-                    $item['userid'],
-                    $item['userid'],
-                    $item['username'],
-                    ($item['userid'] !== 1) ? '<i class="bi bi-trash3"></i>' : '');
-            $tree .= $part;
-        }
-        return $tree;
-    }
-    
+
     //Returns the user data as an array for a special user.
     public function getUserDataById(int $id): array 
     {

@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    {% if success_message != '' %}
+        {{ success_message|raw }}
+    {% endif %}
+    <h1>Benutzerübersicht</h1>
+    <div style="margin-top: 40px"></div>
+
+    <div class="d-flex justify-content-end" style="margin-bottom: 20px">
+        <a href="createUser.php"><button class="btn btn-primary">Benutzer erstellen</button></a>
+    </div>
+
+    <table id="usersTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th data-priority="4">User-ID</th>
+                <th data-priority="1">Benutzername</th>
+                <th data-priority="2">E-Mail-Adresse</th>
+                <th>2-Faktor-Authentifizierung</th>
+                <th>Zuletzt eingeloggt</th>
+                <th data-priority="3" data-orderable="false">Bearbeiten</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in userData %}
+                <tr>
+                    <td>{{ item.userid }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>
+                        {% if item.twofactor == 1 %}
+                            Aktiviert
+                        {% else %}
+                            Deaktiviert
+                        {% endif %}
+                    </td>
+                    <td>{{ item.last_login|date('d.m.Y - H:i') }}</td>
+                    <td><a href="editUser.php?id={{ item.userid }}"><i class="bi bi-pencil-square"></i></a>&nbsp;
+                            {%  if item.userid != 1 %}
+                            <a href="users.php?id={{ item.userid }}&action=delete" onclick="return confirm(\'Wollen Sie den Benutzer {{ item.username }} wirklich löschen?\');">
+                                <i class="bi bi-trash3"></i></a>
+                            {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top: 50px;"></div>
