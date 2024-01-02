@@ -5,10 +5,12 @@ include_once(__DIR__ . '/src/User.php');
 include_once(__DIR__ . '/src/DataHelper.php');
 include_once(__DIR__ . '/src/Alert.php');
 include_once(__DIR__ . '/src/Logs.php');
+include_once(__DIR__ . '/src/Template.php');
 
 use src\User;
 use src\Alert;
 use src\Logs;
+use src\Template;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -49,99 +51,20 @@ if (!is_null($username) && !is_null($email) && !is_null($password)) {
 }
 
 include 'header.php';
-?>
-            <div class="container mt-5">
-                <?php
-                if (isset($success_message)) {
-                    print($success_message);
-                }
-                ?>
-                <h1>Persönlicher Bereich</h1>
-                <div style="margin-top: 40px"></div>
-                <form action="<?php print($_SERVER['PHP_SELF']) ?>" method="post">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">
-                            <i class="bi bi-person"></i>&nbsp; Benutzername:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="text" class="form-control" id="username" name="username" value="<?php print($user->getUsername()) ?>" required>
-                            <div class="required-icon">
-                                <div class="text">*</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">
-                            <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="email" class="form-control" id="email" name="email" value="<?php print($user->getEmailAdress()) ?>" required>
-                            <div class="required-icon">
-                                <div class="text">*</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3" id="passwordDiv">
-                        <label for="password" class="form-label">
-                            <i class="bi bi-key"></i>&nbsp; Passwort:
-                        </label>
-                        <div class="required-field-block">
-                            <input type="password" class="form-control" id="password" name="password" required>
-                            <div class="required-icon">
-                                <div class="text">*</div>
-                            </div>
-                            <small id="helpTextPassword" name="helpTextPassword" style="color: red"></small>
-                        </div>
-                    </div>
-                    <div class="mb-3" id="confirmPasswordDiv">
-                      <label for="confirmPassword" class="form-label">
-                          <i class="bi bi-key"></i>&nbsp; Passwort bestätigen:
-                      </label>
-                        <div class="required-field-block">
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                            <div class="required-icon">
-                                <div class="text">*</div>
-                            </div>
-                            <small id="helpTextConfirmPassword" name="helpTextConfirmPassword" style="color: red"></small>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <input type="checkbox" class="form-check-input" id="2fa" name="2fa" <?php
-                if ($user->isTwofactorEnabled()) {
-                    print('checked');
-                }
-                ?>>
-                        <label class="form-check-label" for="2fa">2-Faktor-Authentifizierung</label>
-                    </div>
-                    <div class="mb-3" id="divTwofactorConfig">
-                        <button type="button" class="btn btn-primary" id="twofactorConfigButton">2-Faktor-Authentifizierung konfigurieren</button>
-                    </div>
-                    <div style="margin-top: 20px"></div>
 
-                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Speichern</button>
-                </form>
+$template = new Template('./assets/templates');
+$template->setTemplate('ucp.twig');
 
-                <!-- Twofactor Config Modal -->
-                <div class="modal fade" id="twofactorConfig" tabindex="-1" aria-labelledby="twofactor_configLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="twofactor_configLabel">2-Faktor-Authentifizierung konfigurieren</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img class="rounded mx-auto d-block" src="<?php print($user->getQrCode()) ?>" width="200" height="200" alt="QR-Code Secret"/>
-                                <p class="text-center">Secret-Key: <?php print($user->getSecret()) ?></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Speichern</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+$templateVars = [
+    'success_message' => isset($success_message) ? $success_message : '',
+    'username' => $user->getUsername(),
+    'email' => $user->getEmailAdress(),
+    'twofactorEnabled' => $user->isTwofactorEnabled(),
+    'twofactor_secret' => $user->getSecret(),
+    'twofactor_qrcode' => $user->getQrCode()
+];
 
-            <div style="margin-top: 50px;"></div>
-<?php
+echo $template->render($templateVars);
+
 include 'footer.php';
 
