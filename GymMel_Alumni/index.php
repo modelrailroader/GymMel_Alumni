@@ -60,7 +60,7 @@ if(isset($username) && isset($password)) {
         }
     }
     else {
-        $error_message = $alert->dangerAlert('Der eingegebene Benutzername oder das Passwort ist falsch! Sollten Sie sich bereits 10 Mal erfolglos angemeldet haben, ist der Login gesperrt. '
+        $success_message = $alert->dangerAlert('Der eingegebene Benutzername oder das Passwort ist falsch! Sollten Sie sich bereits 10 Mal erfolglos angemeldet haben, ist der Login gesperrt. '
                 . 'In diesem Fall fordern Sie bitte ein neues Passwort über <a href="forgetPassword.php">Passwort vergessen</a> an.');
         include 'login.php';
         exit();
