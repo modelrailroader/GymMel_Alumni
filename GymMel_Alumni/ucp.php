@@ -61,7 +61,8 @@ $templateVars = [
     'email' => $user->getEmailAdress(),
     'twofactorEnabled' => $user->isTwofactorEnabled(),
     'twofactor_secret' => $user->getSecret(),
-    'twofactor_qrcode' => $user->getQrCode()
+    'twofactor_qrcode' => $user->getQrCode(),
+    'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS)
 ];
 
 echo $template->render($templateVars);
