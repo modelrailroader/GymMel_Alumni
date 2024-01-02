@@ -10,7 +10,7 @@ include 'header.php';
                 </div>
                 <div style="margin-top: 40px"></div>
                 <div class="image">
-                    <img src="img/404.jpg" style="height: 500px" alt="404 Error Image">
+                    <img src="assets/img/404.jpg" style="height: 500px" alt="404 Error Image">
                 </div>
             </div>
 
