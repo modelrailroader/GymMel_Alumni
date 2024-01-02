@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    {% if success_message is defined %}
+    {% if success_message != '' %}
         {{ success_message }}
     {% endif %}
     <h1>Benutzer bearbeiten</h1>
@@ -53,10 +53,10 @@
             <small id="helpTextConfirmPassword" name="helpTextConfirmPassword" style="color: red"></small>
         </div>
         <div class="mb-3">
-            <input type="checkbox" class="form-check-input" id="2fa" name="2fa" {{ 2fa_activated }}>
+            <input type="checkbox" class="form-check-input" id="2fa" name="2fa" {{ twofactor_activated }}>
             <label class="form-check-label" for="2fa">2-Faktor-Authentifizierung</label>
         </div>
-        {% if 2fa_activated == 'checked' %}
+        {% if twofactor_activated == 'checked' %}
         <div class="mb-3">
         <input type="checkbox" class="form-check-input" id="new_2fa" name="new_2fa">
         <label class="form-check-label" for="new_2fa">Aktuelle 2-Faktor-Authentifizierung löschen?</label>

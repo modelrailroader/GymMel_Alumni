@@ -76,7 +76,7 @@ $templateVars = [
     'date_registered' => date('d.m.Y - H:i', $data['date_registered']),
     'transfer_privacy' => $dataHelper->getTransferPrivacyFromData($data),
     'dataid' => $dataid,
-    'success_message' => $success_message
+    'success_message' => isset($success_message) ? $success_message : ''
 ];
 
 echo $template->render($templateVars);

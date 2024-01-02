@@ -67,11 +67,11 @@ $template = new Template('./assets/templates');
 $template->setTemplate('editUser.twig');
 
 $templateVars = [
-    'success_message' => $success_message,
+    'success_message' => isset($success_message) ? $success_message : '',
     'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS),
     'username' => $data['username'],
     'email' => $data['email'],
-    '2fa_activated' => ($data['2fa'] === 1) ? 'checked' : '',
+    'twofactor_activated' => ($data['2fa'] === 1) ? 'checked' : '',
     'userid' => isset($id_get) ? $id_get : $id
 ];
 

@@ -27,7 +27,7 @@ $template = new Template('./assets/templates');
 $template->setTemplate('backup.twig');
 
 $templateVars = [
-    'success_message' => $success_message
+    'success_message' => isset($success_message) ? $success_message : ''
 ];
 
 echo $template->render($templateVars);
