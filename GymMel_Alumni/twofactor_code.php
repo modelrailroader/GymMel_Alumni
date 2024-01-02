@@ -1,12 +1,10 @@
 <?php
+include_once(__DIR__.'/vendor/autoload.php');
+include_once('autoload.php');
+
 if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-include_once(__DIR__.'/vendor/autoload.php');
-include_once(__DIR__.'/src/User.php');
-include_once(__DIR__.'/src/Alert.php');
-include_once(__DIR__.'/src/Template.php');
 
 use src\User;
 use src\Alert;

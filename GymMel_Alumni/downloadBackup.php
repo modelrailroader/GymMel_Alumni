@@ -1,8 +1,7 @@
 <?php
 include 'constants.php';
 include_once(__DIR__.'/vendor/autoload.php');
-include_once(__DIR__.'/src/Logs.php');
-include_once(__DIR__.'/src/Backup.php');
+include_once('autoload.php');
 
 use src\User;
 use src\Logs;

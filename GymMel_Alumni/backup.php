@@ -1,8 +1,7 @@
 <?php
 include 'constants.php';
 include_once('./vendor/autoload.php');
-include_once('./src/User.php');
-include_once('./src/Template.php');
+include_once('autoload.php');
 
 use src\User;
 use src\Template;

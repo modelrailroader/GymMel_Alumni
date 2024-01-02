@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__.'/src/Template.php');
+include_once('autoload.php');
 
 use src\Template;
 
