@@ -49,7 +49,7 @@ jobs:
       - name: Create release artifact
         uses: montudor/action-zip@v1.0.0
         with:
-          args: zip -X -r GymMel_Alumni-${{ github.event.inputs.release_version }}.zip GymMel_Alumni
+          args: zip -X -r GymMel_Alumni-${{ github.event.inputs.release_version }}.zip GymMel_Alumni/*
           
       - name: Create Release
         id: create_release
