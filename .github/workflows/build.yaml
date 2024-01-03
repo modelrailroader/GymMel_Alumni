@@ -8,7 +8,8 @@ on:
         required: true
 
 jobs:
-  build_and_test:
+  build:
+    name: Build application
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +39,8 @@ jobs:
         run: pnpm build
 
   create_release:
-    needs: build_and_test
+    name: Create release
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
