@@ -23,4 +23,3 @@ class AlertTest extends TestCase {
         $this->assertEquals($expected, $alert->successAlert($message));
     }
 }
-
