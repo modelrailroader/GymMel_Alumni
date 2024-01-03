@@ -1,7 +1,7 @@
 <?php
 namespace src;
 
-include(realpath(__DIR__ . '/../../') . '/GymMel_Alumni/autoload.php');
+include(dirname(__DIR__, 2) . '/GymMel_Alumni/autoload.php');
 
 use PHPUnit\Framework\TestCase;
 use src\Alert;
