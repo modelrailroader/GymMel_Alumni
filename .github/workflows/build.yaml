@@ -49,6 +49,8 @@ jobs:
         
       - name: Create and Push GitHub-Tag
         run: |
+          git config user.email "model_railroader@gmx-topmail.de"
+          git config user.name "Jan Harms"
           git tag -a v${{ github.event.inputs.release_version }} -m "Release ${{ github.event.inputs.release_version }}"
           git push origin v${{ github.event.inputs.release_version }}
       - name: Create Release
