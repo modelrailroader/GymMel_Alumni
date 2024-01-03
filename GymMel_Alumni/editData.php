@@ -65,13 +65,7 @@ $template->setTemplate('editData.twig');
 
 $templateVars = [
     'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS),
-    'name' => $data['name'],
-    'email' => $data['email'],
-    'studies' => $data['studies'],
-    'job' => $data['job'],
-    'company' => $data['company'],
-    'date_registered' => date('d.m.Y - H:i', $data['date_registered']),
-    'transfer_privacy' => $dataHelper->getTransferPrivacyFromData($data),
+    'data' => $data,
     'dataid' => $dataid,
     'success_message' => isset($success_message) ? $success_message : ''
 ];
