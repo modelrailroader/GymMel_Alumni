@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.3.2
     version: 5.3.2(@popperjs/core@2.11.8)
   bootstrap-icons:
-    specifier: ^1.11.2
-    version: 1.11.2
+    specifier: ^1.11.3
+    version: 1.11.3
   css-loader:
     specifier: ^6.8.1
     version: 6.8.1(webpack@5.89.0)
@@ -423,8 +423,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /bootstrap-icons@1.11.2:
-    resolution: {integrity: sha512-TgdiPv+IM9tgDb+dsxrnGIyocsk85d2M7T0qIgkvPedZeoZfyeG/j+yiAE4uHCEayKef2RP05ahQ0/e9Sv75Wg==}
+  /bootstrap-icons@1.11.3:
+    resolution: {integrity: sha512-+3lpHrCw/it2/7lBL15VR0HEumaBss0+f/Lb6ZvHISn1mlK83jjFpooTLsMWbIjJMDjDjOExMsTxnXSIT4k4ww==}
     dev: false
 
   /bootstrap@5.3.2(@popperjs/core@2.11.8):
