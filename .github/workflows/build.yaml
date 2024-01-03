@@ -37,15 +37,6 @@ jobs:
         
       - name: Bundle JavaScript and SCSS
         run: pnpm build
-
-  create_release:
-    name: Create release
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
         
       - name: Create and push a new GitHub-Tag
         id: tag_version
