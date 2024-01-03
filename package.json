@@ -23,7 +23,7 @@
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
     "mini-css-extract-plugin": "^2.7.6",
-    "pdfmake": "^0.2.8",
+    "pdfmake": "^0.2.9",
     "popper.js": "^1.16.1",
     "sass": "^1.69.7",
     "sass-loader": "^13.3.3",
