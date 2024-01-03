@@ -49,18 +49,22 @@ jobs:
         
       - name: Create and Push GitHub-Tag
         run: |
-          git config user.email "model_railroader@gmx-topmail.de"
-          git config user.name "Jan Harms"
           git tag -a v${{ github.event.inputs.release_version }} -m "Release ${{ github.event.inputs.release_version }}"
           git push origin v${{ github.event.inputs.release_version }}
+          
+      - name: Create release artifact
+        uses: montudor/action-zip@v1.0.0
+        with:
+          args: zip -X -r GymMel_Alumni-${{ github.event.inputs.release_version }}.zip GymMel_Alumni
+          
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            ./GymMel_Alumni/*
           body: Release ${{ github.event.inputs.release_version }}
           draft: false
           prerelease: false
+          tag_name: v${{ github.event.inputs.release_version }}
+          files: GymMel_Alumni-${{ github.event.inputs.release_version }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
