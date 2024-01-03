@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "build:watch": "webpack --watch --progress"
+    "build:watch": "webpack --watch --progress",
+    "test": "php ./GymMel_Alumni/vendor/bin/phpunit ./tests"
   },
   "keywords": [],
   "author": "",

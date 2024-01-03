@@ -19,5 +19,8 @@
         "vendor-dir": "GymMel_Alumni/vendor",
         "bin-dir": "GymMel_Alumni/vendor/bin",
         "sort-packages": true
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
     }
 }
