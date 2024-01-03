@@ -44,6 +44,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
       - name: Create and Push GitHub-Tag
         run: |
           git tag -a v${{ github.event.inputs.release_version }} -m "Release ${{ github.event.inputs.release_version }}"
