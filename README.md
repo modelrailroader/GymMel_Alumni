@@ -1,7 +1,9 @@
 # GymMel_Alumni
 
 GymMel_Alumni is a web application that can be used for building an alumni network in which earlier students are able to register themselves and give information about their professional background. This data can be used by school administrators for carieer orientation and finding new cooperation partners.
+
 This application is specifically adapted for the use at Gymnasium Melle (high school in Germany) but can be forked and adapted for the use at other schools.
+
 It includes a professional user management with twofactor authentication-functionality as well as a possibility to create database backups.
 
 ## Requirements
