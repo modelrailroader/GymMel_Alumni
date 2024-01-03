@@ -27,17 +27,6 @@ class DataHelper
         return $this->dbclient->fetch($query);
     }
     
-    // Returns 'checked' if the transfer_privacy of a given data-array is true.
-    public function getTransferPrivacyFromData(array $data): string 
-    {
-        if($data['transfer_privacy'] === 1) {
-            return 'checked';
-        }
-        else {
-            return '';
-        }
-    }
-    
     // Saves new data in the database.
     public function updateData(array $data): bool 
     {
