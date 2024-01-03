@@ -1,0 +1,57 @@
+name: Manual Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release version'
+        required: true
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install pnpm dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: Set up PHP environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Run PHP Unit tests
+        run: pnpm test
+        
+      - name: Bundle JavaScript and SCSS
+        run: pnpm build
+
+  create_release:
+    needs: build_and_test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./GymMel_Alumni/*
+          body: Release ${{ github.event.inputs.release_version }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
