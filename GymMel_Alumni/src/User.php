@@ -70,7 +70,7 @@ class User
                 $username);
         
         if (!is_null($response = $this->dbclient->fetchAll($query))) {
-            $this->userid = (string) $response[0]['userid'];
+            $this->userid = (int) $response[0]['userid'];
             $this->email = (string) $response[0]['email'];
             $this->username = $username;
             $this->twofactorEnabled = (bool) $response[0]['2fa'];
@@ -123,7 +123,7 @@ class User
             if($this->checkLoginTries($username)) {
                 return false;
             }
-            if (isset($username) && password_verify($password, $response[0]['password'])) {
+            if (password_verify($password, $response[0]['password'])) {
                 if(password_needs_rehash($response[0]['password'], PASSWORD_DEFAULT)) {
                     $newPassword = password_hash($password, PASSWORD_DEFAULT);
                     $this->setNewPassword($response[0]['userid'], $newPassword);
@@ -368,6 +368,9 @@ class User
             unset($_SESSION['session_id']);
             $this->deleteSessionId($userid);
             return true;
+        }
+        else {
+            return false;
         }
     }
     

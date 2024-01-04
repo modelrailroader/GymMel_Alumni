@@ -144,10 +144,13 @@ class Backup
     }
     
     // Returns the content of the temporarily created backup file.
-    public function getBackupStream(): string 
+    public function getBackupStream(): string|bool
     {
         if($this->createTemporaryBackupFile()) {
             return file_get_contents($this->filename);
+        }
+        else {
+            return false;
         }
     }
     
