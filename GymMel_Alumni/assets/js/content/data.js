@@ -30,7 +30,7 @@ export const handleShowData = () => {
     pdfmake.vfs = pdfFonts.pdfMake.vfs;
     const alumniTable = document.getElementById('alumniTable');
     if (alumniTable) {
-        table = new DataTable(alumniTable, {
+        const table = new DataTable(alumniTable, {
             "language": languageDE,
             "dom": "Bflrtip",
             responsive: true,
@@ -58,6 +58,15 @@ export const handleShowData = () => {
                         columns: [0, 1, 2, 3, 4, 5, 6]
                     }
                 }]
+        });
+        const delete_items = document.querySelectorAll('#item-delete');
+        delete_items.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                const userConfirmation = confirm('Wollen Sie den Eintrag ' + item.getAttribute('data-name') + ' wirklich löschen?');
+                if (!userConfirmation) {
+                    event.preventDefault();
+                }
+            });
         });
     }
 };

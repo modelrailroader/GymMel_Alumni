@@ -44,7 +44,7 @@ class DataHelper
     // Saves new data in the database.
     public function updateData(array $data): bool 
     {
-        if($this->getAlumniData($data['id'])[0]['transfer_privacy'] !== $data['transfer_privacy']) {
+        if($this->getAlumniData($data['id'])['transfer_privacy'] !== $data['transfer_privacy']) {
             if($data['transfer_privacy'] === 1) {
                 $transfer_privacy_agreed = ",`date_transfer_privacy_agreed`='" . time() . "'";
             }

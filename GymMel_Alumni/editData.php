@@ -21,6 +21,7 @@ use src\User;
 use src\DataHelper;
 use src\Logs;
 use src\Template;
+use src\Alert;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -33,6 +34,7 @@ if (!$user->authenticateWithSession()) {
 
 $dataHelper = new DataHelper();
 $logs = new Logs();
+$alert = new Alert();
 
 $dataid = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -59,12 +61,11 @@ if(isset($submit)) {
         'transfer_privacy' => ($transfer_privacy === 'on') ? 1 : 0
     );
     if($dataHelper->updateData($data_change)) {
-        $success_message = '<div class="alert alert-success" role="alert">
-          Die Daten wurden erfolgreich geändert!
-        </div>';
+        $success_message = $alert->successAlert('Die Daten wurden erfolgreich geändert!');
         $logs->addLogEntry('The data of the alumni ' . $name . ' was successfully changed.');
     }
     $data = $dataHelper->getAlumniData($id);
+    $dataid = $id;
 }
 
 if(is_null($submit) & is_null($dataid)) {
