@@ -9,7 +9,7 @@
             <p>Gib den Code aus deiner Authenticator-App ein, um Zugriff zu erhalten.</p>
             <div style="margin-top: 20px"></div>
             <form action="index.php" method="POST">
-                <input type="hidden" name="userid" value="<?php print($userid) ?>" id="userid">
+                <input type="hidden" name="userid" value="{{ userid }}" id="userid">
                 <input type="hidden" id="action" value="twofactor" name="action">
                 <div class="mb-3">
                     <label for="twofactor_code" class="form-label">

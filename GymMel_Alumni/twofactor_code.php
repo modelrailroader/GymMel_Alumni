@@ -45,7 +45,8 @@ $template = new Template('./assets/templates');
 $template->setTemplate('twofactor_code.twig');
 
 $templateVars = [
-    'success_message' => isset($success_message) ? $success_message : ''
+    'success_message' => isset($success_message) ? $success_message : '',
+    'userid' => $userid
 ];
 
 echo $template->render($templateVars);
