@@ -29,12 +29,6 @@ class Logs
     
     public function __construct() {
         $this->path = dirname(__DIR__, 1) . '/data/adminlog.log';
-        if (!file_exists($this->path)) {
-            $handle = fopen($this->path, 'w');
-            if ($handle) {
-                fclose($handle);
-            }
-        }
         include dirname(__DIR__, 1) . '/constants.php';
         $this->dbclient = new DBPDO($db_host, $db_name, $db_user, $db_password);
         $this->user = new User();
