@@ -25,7 +25,7 @@ class User
     
     private TwoFactorAuth $twofactor;
     
-    private string $passwordMode = 'PASSWORD_DEFAULT';
+    private mixed $passwordMode = PASSWORD_DEFAULT;
     
     public bool $loggedIn = false;
     
