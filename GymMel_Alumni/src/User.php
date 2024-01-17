@@ -125,7 +125,7 @@ class User
             }
             if (password_verify($password, $response[0]['password'])) {
                 if(password_needs_rehash($response[0]['password'], PASSWORD_DEFAULT)) {
-                    $newPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $newPassword = $this->cryptPassword($password);
                     $this->setNewPassword($response[0]['userid'], $newPassword);
                 }
                 
@@ -143,7 +143,7 @@ class User
                     $this->getUserById($response[0]['userid']);
                     return true;
                 }
-            } 
+            }
             else {
                 $this->updateLoginTries($username);
                 return false;
