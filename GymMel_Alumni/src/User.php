@@ -25,6 +25,8 @@ class User
     
     private TwoFactorAuth $twofactor;
     
+    private string $passwordMode = 'PASSWORD_DEFAULT';
+    
     public bool $loggedIn = false;
     
     private string $username;
@@ -124,7 +126,7 @@ class User
                 return false;
             }
             if (password_verify($password, $response[0]['password'])) {
-                if(password_needs_rehash($response[0]['password'], PASSWORD_DEFAULT)) {
+                if(password_needs_rehash($response[0]['password'], $this->passwordMode)) {
                     $newPassword = $this->cryptPassword($password);
                     $this->setNewPassword($response[0]['userid'], $newPassword);
                 }
@@ -262,7 +264,7 @@ class User
         }
         $query = sprintf("INSERT INTO alumni_users (username, password, email, secret, 2fa) VALUES ('%s', '%s', '%s', '%s', %d)",
                 $username,
-                password_hash($password, PASSWORD_DEFAULT),
+                $this->cryptPassword($password),
                 $email,
                 $this->twofactor->createSecret(),
                 ($twofactor === 'on') ? 1 : 0);
@@ -282,7 +284,7 @@ class User
     // Crypts a given password.
     private function cryptPassword(string $password): string 
     {
-        return password_hash($password, PASSWORD_DEFAULT);
+        return password_hash($password, $this->passwordMode);
     }
     
     // Sets a new password for a special user and saves it to the database.
@@ -321,7 +323,7 @@ class User
     public function updateUserPassword(int $id, string $password): bool 
     {
         $query = sprintf("UPDATE `alumni_users` SET `password` = '%s' WHERE `userid` = %d",
-                password_hash($password, PASSWORD_DEFAULT),
+                $this->cryptPassword($password),
                 $id);
         $this->dbclient->execute($query);
         return true;
