@@ -2,6 +2,10 @@
 nbproject/private/
 nbproject/*
 
+# PHPStorm stuff
+.idea/*
+.run/*
+
 # GitHub stuff
 .gitignore
 
