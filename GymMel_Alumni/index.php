@@ -97,7 +97,9 @@ if(isset($submit) && isset($privacy_checkbox)) {
     }
     $dataHelper->saveNewAlumni($name, $email, $studies, $job, $company, $transfer);
 
-    $success_message = $alert->successAlert('Danke fürs Eingeben deiner Daten!<br>Hast du schon unseren Image-Film für die Ehemaligen-Party gesehen? Nein? Dann <a href="https://www.melle-gymnasium.de/Schulfilm">hier</a> entlang!');
+    // Ability to switch easily between to possible success alerts
+    //$success_message = $alert->successAlert('Danke fürs Eingeben deiner Daten!<br>Hast du schon unseren Image-Film für die Ehemaligen-Party gesehen? Nein? Dann <a href="https://www.melle-gymnasium.de/Schulfilm">hier</a> entlang!');
+    $success_message = $alert->successAlert('Danke fürs Eingeben deiner Daten!');
 }
 
 include 'header.php';
