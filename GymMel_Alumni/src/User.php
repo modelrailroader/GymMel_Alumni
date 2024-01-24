@@ -267,7 +267,7 @@ class User
                 $this->cryptPassword($password),
                 $email,
                 $this->twofactor->createSecret(),
-                ($twofactor === 'on') ? 1 : 0);
+                $twofactor);
         $this->dbclient->execute($query);
         return true;
     }
