@@ -11,15 +11,21 @@
             <form action="index.php" method="POST">
                 <div class="mb-3">
                     <label for="username" class="form-label">
-                        <i class="fas fa-user"></i> Benutzername:
+                        <i class="bi bi-person"></i> Benutzername:
                     </label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">
-                        <i class="fas fa-lock"></i> Passwort:
+                        <i class="bi bi-key"></i> Passwort:
                     </label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <span class="input-group-text" id="togglePassword" data-icon="passwordToggleIcon"
+                              data-input="password">
+                            <i class="bi bi-eye-slash" id="passwordToggleIcon"></i>
+                        </span>
+                    </div>
                 </div>
                 <p style="text-align: end"><a href="forgetPassword.php">Passwort vergessen?</a></p>
                 <div style="margin-top: 20px;"></div>

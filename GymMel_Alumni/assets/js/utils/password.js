@@ -26,4 +26,25 @@ export const validatePassword = (password) => {
     }
 }
 
+export const handlePasswordToggles = () => {
+    const toggles = document.querySelectorAll('#togglePassword');
+    toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function() {
+            console.log('click');
+            const passwordInput = document.getElementById(toggle.getAttribute('data-input'));
+            const icon = document.getElementById(toggle.getAttribute('data-icon'));
+            if (passwordInput.getAttribute('type') === 'password') {
+                passwordInput.setAttribute('type', 'text');
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+            else {
+                passwordInput.setAttribute('type', 'password');
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        })
+    })
+}
+
 
