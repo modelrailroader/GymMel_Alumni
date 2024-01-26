@@ -26,7 +26,7 @@
                     <td>{{ item.job }}</td>
                     <td>{{ item.studies }}</td>
                     <td>{{ item.company }}</td>
-                    <td>{{ item.date_registered|date('d.m.Y - H:i') }}</td>
+                    <td data-order="{{ item.date_registered }}">{{ item.date_registered|date('d.m.Y - H:i') }}</td>
                     <td>
                         {% if item.transfer_privacy == 1 %}
                             Ja
