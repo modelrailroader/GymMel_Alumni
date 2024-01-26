@@ -26,6 +26,8 @@ import 'datatables.net-buttons-dt';
 import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-responsive-dt';
 
+import { Modal } from 'bootstrap';
+
 export const handleShowData = () => {
     pdfmake.vfs = pdfFonts.pdfMake.vfs;
     const alumniTable = document.getElementById('alumniTable');
@@ -72,5 +74,57 @@ export const handleShowData = () => {
         })
     }
 };
+
+export const handleFindDuplicates = () => {
+    const modal = document.getElementById('modalDuplicates');
+    const findDuplicatesButton = document.getElementById('findDuplicatesButton');
+    findDuplicatesButton.addEventListener('click', function() {
+        const modal = new Modal(document.getElementById('modalDuplicates'));
+        modal.show();
+    })
+    if (modal) {
+        const previous = document.getElementById('previous');
+        const next = document.getElementById('next');
+        const pages = document.querySelectorAll('.page');
+        const page1 = document.getElementById('page1');
+        page1.style.display = 'block';
+        const pageCounter = document.getElementById('pageCounter');
+        if (pageCounter.getAttribute('data-current-page') === '1') {
+            previous.disabled = true;
+        }
+        next.addEventListener('click', function() {
+            const currentPageNumber = pageCounter.getAttribute('data-current-page');
+            const nextPageNumber = parseInt(currentPageNumber) + 1;
+            const currentPage = document.getElementById('page' + currentPageNumber)
+            const nextPage = document.getElementById('page' + nextPageNumber);
+            nextPage.style.display = 'block';
+            currentPage.style.display = 'none';
+            pageCounter.setAttribute('data-current-page', nextPageNumber.toString());
+            pageCounter.innerText = 'Duplikat ' + nextPageNumber + ' von ' + pages.length;
+            if (nextPageNumber !== 1) {
+                previous.disabled = false;
+            }
+            if (nextPageNumber === pages.length) {
+                next.disabled = true;
+            }
+        });
+        previous.addEventListener('click', function() {
+            const currentPageNumber = pageCounter.getAttribute('data-current-page');
+            const previousPageNumber = parseInt(currentPageNumber) - 1;
+            const currentPage = document.getElementById('page' + currentPageNumber)
+            const previousPage = document.getElementById('page' + previousPageNumber);
+            previousPage.style.display = 'block';
+            currentPage.style.display = 'none';
+            pageCounter.setAttribute('data-current-page', previousPageNumber.toString());
+            pageCounter.innerText = 'Duplikat ' + previousPageNumber + ' von ' + pages.length;
+            if (previousPageNumber === 1) {
+                previous.disabled = true;
+            }
+            if (previousPageNumber !== pages.length) {
+                next.disabled = false;
+            }
+        });
+    }
+}
 
 
