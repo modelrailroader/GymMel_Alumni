@@ -20,4 +20,4 @@ GymMel_Alumni/vendor/
 
 # GymMel_Alumni stuff
 GymMel_Alumni/constants.php
-GymMel_Alumni/data/
+GymMel_Alumni/data/*

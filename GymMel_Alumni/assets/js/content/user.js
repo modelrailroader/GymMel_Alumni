@@ -154,14 +154,16 @@ export const handleShowUsers = () => {
                     }
                 }]
         });
-        const delete_items = document.querySelectorAll('#item-delete');
-        delete_items.forEach(function (item) {
-            item.addEventListener('click', function (event) {
-                const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                if (!userConfirmation) {
-                    event.preventDefault();
-                }
+        document.addEventListener('DOMContentLoaded', function () {
+            const delete_items = document.querySelectorAll('#item-delete');
+            delete_items.forEach(function (item) {
+                item.addEventListener('click', function (event) {
+                    const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
+                    if (!userConfirmation) {
+                        event.preventDefault();
+                    }
+                });
             });
-        });
+        })
     }
 };
