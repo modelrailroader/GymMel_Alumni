@@ -63,7 +63,16 @@ export const handleShowData = () => {
                     }
                 }]
         });
-        document.addEventListener('DOMContentLoaded', function () {
+        const delete_items = document.querySelectorAll('#item-delete');
+        delete_items.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                const userConfirmation = confirm('Wollen Sie den Eintrag ' + item.getAttribute('data-name') + ' wirklich löschen?');
+                if (!userConfirmation) {
+                    event.preventDefault();
+                }
+            });
+        });
+        table.on('draw', function () {
             const delete_items = document.querySelectorAll('#item-delete');
             delete_items.forEach(function (item) {
                 item.addEventListener('click', function (event) {
@@ -73,7 +82,7 @@ export const handleShowData = () => {
                     }
                 });
             });
-        })
+        });
     }
 };
 
@@ -197,7 +206,7 @@ export const handleFindDuplicates = () => {
         }
     }
     const allDone = document.getElementById('allDone');
-    allDone.addEventListener('click', function(event) {
+    allDone.addEventListener('click', function (event) {
         event.preventDefault();
         location.reload();
     });
