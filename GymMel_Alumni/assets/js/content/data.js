@@ -72,6 +72,7 @@ export const handleShowData = () => {
                 }
             });
         });
+        // Add EventListener as well to buttons on further pages to show confirmation
         table.on('draw', function () {
             const delete_items = document.querySelectorAll('#item-delete');
             delete_items.forEach(function (item) {
@@ -108,35 +109,41 @@ export const handleFindDuplicates = () => {
                 next.disabled = true;
             }
             next.addEventListener('click', function () {
+                // Go to next page
                 const currentPageNumber = pageCounter.getAttribute('data-current-page');
                 switchPage(currentPageNumber, 'next');
             });
             previous.addEventListener('click', function () {
+                // Go to previous page
                 const currentPageNumber = pageCounter.getAttribute('data-current-page');
                 switchPage(currentPageNumber, 'previous');
             });
+            // Handle ignoring duplicate
             const ignoreButtons = document.querySelectorAll('#ignoreButton');
             ignoreButtons.forEach(function (ignoreButton) {
                 ignoreButton.addEventListener('click', function () {
                     const collapsesCurrentPage = document.querySelectorAll('.accordion-collapse');
                     collapsesCurrentPage.forEach(function (collapse) {
+                        // Close collapses as duplicate will be ignored
                         if (collapse.getAttribute('data-page') === pageCounter.getAttribute('data-current-page')) {
                             collapse.classList.remove('show');
                         }
                     });
+                    // Set status text and icon
                     const statusText = document.getElementById('status' + pageCounter.getAttribute('data-current-page'));
                     statusText.innerText = 'Ignoriert';
                     statusText.style.color = 'red';
                     const statusIcon = document.getElementById('iconStatus' + pageCounter.getAttribute('data-current-page'));
                     statusIcon.className = 'bi bi-ban';
                     statusIcon.style.color = 'red';
-                    statusText.setAttribute('data-current-status', 'ignored');
                     switchPage(ignoreButton.getAttribute('data-page'), 'next');
                 });
             })
+            // Handle merging duplicates
             const mergeButtons = document.querySelectorAll('#mergeDuplicatesButton');
             mergeButtons.forEach(function (mergeButton) {
                 mergeButton.addEventListener('click', function (event) {
+                    // Open dropdown for choosing the alumni that should be approved while the others will be merged
                     event.preventDefault();
                     const dropdown = new Dropdown(mergeButton);
                     if (dropdown._isShown()) {
@@ -149,6 +156,7 @@ export const handleFindDuplicates = () => {
             const dropdownLinks = document.querySelectorAll('.dropdown-item');
             dropdownLinks.forEach(function (dropdownLink) {
                 dropdownLink.addEventListener('click', function () {
+                    // When the alumni that should be kept is chosen
                     const alumniIdOfSelectedMerge = dropdownLink.getAttribute('data-alumni-id');
                     let allIds = [];
                     dropdownLinks.forEach(function (element) {
@@ -156,7 +164,7 @@ export const handleFindDuplicates = () => {
                             allIds.push(element.getAttribute('data-alumni-id'));
                         }
                     });
-                    const sourceDir = document.getElementById('sourceDir').value;
+                    // Send request
                     fetch('mergeDuplicates.php', {
                         method: 'POST',
                         headers: {
@@ -185,21 +193,25 @@ export const handleFindDuplicates = () => {
                         });
                     const collapsesCurrentPage = document.querySelectorAll('.accordion-collapse');
                     collapsesCurrentPage.forEach(function (collapse) {
+                        // When the duplicate is merged, collapses can be closed
                         if (collapse.getAttribute('data-page') === dropdownLink.getAttribute('data-page')) {
                             collapse.classList.remove('show');
                         }
                     });
                     mergeButtons.forEach(function (mergeButton) {
                         if (mergeButton.getAttribute('data-page') === dropdownLink.getAttribute('data-page')) {
+                            // Hide dropdown if merging is completed
                             const dropdown = new Dropdown(mergeButton);
                             dropdown.hide();
                         }
                     });
                     ignoreButtons.forEach(function (ignoreButton) {
+                        // Disable Ignore-Button if merging is completed
                         if (ignoreButton.getAttribute('data-page') === dropdownLink.getAttribute('data-page')) {
                             ignoreButton.disabled = true;
                         }
                     });
+                    // Finally go to next page
                     switchPage(dropdownLink.getAttribute('data-page'), 'next');
                 })
             });
@@ -207,11 +219,13 @@ export const handleFindDuplicates = () => {
     }
     const allDone = document.getElementById('allDone');
     allDone.addEventListener('click', function (event) {
+        // If all work is done, reload page to update the table
         event.preventDefault();
         location.reload();
     });
 }
 
+// Handles the status texts and icons if duplicates are merged or an error occurs
 const updateStatus = (currentStatus, dropdownLink) => {
     const statusText = document.getElementById('status' + dropdownLink.getAttribute('data-page'));
     statusText.innerText = (currentStatus === 'merged') ? 'Zusammengeführt' : 'Es ist ein Fehler aufgetreten.';
@@ -219,9 +233,9 @@ const updateStatus = (currentStatus, dropdownLink) => {
     const statusIcon = document.getElementById('iconStatus' + dropdownLink.getAttribute('data-page'));
     statusIcon.className = (currentStatus === 'merged') ? 'bi bi-check-all' : 'bi bi-bug';
     statusIcon.style.color = (currentStatus === 'merged') ? 'green' : 'red';
-    statusText.setAttribute('data-current-status', ((currentStatus === 'merged') ? 'merged' : 'error'));
 }
 
+// Handles switching pages
 const switchPage = (currentPageNumber, direction) => {
     const previous = document.getElementById('previous');
     const pages = document.querySelectorAll('.page');
