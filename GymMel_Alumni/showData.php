@@ -49,6 +49,13 @@ if($action === 'delete') {
 
 $data = $dataHelper->getAllAlumniData();
 
+// Handle Duplicates
+$duplicates = $dataHelper->findDuplicates();
+$pages = [];
+foreach ($duplicates as $duplicate) {
+    $pages[] = $dataHelper->getDuplicateDetails($duplicate);
+}
+
 include 'header.php';
 
 $template = new Template('./assets/templates');
@@ -56,7 +63,11 @@ $template->setTemplate('showData.twig');
 
 $templateVars = [
     'data' => $data,
-    'success_message' => isset($success_message) ? $success_message : ''
+    'success_message' => $success_message ?? '',
+    'pages' => $pages,
+    'number_of_pages' => count($pages),
+    'sourceDir' => __DIR__,
+    'duplicatesFound' => empty($pages) ? 'disabled' : ''
 ];
 
 echo $template->render($templateVars);
