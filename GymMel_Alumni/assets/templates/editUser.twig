@@ -5,6 +5,8 @@
     <h1>Benutzer bearbeiten</h1>
     <div style="margin-top: 40px"></div>
     <form action="{{ php_self }}" method="post" id="editUserForm" autocomplete="off">
+        <input type="text" id="preventAutoComplete" style="display:none">
+        <input type="password" id="preventAutoComplete" style="display:none">
         <input type="hidden" value="{{ userid }}" id="userid" name="userid">
         <div class="mb-3">
             <label for="username" class="form-label">

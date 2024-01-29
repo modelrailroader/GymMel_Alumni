@@ -5,6 +5,8 @@
     <h1>Benutzer erstellen</h1>
     <div style="margin-top: 40px"></div>
     <form action="{{ php_self }}" method="post" id="createUserForm" autocomplete="off">
+        <input type="text" id="preventAutoComplete" style="display:none">
+        <input type="password" id="preventAutoComplete" style="display:none">
         <div class="mb-3">
             <label for="username" class="form-label">
                 <i class="bi bi-person"></i>&nbsp; Benutzername:

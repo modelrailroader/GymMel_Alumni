@@ -90,10 +90,12 @@ export const handleShowData = () => {
 export const handleFindDuplicates = () => {
     const modal = document.getElementById('modalDuplicates');
     const findDuplicatesButton = document.getElementById('findDuplicatesButton');
-    findDuplicatesButton.addEventListener('click', function () {
-        const modal = new Modal(document.getElementById('modalDuplicates'));
-        modal.show();
-    })
+    if (findDuplicatesButton) {
+        findDuplicatesButton.addEventListener('click', function () {
+            const modal = new Modal(document.getElementById('modalDuplicates'));
+            modal.show();
+        });
+    }
     if (modal) {
         const pages = document.querySelectorAll('.page');
         const previous = document.getElementById('previous');
@@ -218,11 +220,13 @@ export const handleFindDuplicates = () => {
         }
     }
     const allDone = document.getElementById('allDone');
-    allDone.addEventListener('click', function (event) {
-        // If all work is done, reload page to update the table
-        event.preventDefault();
-        location.reload();
-    });
+    if (allDone) {
+        allDone.addEventListener('click', function (event) {
+            // If all work is done, reload page to update the table
+            event.preventDefault();
+            location.reload();
+        });
+    }
 }
 
 // Handles the status texts and icons if duplicates are merged or an error occurs
