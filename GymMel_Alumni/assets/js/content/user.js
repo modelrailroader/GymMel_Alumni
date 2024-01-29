@@ -16,9 +16,11 @@ import languageDE from 'datatables.net-plugins/i18n/de-DE.mjs';
 
 import pdfmake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+
 pdfmake.vfs = pdfFonts.pdfMake.vfs;
 
 import * as JSZip from "jszip";
+
 window.JSZip = JSZip;
 
 import DataTable from 'datatables.net-dt';
@@ -26,7 +28,7 @@ import 'datatables.net-buttons-dt';
 import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-responsive-dt';
 
-import { validatePassword } from '../utils/password'
+import {validatePassword} from '../utils/password'
 
 export const handleCreateUser = () => {
     const createUserForm = document.getElementById('createUserForm');
@@ -130,11 +132,11 @@ export const handleShowUsers = () => {
             "dom": "Bflrtip",
             responsive: true,
             "buttons": [{
-                    extend: 'copyHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    }
-                },
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                }
+            },
                 {
                     extend: 'csvHtml5',
                     exportOptions: {
@@ -154,7 +156,17 @@ export const handleShowUsers = () => {
                     }
                 }]
         });
-        document.addEventListener('DOMContentLoaded', function () {
+        const delete_items = document.querySelectorAll('#item-delete');
+        delete_items.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
+                if (!userConfirmation) {
+                    event.preventDefault();
+                }
+            });
+        });
+        // Add EventListener as well to buttons on further pages to show confirmation
+        table.on('draw', function () {
             const delete_items = document.querySelectorAll('#item-delete');
             delete_items.forEach(function (item) {
                 item.addEventListener('click', function (event) {
@@ -164,6 +176,6 @@ export const handleShowUsers = () => {
                     }
                 });
             });
-        })
+        });
     }
 };
