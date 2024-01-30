@@ -69,7 +69,7 @@ CREATE TABLE `alumni_users` (
 --
 -- Ersten User erstellen
 --
-INSERT INTO `alumni_users` (`username`, `email`, `password`, `2fa`, `secret`, `userid`, `last_login`, `login_tries`) VALUES ('admin', 'admin@example.org', '$2y$10$7rGATLyH0QPU4WgGSphYResfMmKRp/.Y9G291uW.aw/21lVGx7vGW', '0', NULL, '20', NULL, '0');
+INSERT INTO `alumni_users` (`username`, `email`, `password`, `2fa`, `secret`, `userid`, `last_login`, `login_tries`) VALUES ('admin', 'admin@example.org', '$2y$10$7rGATLyH0QPU4WgGSphYResfMmKRp/.Y9G291uW.aw/21lVGx7vGW', '0', NULL, '1', NULL, '0');
 
 --
 -- Indizes der exportierten Tabellen
