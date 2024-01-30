@@ -67,6 +67,11 @@ CREATE TABLE `alumni_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Ersten User erstellen
+--
+INSERT INTO `alumni_users` (`username`, `email`, `password`, `2fa`, `secret`, `userid`, `last_login`, `login_tries`) VALUES ('admin', 'admin@example.org', '$2y$10$7rGATLyH0QPU4WgGSphYResfMmKRp/.Y9G291uW.aw/21lVGx7vGW', '0', NULL, '20', NULL, '0');
+
+--
 -- Indizes der exportierten Tabellen
 --
 
