@@ -1,4 +1,16 @@
+# Prevent clickjacking
 Header always append X-Frame-Options SAMEORIGIN
 Header always append Access-Control-Allow-Origin SAMEORIGIN
 
+# Error handling
 ErrorDocument 404 /GymMelle_Alumni/404.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Prevent access to log-files
+  RewriteRule ^data - [F]
+
+  # Prevent access to twig-templates
+  RewriteRule ^assets/templates - [F]
+</IfModule>
