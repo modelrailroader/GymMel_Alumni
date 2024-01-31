@@ -26,3 +26,5 @@ else {
     ini_set('display_errors', 0);
 }
 
+// This should not be changed as it is the version number of the installation.
+$version = 'v2.0.1';
