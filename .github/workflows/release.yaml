@@ -6,6 +6,9 @@ on:
       release_version:
         description: 'Release version'
         required: true
+      chores_done:
+        description: 'Did you changed the version number?'
+        required: true
 
 jobs:
   build:
