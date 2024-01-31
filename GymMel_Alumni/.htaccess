@@ -2,9 +2,6 @@
 Header always append X-Frame-Options SAMEORIGIN
 Header always append Access-Control-Allow-Origin SAMEORIGIN
 
-# Error handling
-ErrorDocument 404 /GymMelle_Alumni/404.php
-
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
