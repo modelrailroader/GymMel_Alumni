@@ -7,20 +7,20 @@
     <p>
         Diese Seite stellt eine grundlegende Hilfe-Funktion der Software dar und soll den Anwender:innen helfen. Informationen für Entwickler:innen und IT-Spezialisten finden sich weiter unten.
     </p>
-    <section class="my-4">
+    <section class="my-4" id="helpBlock">
         <h3 class="pt-3 mb-4 pb-2 border-bottom"><i class="bi bi-lightbulb"></i> Häufig gestellte Fragen</h3>
         <p>
             Die "Häufig gestellten Fragen" (FAQ) verfolgen das Ziel, Anwender:innen bestimmte Funktionen zu erläutern und eventuell auftretende Probleme zu lösen. Bei Fragen stehe ich als Entwickler unter
             den unten angegebenen Kontaktdaten gerne zur Verfügung.
         </p>
-        <div class="accordion" id="faqAccordion">
+        <div class="accordion" id="helpAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading20">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse1" aria-expanded="true" aria-controls="helpCollapse1">
                         Warum lässt sich der erste Benutzer nicht löschen?
                     </button>
                 </h2>
-                <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse1" class="accordion-collapse collapse" aria-labelledby="helpHeading1" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Der erste Benutzer trägt die Userid 1 und ist nicht löschbar. Dies ist eine Vorsichtsmaßnahme, um auszuschließen, das die Verwaltung des Systems, z. B. durch das Löschen aller Benutzer
@@ -30,36 +30,32 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="heading21">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapseOne">
-                    Gibt es eine Logdatei?
-                </button>
-            </h2>
-            <div id="collapse21" class="accordion-collapse collapse" aria-labelledby="heading21" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    <p>
-                        Ja, es gibt eine Adminlog-Datei, die alle Aktionen, die durch eingeloggte Benutzer:innen ausgeführt werden, geloggt werden. Diese Datei kann z. B. nach einem Angriff auf das System helfen,
-                        die Schritte und möglichen Erfolge der Angreifer zu rekonstruieren und zu verstehen. Zudem können Aktionen unter Umständen mittels der gespeicherten IP-Adresse zurückverfolgt werden.
-                    </p>
-                    <p>
-                        Die Datei befindet sich im Verzeichnis /data/adminlog.log. Sie ist aus Sicherheitsgründen nicht aus dem Internet abrufbar. Sollte die Einsicht in die Datei notwendig sein, muss dies über einen FTP-Account
-                        über die Quelldateien des Webservers erfolgen. Der Webmaster bzw. Website-Administrator hilft hier weiter.
-                    </p>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="helpHeading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse2" aria-expanded="true" aria-controls="helpCollapse2">
+                        Gibt es eine Logdatei?
+                    </button>
+                </h2>
+                <div id="helpCollapse2" class="accordion-collapse collapse" aria-labelledby="helpHeading2" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Ja, es gibt eine Adminlog-Datei, die alle Aktionen, die durch eingeloggte Benutzer:innen ausgeführt werden, geloggt werden. Diese Datei kann z. B. nach einem Angriff auf das System helfen,
+                            die Schritte und möglichen Erfolge der Angreifer zu rekonstruieren und zu verstehen. Zudem können Aktionen unter Umständen mittels der gespeicherten IP-Adresse zurückverfolgt werden.
+                        </p>
+                        <p>
+                            Die Datei befindet sich im Verzeichnis /data/adminlog.log. Sie ist aus Sicherheitsgründen nicht aus dem Internet abrufbar. Sollte die Einsicht in die Datei notwendig sein, muss dies über einen FTP-Account
+                            über die Quelldateien des Webservers erfolgen. Der Webmaster bzw. Website-Administrator hilft hier weiter.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading22">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse22" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse3" aria-expanded="true" aria-controls="helpCollapse3">
                         Wie erstelle und exportiere ich ein Backup?
                     </button>
                 </h2>
-                <div id="collapse22" class="accordion-collapse collapse" aria-labelledby="heading22" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse3" class="accordion-collapse collapse" aria-labelledby="helpHeading3" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Mit der Backup-Funktion kann ein Backup der Alumni- und Benutzer- (bzw. Datenbank-) Daten erstellt werden. Diese Backup-Datei ist im SQL-Format und enthält neben den konkreten Daten
@@ -74,15 +70,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading28">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse28" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse4" aria-expanded="true" aria-controls="helpCollapse4">
                         Wie importiere ich ein Backup?
                     </button>
                 </h2>
-                <div id="collapse28" class="accordion-collapse collapse" aria-labelledby="heading28" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse4" class="accordion-collapse collapse" aria-labelledby="helpHeading4" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Backups werden als SQL-Datei mit der <a href="backup.php">"Backup erstellen"-Funktion</a> erstellt. Diese SQL-Dateien enthalten konkrete SQL-Anweisungen, um die Daten wieder in die Datenbank zu importieren, z. B. nach einem etwaigen Datenverlust.
@@ -91,15 +85,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading23">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse23" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading5">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse5" aria-expanded="true" aria-controls="helpCollapse5">
                         Wie funktioniert die "Duplikate finden"-Funktion?
                     </button>
                 </h2>
-                <div id="collapse23" class="accordion-collapse collapse" aria-labelledby="heading23" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse5" class="accordion-collapse collapse" aria-labelledby="helpHeading5" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Mit der Funktion "Duplikate finden" in der Übersicht der Netzwerkdatenbank können doppelte Alumni-Einträge schnell ausgemacht und zusammengeführt werden. Die Funktion ist grundsätzlich selbsterklärend.
@@ -109,32 +101,29 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading27">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse27" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading6">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse6" aria-expanded="true" aria-controls="helpCollapse6">
                         Was mache ich, wenn ich mein Passwort vergessen habe?
                     </button>
                 </h2>
-                <div id="collapse27" class="accordion-collapse collapse" aria-labelledby="heading27" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse6" class="accordion-collapse collapse" aria-labelledby="helpHeading6" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Falls du noch in das System eingeloggt bist, kannst du dein Passwort im <a href="ucp.php">"Persönlichen Bereich"</a> ändern. Zudem kann ein anderer Admin (falls dieser existiert), dein Passwort zurücksetzen bzw. ändern.
-                            Falls du nicht mehr im System eingeloggt bist, kannst du dir auf der Seite <a href="forgetPassword.php">Passwort vergessen</a></p> ein neues Passwort per E-Mail zusenden lassen.
+                            Falls du nicht mehr im System eingeloggt bist, kannst du dir auf der Seite <a href="forgetPassword.php">Passwort vergessen</a> ein neues Passwort per E-Mail zusenden lassen.
                             Nach dem erfolgreichen Einloggen sollte das Passwort aus Sicherheitsgründen wieder geändert werden.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading24">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse24" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading7">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse7" aria-expanded="true" aria-controls="helpCollapse7">
                         Was ist 2-Faktor-Authentifizierung?
                     </button>
                 </h2>
-                <div id="collapse24" class="accordion-collapse collapse" aria-labelledby="heading24" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse7" class="accordion-collapse collapse" aria-labelledby="helpHeading7" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Die 2-Faktor-Authentifizierung ist ein wichtiges Merkmal eines sicheren Systems. Damit können die persönlichen Daten der registrierten Alumnis zusätzlich abgesichert werden. Viele Angriffswellen nutzen
@@ -152,15 +141,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading25">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading8">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse8" aria-expanded="true" aria-controls="helpCollapse8">
                         Was mache ich, wenn ich keinen Zugriff mehr auf meine Authenticator-App (2FA) habe oder ich den Verdacht habe, dass mein Secret gestohlen wurde?
                     </button>
                 </h2>
-                <div id="collapse25" class="accordion-collapse collapse" aria-labelledby="heading25" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse8" class="accordion-collapse collapse" aria-labelledby="helpHeading8" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Das Secret kann aus Sicherheitsgründen nur von einem Admin mit Zugriff auf die Benutzerverwaltung gelöscht bzw. überschrieben werden. Du kannst jedoch, wenn du noch im System eingeloggt bist,
@@ -173,15 +160,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading26">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse26" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="helpHeading9">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helpCollapse9" aria-expanded="true" aria-controls="helpCollapse9">
                         Wie ändere ich die Fehler- bzw. Erfolgsmeldungen des Alumni-Formulars, z. B. um auf den Schulfilm zu verweisen?
                     </button>
                 </h2>
-                <div id="collapse26" class="accordion-collapse collapse" aria-labelledby="heading26" data-bs-parent="#faqAccordion">
+                <div id="helpCollapse9" class="accordion-collapse collapse" aria-labelledby="helpHeading9" data-bs-parent="#helpAccordion">
                     <div class="accordion-body">
                         <p>
                             Die Fehler- bzw. Erfolgsmeldungen können nur über einen Zugriff auf den Quellcode geändert werden. Hier befinden sich diese in der Datei index.php im Stammverzeichnis in der PHP-Variable $success_message.
@@ -211,12 +196,12 @@
         </p>
         <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="developmentHeading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse1" aria-expanded="true" aria-controls="collapseOne">
                         Welche Vorteile bringt die Verwendung von GitHub in diesem Anwendungskontext?
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse1" class="accordion-collapse collapse" aria-labelledby="developmentHeading1" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Die Verwendung von GitHub bringt viele Vorteile mit sich. Einerseits ist der Code für diese Software jederzeit verfügbar, sodass die Abhängigkeit der Schule
@@ -232,12 +217,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse2" aria-expanded="false" aria-controls="collapseTwo">
                         Was bedeutet Open-Source und welche Lizenz wird verwendet?
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse2" class="accordion-collapse collapse" aria-labelledby="developmentHeading2" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Open-Source-Projekte zeichnen sich durch die freie Zugänglichkeit des Codes für jeden Internet-Benutzer aus, was nicht nur sichere Applikationen durch transparenten Quellcode ermöglicht,
@@ -252,12 +237,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse3" aria-expanded="false" aria-controls="collapseTwo">
                         Was ist ein GitHub-Repository? Was sind GitHub-Issues, Branches, Tags und Releases?
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse3" class="accordion-collapse collapse" aria-labelledby="developmentHeading3" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Ein <strong>GitHub-Repository</strong> (oft auch "Repo" abgekürzt) ist quasi der Ordner/Bereich auf GitHub, in dem das Projekt gespeichert ist.
@@ -279,12 +264,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading4">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse4" aria-expanded="false" aria-controls="collapseTwo">
                         Wo finde ich das Repository auf GitHub?
                     </button>
                 </h2>
-                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse4" class="accordion-collapse collapse" aria-labelledby="developmentHeading4" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Das Projekt wird aktuell auf dem persönlichen GitHub-Account von Jan Harms gehostet. Dadurch entstehen keine Kosten. Das Repository heißt "GymMel_Alumni" und ist über diesen <a href="https://github.com/modelrailroader/GymMel_Alumni">Link</a> erreichbar.
@@ -293,12 +278,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading14">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading5">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse5" aria-expanded="false" aria-controls="collapseTwo">
                         In welchen Programmiersprachen ist die Software geschrieben?
                     </button>
                 </h2>
-                <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse5" class="accordion-collapse collapse" aria-labelledby="developmentHeading5" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Die Software nutzt PHP, JavaScript, HTML (unter Verwendung der Template-Engine "Twig"; s. unten) sowie in geringem Umfang CSS bzw. SCSS.
@@ -307,12 +292,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading6">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading6">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse6" aria-expanded="false" aria-controls="collapseTwo">
                         Hinweise zur Nutzung von Composer, Webpack, NPM, Synk und GitHub-Workflows
                     </button>
                 </h2>
-                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse6" class="accordion-collapse collapse" aria-labelledby="developmentHeading6" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Die folgenden Informationen sind nur für Entwickler:innen gedacht und sind nur mit Vorwissen zu verstehen. Eine Erklärung der verwendeten Begriffe findet nicht statt.
@@ -341,12 +326,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-            <h2 class="accordion-header" id="heading5">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapseTwo">
+            <h2 class="accordion-header" id="developmentHeading7">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse7" aria-expanded="false" aria-controls="collapseTwo">
                     Wie installiere ich eine neue Version auf dem Server?
                 </button>
             </h2>
-            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqAccordion">
+            <div id="developmentCollapse7" class="accordion-collapse collapse" aria-labelledby="developmentHeading7" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
                     <p>
                         Wie im vorherigen Punkt bereits ausführlich beschrieben, arbeitet das Projekt mit einem GitHub-Release-Workflow. Neue Versionen werden als GitHub-Release <a href="https://github.com/modelrailroader/GymMel_Alumni/releases">HIER</a> zum Download zur Verfügung gestellt.
@@ -356,12 +341,12 @@
             </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading7">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading8">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse8" aria-expanded="false" aria-controls="collapseTwo">
                         Informationen zu PHPUnit-Tests
                     </button>
                 </h2>
-                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse8" class="accordion-collapse collapse" aria-labelledby="developmentHeading8" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Die Software verwendet <strong>PHPUnit-Tests</strong>. Diese können über <code>pnpm test</code> gestartet werden. Die Tests befinden sich im GitHub-Repository unter 'tests'.
@@ -370,12 +355,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading8">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading9">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse9" aria-expanded="false" aria-controls="collapseTwo">
                         Informationen zur Entwicklungsumgebung
                     </button>
                 </h2>
-                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse9" class="accordion-collapse collapse" aria-labelledby="developmentHeading9" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Zur Entwicklung sollten die CLI-Versionen von git, composer und npm installiert sein. Anschließend kann mittels dieser Befehle eine Entwicklungsumgebung geschaffen werden:
@@ -399,12 +384,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading9">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading10">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse10" aria-expanded="false" aria-controls="collapseTwo">
                         Informationen zur Template-Engine "Twig"
                     </button>
                 </h2>
-                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse10" class="accordion-collapse collapse" aria-labelledby="developmentHeading10" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Die Software nutzt die Template-Engine <a href="https://twig.symfony.com/">Twig</a> aus dem Hause Symfony. Die Programmierung wird dadurch massiv vereinfacht.
@@ -414,12 +399,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading10">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading11">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse11" aria-expanded="false" aria-controls="collapseTwo">
                         Welche Voraussetzungen braucht die Software hinsichtlich Datenbanken?
                     </button>
                 </h2>
-                <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse11" class="accordion-collapse collapse" aria-labelledby="developmentHeading11" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Für die Software wird eine MySQL- oder MariaDB-Datenbank benötigt. Die Zugangsdaten für die Datenbank werden in der Datei "constants.original.php" eingetragen. Der Datenbankbenutzer sollte
@@ -475,12 +460,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading11">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading12">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse12" aria-expanded="false" aria-controls="collapseTwo">
                         Gibt es einen DEBUG-Modus?
                     </button>
                 </h2>
-                <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse12" class="accordion-collapse collapse" aria-labelledby="developmentHeading12" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Der DEBUG-Modus kann zusammen mit den Datenbank-Zugangsdaten in der Datei constants.php auf <code>true</code> bzw. <code>false</code> gesetzt werden. Dadurch wird das error_reporting von PHP aktiviert oder deaktiviert.
@@ -493,12 +478,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading12">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading13">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse13" aria-expanded="false" aria-controls="collapseTwo">
                         Gibt es weitere Informationen?
                     </button>
                 </h2>
-                <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse13" class="accordion-collapse collapse" aria-labelledby="developmentHeading13" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Im GitHub-Stammverzeichnis existiert eine kurze Dokumentation, die den hier hinterlegten Informationen gleichen sollte. Es existiert zudem eine <a href="https://github.com/modelrailroader/GymMel_Alumni/blob/4ef18037b09db3ff83ce0bed39c47b0b876dffae/README.md">README-Datei</a>, die u.U. weitere Informationen für Entwickler enthält.
@@ -507,12 +492,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading13">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading14">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse14" aria-expanded="false" aria-controls="collapseTwo">
                         Gibt es Code-Kommentierungen?
                     </button>
                 </h2>
-                <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse14" class="accordion-collapse collapse" aria-labelledby="developmentHeading14" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Zur besseren Verständlichkeit des Codes sind an den notwendigen Stellen Kommentierungen vorhanden.
@@ -521,12 +506,12 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading15">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="developmentHeading16">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#developmentCollapse15" aria-expanded="false" aria-controls="collapseTwo">
                         Was ist der Unterschied zwischen der Datei "constants.original.php" und "constants.php"?
                     </button>
                 </h2>
-                <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#faqAccordion">
+                <div id="developmentCollapse15" class="accordion-collapse collapse" aria-labelledby="developmentHeading16" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
                             Die constants.original.php-Datei ist standardmäßig im Stammverzeichnis hinterlegt. In dieser Datei wird neben den Datenbank-Zugangsdaten auch der DEBUG-Modus konfiguriert (beide: s. oben).
