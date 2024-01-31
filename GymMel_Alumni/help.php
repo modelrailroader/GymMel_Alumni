@@ -34,7 +34,16 @@ include 'header.php';
 $template = new Template('./assets/templates');
 $template->setTemplate('help.twig');
 
-$templateVars = [];
+// Current version is accessed from constants.php
+$version = '';
+include 'constants.php';
+
+$templateVars = [
+    'php_version' => phpversion(),
+    'document_root' => filter_input(INPUT_SERVER, 'DOCUMENT_ROOT'),
+    'version' => $version,
+    'extensions' => implode(', ', get_loaded_extensions())
+];
 
 echo $template->render($templateVars);
 

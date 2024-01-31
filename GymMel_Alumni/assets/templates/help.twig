@@ -1,8 +1,4 @@
 <!--
-    ToDo: Hilfe vervollständigen, mit 1. User, Duplikate, 2FA, Passwort vergessen, Adminlog (Abrufbarkeit, htaccess)
-    Über das Projekt -> Entstehung
-    evtl. Kontaktdaten mit "über" nach unten verschieben
-    evtl. Anker einfügen, z. B. mit Anker auf Kontaktdaten verlinken
     Diese Dokumentation in GitHub-docs umwandeln
     Die accordions mit ChatGPT ordentlich benennen und durchnummerieren
 -->
@@ -27,11 +23,174 @@
                 <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         <p>
-                            ...
+                            Der erste Benutzer trägt die Userid 1 und ist nicht löschbar. Dies ist eine Vorsichtsmaßnahme, um auszuschließen, das die Verwaltung des Systems, z. B. durch das Löschen aller Benutzer
+                            nicht mehr erreichbar ist. Trotzdem können aber alle weiteren Änderungen an diesem Benutzer vorgenommen werden, sowie bei Bedarfe weitere Benutzer hinzugefügt werden.
+                            Die Bearbeiten-Funktion bleibt von dieser Vorsichtsmaßnahme unberührt.
                         </p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading21">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapseOne">
+                    Gibt es eine Logdatei?
+                </button>
+            </h2>
+            <div id="collapse21" class="accordion-collapse collapse" aria-labelledby="heading21" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <p>
+                        Ja, es gibt eine Adminlog-Datei, die alle Aktionen, die durch eingeloggte Benutzer:innen ausgeführt werden, geloggt werden. Diese Datei kann z. B. nach einem Angriff auf das System helfen,
+                        die Schritte und möglichen Erfolge der Angreifer zu rekonstruieren und zu verstehen. Zudem können Aktionen unter Umständen mittels der gespeicherten IP-Adresse zurückverfolgt werden.
+                    </p>
+                    <p>
+                        Die Datei befindet sich im Verzeichnis /data/adminlog.log. Sie ist aus Sicherheitsgründen nicht aus dem Internet abrufbar. Sollte die Einsicht in die Datei notwendig sein, muss dies über einen FTP-Account
+                        über die Quelldateien des Webservers erfolgen. Der Webmaster bzw. Website-Administrator hilft hier weiter.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading22">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse22" aria-expanded="true" aria-controls="collapseOne">
+                        Wie erstelle und exportiere ich ein Backup?
+                    </button>
+                </h2>
+                <div id="collapse22" class="accordion-collapse collapse" aria-labelledby="heading22" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Mit der Backup-Funktion kann ein Backup der Alumni- und Benutzer- (bzw. Datenbank-) Daten erstellt werden. Diese Backup-Datei ist im SQL-Format und enthält neben den konkreten Daten
+                            SQL-Kommandos, um diese wieder in eine neue Datenbank zu importieren. SQL ist ein Protokoll für Datenbanken, wie z. B. MySQL (ein Datenbankformat). Es handelt sich also um ein, einzig maschinenlesbares
+                            Format. Ein Backup sollte regelmäßig nach jedem Hinzufügen von Daten erstellt werden (also z. B. nach einer Veranstaltung, bei der Ehemalige auf das Alumni-Netzwerk hingewiesen wurden) und sicher
+                            abgespeichert werden.
+                        </p>
+                        <p>
+                            Den Import der Daten nach einem eventuellen Datenverlust oder Umzug des Systems sollte nur durch einen Datenbank-Spezialisten durchgeführt werden. Hierfür gibt es keine Funktion in der Benutzeroberfläche.
+                            Ich habe dies in einer eigenen Frage beschrieben.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading28">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse28" aria-expanded="true" aria-controls="collapseOne">
+                        Wie importiere ich ein Backup?
+                    </button>
+                </h2>
+                <div id="collapse28" class="accordion-collapse collapse" aria-labelledby="heading28" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Backups werden als SQL-Datei mit der <a href="backup.php">"Backup erstellen"-Funktion</a> erstellt. Diese SQL-Dateien enthalten konkrete SQL-Anweisungen, um die Daten wieder in die Datenbank zu importieren, z. B. nach einem etwaigen Datenverlust.
+                            Der Import kann über ein Datenbankverwaltungsprogramm erfolgen, z. B. über das bekannte phpMyAdmin und sollte von einem Fachmann mit Erfahrung in der Web-Entwicklung bzw. im Umgang mit phpMyAdmin erfolgen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading23">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse23" aria-expanded="true" aria-controls="collapseOne">
+                        Wie funktioniert die "Duplikate finden"-Funktion?
+                    </button>
+                </h2>
+                <div id="collapse23" class="accordion-collapse collapse" aria-labelledby="heading23" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Mit der Funktion "Duplikate finden" in der Übersicht der Netzwerkdatenbank können doppelte Alumni-Einträge schnell ausgemacht und zusammengeführt werden. Die Funktion ist grundsätzlich selbsterklärend.
+                            Duplikate, die "ignoriert" werden, werden nur für diesen Durchlauf ignoriert, aber trotzdem noch in Warnung als Duplikat angzeigt. Nicht bearbeitete bzw. "offene" Duplikate haben keine Auswirkungen.
+                            Die Zusammenführung von Duplikaten kann nicht rückgängig gemacht werden.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading27">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse27" aria-expanded="true" aria-controls="collapseOne">
+                        Was mache ich, wenn ich mein Passwort vergessen habe?
+                    </button>
+                </h2>
+                <div id="collapse27" class="accordion-collapse collapse" aria-labelledby="heading27" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Falls du noch in das System eingeloggt bist, kannst du dein Passwort im <a href="ucp.php">"Persönlichen Bereich"</a> ändern. Zudem kann ein anderer Admin (falls dieser existiert), dein Passwort zurücksetzen bzw. ändern.
+                            Falls du nicht mehr im System eingeloggt bist, kannst du dir auf der Seite <a href="forgetPassword.php">Passwort vergessen</a></p> ein neues Passwort per E-Mail zusenden lassen.
+                            Nach dem erfolgreichen Einloggen sollte das Passwort aus Sicherheitsgründen wieder geändert werden.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading24">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse24" aria-expanded="true" aria-controls="collapseOne">
+                        Was ist 2-Faktor-Authentifizierung?
+                    </button>
+                </h2>
+                <div id="collapse24" class="accordion-collapse collapse" aria-labelledby="heading24" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Die 2-Faktor-Authentifizierung ist ein wichtiges Merkmal eines sicheren Systems. Damit können die persönlichen Daten der registrierten Alumnis zusätzlich abgesichert werden. Viele Angriffswellen nutzen
+                            die fehlende Komplexität des Passworts aus, oder greifen Zugangsdaten über Phishing-Seiten ab. Wenn die 2-Faktor-Authentifizierung aktiviert ist, wird neben dem Passwort beim Login ein zusätzlicher Faktor abgefragt, z. B.
+                            ein Einmalcode, der in einer App auf deinem Smartphone generiert wird. Diese Einmalcodes sind jeweils 30 Sekunden gültig.
+                        </p>
+                        <p>
+                            Zur Nutzung der 2-Faktor-Authentifizierung ist die Installation einer zusätzlichen, s.g. Authenticator-App z. B. auf dem Smartphone notwendig. Beispiele hierfür sind der Google-Authenticator oder die plattformunabhängige App
+                            "Free OTP". Mit dieser App wird der generierte QR-Code im "Persönlichen Bereich" dieses Systems gescannt oder alternativ das angezeigte Secret manuell übertragen. Bei jedem Einloggen muss nun über die App (der 2. Faktor) ein Einmalcode
+                            generiert und eingegeben werden. Das Secret ist dabei nur dem System und der Authenticator-App bekannt und darf wie das Passwort <strong>nicht weitergegeben</strong> werden.
+                        </p>
+                        <p>
+                            Die Nutzung der 2-Faktor-Authentifizierung ist jedem Benutzer <strong>dringend zu empfehlen!!</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading25">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapseOne">
+                        Was mache ich, wenn ich keinen Zugriff mehr auf meine Authenticator-App (2FA) habe oder ich den Verdacht habe, dass mein Secret gestohlen wurde?
+                    </button>
+                </h2>
+                <div id="collapse25" class="accordion-collapse collapse" aria-labelledby="heading25" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Das Secret kann aus Sicherheitsgründen nur von einem Admin mit Zugriff auf die Benutzerverwaltung gelöscht bzw. überschrieben werden. Du kannst jedoch, wenn du noch im System eingeloggt bist,
+                            die Zwei-Faktor-Authentifizierung für deinen Account im <a href="ucp.php">Persönlichen Bereich</a> deaktivieren.
+                        </p>
+                        <p>
+                            Solltest du dich nicht mehr Einloggen können, kannst du über <a href="forgetPassword.php">Passwort vergessen</a> ein neues Passwort anfordern. Dadurch wird auch die Zwei-Faktor-Authentifizierung
+                            zurückgesetzt und ein neues Secret erstellt. Nach dem erfolgreichen Einloggen mit dem per E-Mail zugesandten neuen Passwort, muss neben dem Passwort auch die 2-Faktor-Authentifizierung neu konfiguriert werden.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading26">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse26" aria-expanded="true" aria-controls="collapseOne">
+                        Wie ändere ich die Fehler- bzw. Erfolgsmeldungen des Alumni-Formulars, z. B. um auf den Schulfilm zu verweisen?
+                    </button>
+                </h2>
+                <div id="collapse26" class="accordion-collapse collapse" aria-labelledby="heading26" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <p>
+                            Die Fehler- bzw. Erfolgsmeldungen können nur über einen Zugriff auf den Quellcode geändert werden. Hier befinden sich diese in der Datei index.php im Stammverzeichnis in der PHP-Variable $success_message.
+                            Diese können mit der entsprechenden Fachkenntnis problemlos angepasst werden. Weitere Informationen für Entwickler:innen über den Aufbau der Software finden sich weiter unten.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -40,21 +199,8 @@
         Diese Seite stellt eine grundlegende Dokumentation der Software dar und bietet Informationen für zukünftige Entwickler.
     </p>
     <p>
-        Ursprünglich wurde die Software von Jan Harms, einem Schüler des Gymnasiums Melle entwickelt. Ich stehe auch nach meiner Schulzeit natürlich jederzeit für Fragen, Probleme, Wünsche etc. gerne zur Verfügung.
+        Ursprünglich wurde die Software von Jan Harms, einem Schüler des Gymnasiums Melle entwickelt. Ich stehe auch nach meiner Schulzeit natürlich jederzeit für Fragen, Probleme, Wünsche etc. gerne zur Verfügung. Meine Kontaktdaten sind unten zu finden.
     </p>
-    <div class="card w-50">
-        <div class="card-body">
-            <h5 class="card-title">Jan Harms</h5>
-            <p class="card-text">Ehemaliger Schüler des Gymnasiums Melle</p>
-            <span><i class="bi bi-envelope-at"></i> &nbsp;E-Mail-Adresse: <a href="mailto:janharms07@gmx.de">janharms07@gmx.de</a> <br></span>
-            <span><i class="bi bi-telephone-outbound"></i> &nbsp;Telefon: +49 174 9067254</span>
-        </div>
-        <div class="card-footer">
-            <a href="https://de.linkedin.com/in/harmsjan" class="card-link"><i class="bi bi-linkedin"></i></a>
-            <a href="https://github.com/modelrailroader" class="card-link"><i class="bi bi-github"></i></a>
-        </div>
-    </div>
-
 
     <section class="my-4">
         <h3 class="pt-3 mb-4 pb-2 border-bottom"><i class="bi bi-github"></i> GitHub</h3>
@@ -340,6 +486,9 @@
                             Der DEBUG-Modus kann zusammen mit den Datenbank-Zugangsdaten in der Datei constants.php auf <code>true</code> bzw. <code>false</code> gesetzt werden. Dadurch wird das error_reporting von PHP aktiviert oder deaktiviert.
                             Im laufenden Betrieb sollte der DEBUG-Modus deaktiviert sein.
                         </p>
+                        <p>
+                            Zusätzlich zum DEBUG-Modus stehen kurze DEBUG-Informationen wie die verwendete PHP-Version oder der Document-Root im Punkt "Über das Projekt" auf dieser Hilfeseite zur Verfügung.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -389,5 +538,27 @@
             </div>
         </div>
     </section>
-    <div style="margin-top: 50px"></div>
+    <h1 class="border-bottom pt-5 pb-2 mb-3"><i class="bi bi-box"></i> Über das Projekt</h1>
+    <p>
+        Das Alumni-System wurde im Rahmen des 75-jährigen Schuljubiläums des Gymnasiums Melle im Jahr 2023 vom damaligen Schüler Jan Harms entwickelt. Es dient dem Kontakt- und Netzwerkaufbau von ehemaligen Schüler:innen mit
+        der Schule und kann z. B. in der Berufsorientierung eingesetzt werden.
+    </p>
+    <small style="color: gray"><i class="bi bi-code"></i> DEBUG-Informationen: Aktuelle php-Version: {{ php_version }}, PHP-Extensions: {{ extensions }}, Document-Root: {{ document_root }}, GymMel_Alumni-Version: {{ version }}</small>
+    <h3 class="pt-4 mb-4 pb-2 border-bottom"><i class="bi bi-person-lines-fill"></i> Kontakt mit dem Entwickler</h3>
+    <p>
+        Ich stehe auch nach meiner Schulzeit natürlich jederzeit für Fragen, Probleme, Wünsche etc. gerne zur Verfügung
+    </p>
+    <div class="card w-50">
+        <div class="card-body">
+            <h5 class="card-title">Jan Harms</h5>
+            <p class="card-text">Ehemaliger Schüler des Gymnasiums Melle</p>
+            <span><i class="bi bi-envelope-at"></i> &nbsp;E-Mail-Adresse: <a href="mailto:model_railroader@gmx-topmail.de">model_railroader@gmx-topmail.de</a> <br></span>
+        </div>
+        <div class="card-footer">
+            <a href="https://de.linkedin.com/in/harmsjan" class="card-link"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/modelrailroader" class="card-link"><i class="bi bi-github"></i></a>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px"></div>
 </div>
