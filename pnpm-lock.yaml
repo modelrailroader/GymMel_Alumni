@@ -18,8 +18,8 @@ dependencies:
     specifier: ^2.4.2
     version: 2.4.2
   datatables.net-dt:
-    specifier: ^1.13.8
-    version: 1.13.8
+    specifier: ^1.13.10
+    version: 1.13.10
   datatables.net-plugins:
     specifier: ^1.13.6
     version: 1.13.6
@@ -661,7 +661,7 @@ packages:
     resolution: {integrity: sha512-Xp0phHLyIREO7WnTVlCXI1RaFJKSt7nZkm+VOVOFzwJ1jeTUZW/lMsp8kXsQpfl0B/PGjx/NlHbxDRQEg9obNw==}
     dependencies:
       datatables.net-buttons: 2.4.2
-      datatables.net-dt: 1.13.8
+      datatables.net-dt: 1.13.10
       jquery: 3.7.1
     dev: false
 
@@ -672,8 +672,8 @@ packages:
       jquery: 3.7.1
     dev: false
 
-  /datatables.net-dt@1.13.8:
-    resolution: {integrity: sha512-/ZPzr1hQ+domerlg/MbcQHqeeqxK9fsZmpRs1YeKxsdfr+UyHQTUiiOO7RqekppSLc7MPqxGnzKkCX9vAgqm0w==}
+  /datatables.net-dt@1.13.10:
+    resolution: {integrity: sha512-7Yujk3WGZjUBkQJzlRS2ResAtVXkODXLG73MEsC3tabyCiVXH42eA/79jwDBidmZWD8uvAfpAzWHTxjba4+QIQ==}
     dependencies:
       datatables.net: 1.13.8
       jquery: 3.7.1
@@ -689,7 +689,7 @@ packages:
   /datatables.net-responsive-dt@2.5.0:
     resolution: {integrity: sha512-u0oHqG1LLrFj+cBVYpyOO03nECUJJim4EovKhdQtB2g8X0fbH7jWvLAOdDFvyIzktCYWScObqR8uUEtm6J9O6Q==}
     dependencies:
-      datatables.net-dt: 1.13.8
+      datatables.net-dt: 1.13.10
       datatables.net-responsive: 2.5.0
       jquery: 3.7.1
     dev: false
