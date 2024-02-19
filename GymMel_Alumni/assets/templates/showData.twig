@@ -12,9 +12,16 @@
             <i class="bi bi-copy"></i> Über Duplikate entscheiden
         </button>
         {% if number_of_pages == 0 %}
-            <p><span style="color:green"><i class="bi bi-database-check"></i> Es wurden keine Duplikate gefunden.</span></p>
+            <p><span style="color:green"><i class="bi bi-database-check"></i> Es wurden keine Duplikate gefunden.</span>
+            </p>
         {% else %}
-            <p><span style="color: orange"><i class="bi bi-exclamation-triangle"></i> Es wurden {{ number_of_pages }} Duplikate gefunden!</span></p>
+            <p><span style="color: orange"><i class="bi bi-exclamation-triangle"></i>
+                    {% if number_of_pages != 1 %}
+                        Es wurden {{ number_of_pages }} Duplikate gefunden!
+                    {% else %}
+                        Es wurde {{ number_of_pages }} Duplikat gefunden!
+                    {% endif %}
+            </span></p>
         {% endif %}
     </div>
 
@@ -63,62 +70,84 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-end mb-0">
-                        <button class="btn btn-outline-secondary" id="previous"><i class="bi bi-arrow-left"></i></button>
+                        <button class="btn btn-outline-secondary" id="previous"><i class="bi bi-arrow-left"></i>
+                        </button>
                         <button class="btn btn-outline-secondary" id="next"><i class="bi bi-arrow-right"></i></button>
-                        <p id="pageCounter" data-current-page="1" class="mt-1 mb-0"> Duplikat 1 von {{ number_of_pages }}</p>
+                        <p id="pageCounter" data-current-page="1" class="mt-1 mb-0"> Duplikat 1
+                            von {{ number_of_pages }}</p>
                     </div>
 
                     {% set page_counter = 1 %}
                     {% for page in pages %}
-                    {% set duplicate_counter = 1 %}
-                    <div class="page" id="page{{ page_counter }}" data-page-number="{{ page_counter }}" style="display: none">
-                        <div class="text-end mt-0 mb-3">
-                            <div><span>Status: </span><span id="status{{ page_counter }}" data-current-status="undefined" class="mt-0 mb-1">Nicht entschieden </span>&nbsp;<i id="iconStatus{{ page_counter }}" class="bi bi-question-square"></i></div>
-                        </div>
-                        {% for duplicate in page %}
-                        <div class="accordion" id="accordionPage{{ duplicate_counter }}" data-alumni-id="{{ duplicate.id }}">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingPage{{ duplicate_counter }}">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePage{{ duplicate_counter }}" aria-expanded="true" aria-controls="collapsePage{{ duplicate_counter }}">
-                                        Alumni: {{ duplicate_counter }} | Name: {{ duplicate.name }} | E-Mail-Adresse: {{ duplicate.email }}
-                                    </button>
-                                </h2>
-                                <div id="collapsePage{{ duplicate_counter }}" class="accordion-collapse collapse show" aria-labelledby="headingPage{{ duplicate_counter }}" data-bs-parent="#accordionPage{{ duplicate_counter }}" data-page="{{ page_counter }}">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>Studium/Ausbildung: {{ duplicate.studies }}</li>
-                                            <li>Beruf/Tätigkeit: {{ duplicate.job }}</li>
-                                            <li>Aktueller Arbeitgeber:in: {{ duplicate.company }}</li>
-                                            <li>Registrierungszeitpunkt: {{ duplicate.date_registered|date('d.m.Y - H:i') }}</li>
-                                        </ul>
+                        {% set duplicate_counter = 1 %}
+                        <div class="page" id="page{{ page_counter }}" data-page-number="{{ page_counter }}"
+                             style="display: none">
+                            <div class="text-end mt-0 mb-3">
+                                <div><span>Status: </span><span id="status{{ page_counter }}"
+                                                                data-current-status="undefined" class="mt-0 mb-1">Nicht entschieden </span>&nbsp;<i
+                                            id="iconStatus{{ page_counter }}" class="bi bi-question-square"></i></div>
+                            </div>
+                            {% for duplicate in page %}
+                                <div class="accordion" id="accordionPage{{ duplicate_counter }}"
+                                     data-alumni-id="{{ duplicate.id }}">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingPage{{ duplicate_counter }}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapsePage{{ duplicate_counter }}"
+                                                    aria-expanded="true"
+                                                    aria-controls="collapsePage{{ duplicate_counter }}">
+                                                Alumni: {{ duplicate_counter }} | Name: {{ duplicate.name }} |
+                                                E-Mail-Adresse: {{ duplicate.email }}
+                                            </button>
+                                        </h2>
+                                        <div id="collapsePage{{ duplicate_counter }}"
+                                             class="accordion-collapse collapse show"
+                                             aria-labelledby="headingPage{{ duplicate_counter }}"
+                                             data-bs-parent="#accordionPage{{ duplicate_counter }}"
+                                             data-page="{{ page_counter }}">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    <li>Studium/Ausbildung: {{ duplicate.studies }}</li>
+                                                    <li>Beruf/Tätigkeit: {{ duplicate.job }}</li>
+                                                    <li>Aktueller Arbeitgeber:in: {{ duplicate.company }}</li>
+                                                    <li>
+                                                        Registrierungszeitpunkt: {{ duplicate.date_registered|date('d.m.Y - H:i') }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        {% set duplicate_counter = duplicate_counter + 1 %}
-                        {% endfor %}
-                        <div class="text-center mt-3 mb-3">
-                            <div class="dropdown show">
-                                <a class="btn btn-outline-primary dropdown-toggle" data-page="{{ page_counter }}" role="button" id="mergeDuplicatesButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-intersect"></i> Duplikate zusammenführen zu...
-                                </a>
+                                {% set duplicate_counter = duplicate_counter + 1 %}
+                            {% endfor %}
+                            <div class="text-center mt-3 mb-3">
+                                <div class="dropdown show">
+                                    <a class="btn btn-outline-primary dropdown-toggle" data-page="{{ page_counter }}"
+                                       role="button" id="mergeDuplicatesButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-intersect"></i> Duplikate zusammenführen zu...
+                                    </a>
 
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    {% set dropdown_counter = 1 %}
-                                    {% for duplicate in page %}
-                                        <a class="dropdown-item" data-page="{{ page_counter }}" data-alumni-id="{{ duplicate.id }}">Alumni {{ dropdown_counter }}</a>
-                                    {% set dropdown_counter = dropdown_counter + 1 %}
-                                    {% endfor %}
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        {% set dropdown_counter = 1 %}
+                                        {% for duplicate in page %}
+                                            <a class="dropdown-item" data-page="{{ page_counter }}"
+                                               data-alumni-id="{{ duplicate.id }}">Alumni {{ dropdown_counter }}</a>
+                                            {% set dropdown_counter = dropdown_counter + 1 %}
+                                        {% endfor %}
+                                    </div>
+                                    <button type="button" id="ignoreButton" class="btn btn-outline-danger"
+                                            data-page="{{ page_counter }}"><i class="bi bi-ban"></i> Ignorieren
+                                    </button>
                                 </div>
-                            <button type="button" id="ignoreButton" class="btn btn-outline-danger" data-page="{{ page_counter }}"><i class="bi bi-ban"></i> Ignorieren</button>
+                                {% set page_counter = page_counter + 1 %}
                             </div>
-                    {% set page_counter = page_counter + 1 %}
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
                 <div class="modal-footer">
-                    <button id="allDone" type="button" class="btn btn-success" data-bs-dismiss="modal"><i class="bi bi-check-all"></i> Fertig</button>
+                    <button id="allDone" type="button" class="btn btn-success" data-bs-dismiss="modal"><i
+                                class="bi bi-check-all"></i> Fertig
+                    </button>
                 </div>
             </div>
         </div>
