@@ -1,5 +1,6 @@
 import { handleCreateUser, handleEditUser, handleShowData, handleUcp, handleShowUsers, handleFindDuplicates } from './content';
 import { handlePasswordToggles } from "./utils/password";
+import {easterEggs} from "./utils/easterEggs";
 
 // User administration
 handleShowUsers();
@@ -13,3 +14,6 @@ handleFindDuplicates();
 
 // Handle Show-password buttons
 handlePasswordToggles();
+
+// Handle Easter Eggs
+easterEggs();
