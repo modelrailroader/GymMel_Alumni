@@ -34,9 +34,8 @@ include 'header.php';
 $template = new Template('./assets/templates');
 $template->setTemplate('help.twig');
 
-// Current version is accessed from constants.php
-$version = '';
-include 'constants.php';
+// Current version is accessed from version.php
+include 'version.php';
 
 $templateVars = [
     'php_version' => phpversion(),
