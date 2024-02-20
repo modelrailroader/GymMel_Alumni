@@ -18,8 +18,8 @@ dependencies:
     specifier: ^2.4.3
     version: 2.4.3
   datatables.net-dt:
-    specifier: ^1.13.10
-    version: 1.13.10
+    specifier: ^2.0.0
+    version: 2.0.0
   datatables.net-plugins:
     specifier: ^1.13.6
     version: 1.13.6
