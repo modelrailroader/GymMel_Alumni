@@ -36,8 +36,14 @@ export const handleShowData = () => {
     if (alumniTable) {
         const table = new DataTable(alumniTable, {
             "language": languageDE,
-            "dom": "Bflrtip",
             responsive: true,
+            layout: {
+                top1Start: 'buttons',
+                topStart: 'pageLength',
+                topEnd: 'search',
+                bottomStart: 'info',
+                bottomEnd: 'paging'
+            },
             "buttons": [{
                 extend: 'copyHtml5',
                 exportOptions: {

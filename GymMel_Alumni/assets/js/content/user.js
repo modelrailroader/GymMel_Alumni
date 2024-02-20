@@ -129,8 +129,14 @@ export const handleShowUsers = () => {
     if (usersTable) {
         const table = new DataTable(usersTable, {
             "language": languageDE,
-            "dom": "Bflrtip",
             responsive: true,
+            layout: {
+                top1Start: 'buttons',
+                topStart: 'pageLength',
+                topEnd: 'search',
+                bottomStart: 'info',
+                bottomEnd: 'paging'
+            },
             "buttons": [{
                 extend: 'copyHtml5',
                 exportOptions: {
