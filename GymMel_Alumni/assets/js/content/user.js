@@ -52,6 +52,10 @@ export const handleCreateUser = () => {
                 helpTextConfirmPassword.textContent = 'Die Passwörter stimmen nicht überein.';
                 event.preventDefault();
             }
+            if (!createUserForm.checkValidity()) {
+                createUserForm.reportValidity();
+                event.preventDefault();
+            }
         });
     }
 };
@@ -118,7 +122,11 @@ export const handleEditUser = () => {
                         event.preventDefault();
                     }
                 }
-
+                if (!editUserForm.checkValidity()) {
+                    console.log("Yes");
+                    editUserForm.reportValidity();
+                    event.preventDefault();
+                }
             });
         }
     }

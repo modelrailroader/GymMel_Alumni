@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'GymMel_Alumni/assets/dist')
     },
-    mode: 'production',
+    mode: 'development',
     watchOptions: {
         aggregateTimeout: 200,
         poll: 1000

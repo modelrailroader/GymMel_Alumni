@@ -61,6 +61,10 @@ export const handleUcp = () => {
                 helpTextConfirmPassword.textContent = 'Die Passwörter stimmen nicht überein.';
                 event.preventDefault();
             }
+            if (!ucpForm.checkValidity()) {
+                ucpForm.reportValidity();
+                event.preventDefault();
+            }
         });
     }
 };
