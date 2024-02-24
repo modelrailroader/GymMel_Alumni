@@ -1,7 +1,5 @@
 <div class="container mt-5">
-    {% if success_message != '' %}
-        {{ success_message|raw }}
-    {% endif %}
+    <div id="alert"></div>
     <h1>Benutzerübersicht</h1>
     <div style="margin-top: 40px"></div>
 
@@ -22,7 +20,7 @@
         </thead>
         <tbody>
             {% for item in userData %}
-                <tr>
+                <tr id="user{{ item.userid }}">
                     <td>{{ item.userid }}</td>
                     <td>{{ item.username }}</td>
                     <td>{{ item.email }}</td>
@@ -36,7 +34,7 @@
                     <td>{{ item.last_login|date('d.m.Y - H:i') }}</td>
                     <td><a href="editUser.php?id={{ item.userid }}"><i class="bi bi-pencil-square"></i></a>&nbsp;
                             {%  if item.userid != 1 %}
-                            <a href="users.php?id={{ item.userid }}&action=delete" id="item-delete" data-name="{{ item.username }}">
+                            <a href="#" id="item-delete" data-name="{{ item.username }}" data-userid="{{ item.userid }}">
                                 <i class="bi bi-trash3"></i></a>
                             {% endif %}
                     </td>

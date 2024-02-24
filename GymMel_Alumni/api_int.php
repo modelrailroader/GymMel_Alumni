@@ -14,17 +14,17 @@
  */
 
 include 'constants.php';
-include_once(__DIR__.'/vendor/autoload.php');
+include_once(__DIR__ . '/vendor/autoload.php');
 include_once('autoload.php');
 
 use src\User;
 use src\Logs;
 
-if(session_status() === PHP_SESSION_NONE) {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $user = new User();
-if(!$user->authenticateWithSession()) {
+if (!$user->authenticateWithSession()) {
     require 'accessDenied.php';
     exit();
 }
@@ -40,11 +40,10 @@ switch ($action) {
         $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
         $password = filter_var($postData->password, FILTER_UNSAFE_RAW);
 
-        if(!is_null($username) && !is_null($password) && !is_null($email)) {
-            if($stored = $user->createUser($username, $password, $email)) {
+        if (!is_null($username) && !is_null($password) && !is_null($email)) {
+            if ($stored = $user->createUser($username, $password, $email)) {
                 $message = 'Der Benutzer wurde erfolgreich erstellt!';
-            }
-            else {
+            } else {
                 $message = 'Dieser Benutzername existiert bereits!';
             }
             $logs->addLogEntry('The user ' . $username . ' was successfully created.');
@@ -58,6 +57,27 @@ switch ($action) {
         $response = [
             'message' => 'This is the internal API of GymMel_Alumni. This request was not successful. Please check your request and try again.'
         ];
+        break;
+    case 'deleteUser':
+        $userid = filter_var($postData->userid, FILTER_VALIDATE_INT);
+        $username_deleted = filter_var($postData->username_deleted, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if (!is_null($userid)) {
+            $user->deleteUser($userid);
+            $message = 'Der Benutzer ' . $username_deleted . ' wurde erfolgreich gelöscht!';
+            $logs->addLogEntry('The user ' . $username_deleted . ' was successfully deleted.');
+
+            $response = [
+                'deleted' => true,
+                'message' => $message
+            ];
+        } else {
+            $response = [
+                'deleted' => false,
+                'message' => "The request didn't contain a userid."
+            ];
+        }
+        break;
 }
 
 header('Content-Type: application/json');

@@ -95,7 +95,6 @@ export const handleCreateUser = () => {
                             }
                         })
                         .catch(error => {
-
                             console.error('Fehler bei der Fetch-Anfrage:', error);
                         });
                     event.preventDefault();
@@ -219,9 +218,10 @@ export const handleShowUsers = () => {
         delete_items.forEach(function (item) {
             item.addEventListener('click', function (event) {
                 const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                if (!userConfirmation) {
-                    event.preventDefault();
+                if (userConfirmation) {
+                    deleteUser(item, table);
                 }
+                event.preventDefault();
             });
         });
         // Add EventListener as well to buttons on further pages to show confirmation
@@ -230,11 +230,46 @@ export const handleShowUsers = () => {
             delete_items.forEach(function (item) {
                 item.addEventListener('click', function (event) {
                     const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                    if (!userConfirmation) {
-                        event.preventDefault();
+                    if (userConfirmation) {
+                        deleteUser(item, table);
                     }
+                    event.preventDefault();
                 });
             });
         });
     }
 };
+
+function deleteUser(item, table) {
+    const userid = item.getAttribute('data-userid');
+    const response = fetch('api_int.php?action=deleteUser', {
+        method: 'POST',
+        body: JSON.stringify({
+            username_deleted: item.getAttribute('data-name'),
+            userid: userid
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+            }
+        })
+        .then(responseData => {
+            const toastElement = createToast(responseData.message, responseData.deleted ? 'success' : 'danger');
+            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+            const toast = new Toast(toastElement);
+            toast.show();
+            window.scrollTo(0,0);
+            if (responseData.deleted) {
+                table.row('#user' + userid).remove().draw();
+            }
+        })
+        .catch(error => {
+            console.error('Fehler bei der Fetch-Anfrage:', error);
+        });
+}
