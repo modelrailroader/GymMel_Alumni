@@ -88,6 +88,7 @@ export const handleCreateUser = () => {
                             document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
                             const toast = new Toast(toastElement);
                             toast.show();
+                            window.scrollTo(0, 0);
                             if (responseData.stored) {
                                 document.getElementById('helpTextConfirmPassword').textContent = '';
                                 document.getElementById('helpTextPassword').textContent = '';
@@ -134,19 +135,17 @@ export const handleEditUser = () => {
             const twofactor_active = document.getElementById('2fa');
             const twofactor_new = document.getElementById('new_2fa');
 
-            if (twofactor_new) {
-                twofactor_new.addEventListener('change', function () {
-                    if (this.checked) {
-                        twofactor_active.checked = false;
-                    }
-                });
+            twofactor_new.addEventListener('change', function () {
+                if (this.checked) {
+                    twofactor_active.checked = false;
+                }
+            });
 
-                twofactor_active.addEventListener('change', function () {
-                    if (this.checked) {
-                        twofactor_new.checked = false;
-                    }
-                });
-            }
+            twofactor_active.addEventListener('change', function () {
+                if (this.checked) {
+                    twofactor_new.checked = false;
+                }
+            });
 
             // Validate password
             const confirmPasswordInput = document.getElementById('confirmPassword');
@@ -156,21 +155,73 @@ export const handleEditUser = () => {
                 helpTextPasswordInput.textContent = validatePassword(passwordInput.value);
             });
 
-            // Validate password and check if password and confirmPassword are equal if submit button is triggered
+            // Validate password and check if password and confirmPassword are equal if submit button is triggered and send data
             submitButton.addEventListener('click', function () {
+                const checks = [];
                 if (newPassword.checked) {
                     if (validatePassword(passwordInput.value) !== '') {
-                        event.preventDefault();
+                        checks.push(false);
                     } else if (passwordInput.value !== confirmPasswordInput.value) {
                         helpTextConfirmPasswordInput.textContent = 'Die Passwörter stimmen nicht überein.';
-                        event.preventDefault();
+                        checks.push(false);
                     }
                 }
                 if (!editUserForm.checkValidity()) {
-                    console.log("Yes");
                     editUserForm.reportValidity();
-                    event.preventDefault();
+                    checks.push(false);
                 }
+
+                if (checks.length === 0) {
+                    const response = fetch('api_int.php?action=editUser', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            username: document.getElementById('username').value,
+                            email: document.getElementById('email').value,
+                            userid: document.getElementById('userid').value,
+                            twofactor: twofactor_active.checked,
+                            new_2fa: twofactor_new.checked,
+                            password: passwordInput.value,
+                            newPassword: newPassword.checked
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                            }
+                        })
+                        .then(responseData => {
+                            const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
+                            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                            const toast = new Toast(toastElement);
+                            toast.show();
+                            window.scrollTo(0, 0);
+                            if (responseData.stored) {
+                                helpTextConfirmPasswordInput.textContent = '';
+                                helpTextPasswordInput.textContent = '';
+                                passwordInput.value = '';
+                                confirmPasswordInput.value = '';
+                                newPassword.checked = false;
+                                if (twofactor_active.checked) {
+                                    document.getElementById('new_2fa_div').style.display = 'block';
+                                } else {
+                                    document.getElementById('new_2fa_div').style.display = 'none'
+                                }
+                                passwordDiv.style.display = 'none';
+                                confirmPasswordDiv.style.display = 'none';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fehler bei der Fetch-Anfrage:', error);
+                        });
+                }
+                event.preventDefault();
+                // @todo: refactor all js functions - What is needed due to API refactoring and what is no more needed?
+                // Bring everything into a good structure
             });
         }
     }
@@ -264,7 +315,7 @@ function deleteUser(item, table) {
             document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
             const toast = new Toast(toastElement);
             toast.show();
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
             if (responseData.deleted) {
                 table.row('#user' + userid).remove().draw();
             }

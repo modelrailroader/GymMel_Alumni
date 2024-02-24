@@ -1,10 +1,8 @@
 <div class="container mt-5">
-    {% if success_message != '' %}
-        {{ success_message|raw }}
-    {% endif %}
+    <div id="alert"></div>
     <h1>Benutzer bearbeiten</h1>
     <div style="margin-top: 40px"></div>
-    <form action="{{ php_self }}" method="post" id="editUserForm" autocomplete="off">
+    <form action="#" method="post" id="editUserForm" autocomplete="off">
         <input type="text" id="preventAutoComplete" style="display:none">
         <input type="password" id="preventAutoComplete" style="display:none">
         <input type="hidden" value="{{ userid }}" id="userid" name="userid">
@@ -13,7 +11,7 @@
                 <i class="bi bi-person"></i>&nbsp; Benutzername:
             </label>
             <div class="required-field-block">
-                <input type="text" class="form-control" id="username" name="username" value="{{ username }}" required>
+                <input type="text" class="form-control" id="username" name="username" value="{{ userData.username }}" required>
                 <div class="required-icon">
                     <div class="text">*</div>
                 </div>
@@ -24,7 +22,7 @@
                 <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
             </label>
             <div class="required-field-block">
-                <input type="email" class="form-control" id="email" name="email" value="{{ email }}" required>
+                <input type="email" class="form-control" id="email" name="email" value="{{ userData.email }}" required>
                 <div class="required-icon">
                     <div class="text">*</div>
                 </div>
@@ -47,7 +45,7 @@
                     <div class="text">*</div>
                 </div>
             </div>
-            <small id="helpTextPassword" name="helpTextPassword" style="color: red"></small>
+            <small id="helpTextPassword" style="color: red"></small>
         </div>
         <div class="mb-3" id="confirmPasswordDiv" style="display: none">
             <label for="confirmPassword" class="form-label">
@@ -63,14 +61,19 @@
                     <div class="text">*</div>
                 </div>
             </div>
-            <small id="helpTextConfirmPassword" name="helpTextConfirmPassword" style="color: red"></small>
+            <small id="helpTextConfirmPassword" style="color: red"></small>
         </div>
         <div class="mb-3">
             <input type="checkbox" class="form-check-input" id="2fa" name="2fa" {{ twofactor_activated }}>
             <label class="form-check-label" for="2fa">2-Faktor-Authentifizierung</label>
         </div>
         {% if twofactor_activated == 'checked' %}
-            <div class="mb-3">
+            <div class="mb-3" id="new_2fa_div" style="display: block">
+                <input type="checkbox" class="form-check-input" id="new_2fa" name="new_2fa">
+                <label class="form-check-label" for="new_2fa">Aktuelle 2-Faktor-Authentifizierung löschen?</label>
+            </div>
+        {% else %}
+            <div class="mb-3" id="new_2fa_div" style="display: none">
                 <input type="checkbox" class="form-check-input" id="new_2fa" name="new_2fa">
                 <label class="form-check-label" for="new_2fa">Aktuelle 2-Faktor-Authentifizierung löschen?</label>
             </div>

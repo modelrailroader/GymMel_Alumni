@@ -78,7 +78,48 @@ switch ($action) {
             ];
         }
         break;
+    case 'editUser':
+        $userid = filter_var($postData->userid, FILTER_VALIDATE_INT);
+        $username = filter_var($postData->username, FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+        $twofactor_active = filter_var($postData->twofactor, FILTER_VALIDATE_BOOL);
+
+        // Set new password if activated
+        if (filter_var((bool)$postData->newPassword, FILTER_VALIDATE_BOOL)) {
+            $password = filter_var($postData->password, FILTER_UNSAFE_RAW);
+            $user->setNewPassword($userid, $password);
+            $logs->addLogEntry('The password of user ' . $username . ' was successfully changed.');
+        }
+
+        // Overwrite twofactor-authentication if activated
+        if (filter_var((bool)$postData->new_2fa, FILTER_VALIDATE_BOOL)) {
+            $user->overwriteTwofactor($userid);
+            $logs->addLogEntry('The 2fa of user ' . $username . ' was successfully deleted.');
+        }
+
+        // Update user data
+        if ($username === $user->getUserDataById($userid)['username']) {
+            $user->updateUserData($userid, $username, $email, $twofactor_active ? 1 : 0);
+            $message = 'Die Benutzerdaten des Benutzers ' . $username . ' wurden erfolgreich geändert!';
+            $stored = true;
+            $logs->addLogEntry('The user data of user ' . $username . ' were successfully changed.');
+        } else {
+            if ($user->checkIfUsernameAlreadyExists($username)) {
+                $message = 'Dieser Benutzername existiert bereits!';
+                $stored = false;
+            } else {
+                $user->updateUserData($userid, $username, $email, $twofactor_active ? 1 : 0);
+                $message = 'Die Benutzerdaten des Benutzers ' . $username . ' wurden erfolgreich geändert!';
+                $stored = true;
+                $logs->addLogEntry('The user data of user ' . $username . ' were successfully changed.');
+            }
+        }
+
+        $response = [
+            'stored' => $stored,
+            'message' => $message
+        ];
+        break;
 }
 
-header('Content-Type: application/json');
 echo json_encode($response);
