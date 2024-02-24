@@ -2,6 +2,9 @@
 Header always append X-Frame-Options SAMEORIGIN
 Header always append Access-Control-Allow-Origin SAMEORIGIN
 
+# Internal API
+Header always append Access-Control-Allow-Methods GET,POST,OPTIONS
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 

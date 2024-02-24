@@ -1,10 +1,8 @@
 <div class="container mt-5">
-    {% if success_message != '' %}
-        {{ success_message|raw }}
-    {% endif %}
+    <div id="alert"></div>
     <h1>Benutzer erstellen</h1>
     <div style="margin-top: 40px"></div>
-    <form action="{{ php_self }}" method="post" id="createUserForm" autocomplete="off">
+    <form id="createUserForm" autocomplete="off" action="#" method="post">
         <input type="text" id="preventAutoComplete" style="display:none">
         <input type="password" id="preventAutoComplete" style="display:none">
         <div class="mb-3">

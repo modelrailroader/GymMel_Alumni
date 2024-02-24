@@ -29,6 +29,9 @@ import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-responsive-dt';
 
 import {validatePassword} from '../utils/password'
+import {createAlert, createToast} from "../utils/notifications";
+
+import {Toast} from 'bootstrap';
 
 export const handleCreateUser = () => {
     const createUserForm = document.getElementById('createUserForm');
@@ -44,18 +47,60 @@ export const handleCreateUser = () => {
         const confirmPasswordInput = document.getElementById('confirmPassword');
         const helpTextConfirmPassword = document.getElementById('helpTextConfirmPassword');
 
-        submitButton.addEventListener('click', function () {
-            if (validatePassword(passwordInput.value) !== '') {
-                event.preventDefault();
-            }
-            if (passwordInput.value !== confirmPasswordInput.value) {
-                helpTextConfirmPassword.textContent = 'Die Passwörter stimmen nicht überein.';
-                event.preventDefault();
-            }
-            if (!createUserForm.checkValidity()) {
-                createUserForm.reportValidity();
-                event.preventDefault();
-            }
+        document.addEventListener('DOMContentLoaded', function () {
+            submitButton.addEventListener('click', function () {
+                const checks = [];
+                if (validatePassword(passwordInput.value) !== '') {
+                    checks.push(false);
+                    event.preventDefault();
+                }
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    helpTextConfirmPassword.textContent = 'Die Passwörter stimmen nicht überein.';
+                    checks.push(false);
+                    event.preventDefault();
+                }
+                if (!createUserForm.checkValidity()) {
+                    createUserForm.reportValidity();
+                    checks.push(false);
+                    event.preventDefault();
+                }
+                if (checks.length === 0) {
+                    const response = fetch('api_int.php?action=createUser', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            username: document.getElementById('username').value,
+                            password: document.getElementById('password').value,
+                            email: document.getElementById('email').value
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                            }
+                        })
+                        .then(responseData => {
+                            const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
+                            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                            const toast = new Toast(toastElement);
+                            toast.show();
+                            if (responseData.stored) {
+                                document.getElementById('helpTextConfirmPassword').textContent = '';
+                                document.getElementById('helpTextPassword').textContent = '';
+                                createUserForm.reset();
+                            }
+                        })
+                        .catch(error => {
+
+                            console.error('Fehler bei der Fetch-Anfrage:', error);
+                        });
+                    event.preventDefault();
+                }
+            });
         });
     }
 };

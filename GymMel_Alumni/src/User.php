@@ -244,17 +244,17 @@ class User
     }
 
     // Creates a new user.
-    public function createUser(string $username, string $password, string $email, string|int $twofactor): bool
+    public function createUser(string $username, string $password, string $email): bool
     {
         if ($this->checkIfUsernameAlreadyExists($username)) {
             return false;
         }
-        $query = sprintf("INSERT INTO alumni_users (username, password, email, secret, 2fa) VALUES ('%s', '%s', '%s', '%s', %d)",
+        $query = sprintf("INSERT INTO alumni_users (username, password, email, secret) VALUES ('%s', '%s', '%s', '%s')",
             $username,
             $this->cryptPassword($password),
             $email,
-            $this->createSecret(),
-            $twofactor);
+            $this->createSecret()
+        );
         $this->dbclient->execute($query);
         return true;
     }
