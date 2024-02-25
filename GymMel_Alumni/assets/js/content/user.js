@@ -220,8 +220,6 @@ export const handleEditUser = () => {
                         });
                 }
                 event.preventDefault();
-                // @todo: refactor all js functions - What is needed due to API refactoring and what is no more needed?
-                // @todo: Bring everything into a good structure
             });
         }
     }

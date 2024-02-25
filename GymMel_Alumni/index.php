@@ -56,8 +56,6 @@ $user->authenticateWithSession();
 
 // If login-form-data is submitted
 if(isset($username) && isset($password)) {
-    // @todo: SQL Injection und weitere Sicherheitsstandards
-    
     // try to login
     if(($user->authenticate($username, $password))) {
         if($user->isTwofactorEnabled()) {
