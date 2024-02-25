@@ -1,5 +1,5 @@
 <div class="container mt-5">
-<div id="alert"></div>
+    <div id="alert"></div>
     <h1>Datensatz bearbeiten</h1>
     <div style="margin-top: 30px"></div>
     <form id="editAlumniForm" action="#" method="post">
@@ -7,13 +7,23 @@
             <label for="name" class="form-label">
                 <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:
             </label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" required>
+            <div class="required-field-block">
+                <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" required>
+                <div class="required-icon">
+                    <div class="text">*</div>
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">
                 <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
             </label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}" required>
+            <div class="required-field-block">
+                <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}" required>
+                <div class="required-icon">
+                    <div class="text">*</div>
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="ausbildung" class="form-label">
@@ -37,14 +47,15 @@
             <label for="registrierungszeitpunkt" class="form-label">
                 <i class="bi bi-calendar-date"></i>&nbsp; Registrierung
             </label>
-            <input type="text" class="form-control" id="date_registered" name="date_registered" value="{{ data.date_registered|date('d.m.Y - H:i') }}" readonly>
+            <input type="text" class="form-control" id="date_registered" name="date_registered"
+                   value="{{ data.date_registered|date('d.m.Y - H:i') }}" readonly>
         </div>
         <div class="mb-3">
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="transfer_privacy" name="transfer_privacy"
-                       {% if data.transfer_privacy == 1 %}
-                           checked
-                       {% endif %}>
+                        {% if data.transfer_privacy == 1 %}
+                checked
+                        {% endif %}>
                 <label class="form-check-label" for="datenschutz">Weitergabe der Daten an Schüler:innen</label>
             </div>
         </div>
