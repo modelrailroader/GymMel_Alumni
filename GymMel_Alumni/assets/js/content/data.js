@@ -87,6 +87,48 @@ export const handleShowData = () => {
     }
 };
 
+export const handleEditAlumni = () => {
+    const editAlumniForm = document.getElementById('editAlumniForm');
+    if (editAlumniForm) {
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            const response = fetch('api_int.php?action=editAlumni', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    studies: document.getElementById('studies').value,
+                    job: document.getElementById('job').value,
+                    company: document.getElementById('company').value,
+                    transfer_privacy: document.getElementById('transfer_privacy').checked,
+                    id: document.getElementById('id').value
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                    }
+                })
+                .then(responseData => {
+                    const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
+                    document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                    const toast = new Toast(toastElement);
+                    toast.show();
+                    window.scrollTo(0, 0);
+                })
+                .catch(error => {
+                    console.error('Fehler bei der Fetch-Anfrage:', error);
+                });
+        });
+    }
+};
+
 export const handleFindDuplicates = () => {
     const modal = document.getElementById('modalDuplicates');
     const findDuplicatesButton = document.getElementById('findDuplicatesButton');

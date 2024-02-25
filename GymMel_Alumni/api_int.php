@@ -132,7 +132,7 @@ switch ($action) {
             $deleted = true;
         }
         else {
-            $message = 'An error occurs while deleting the data.';
+            $message = 'An error occurred while deleting the data.';
             $deleted = false;
         }
 
@@ -141,6 +141,38 @@ switch ($action) {
             'message' => $message
         ];
         break;
+    case 'editAlumni':
+        $name = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+        $studies = filter_var($postData->studies, FILTER_SANITIZE_SPECIAL_CHARS);
+        $job = filter_var($postData->job, FILTER_SANITIZE_SPECIAL_CHARS);
+        $company = filter_var($postData->company, FILTER_SANITIZE_SPECIAL_CHARS);
+        $transfer_privacy = filter_var($postData->transfer_privacy, FILTER_VALIDATE_BOOL);
+        $id = filter_var($postData->id, FILTER_VALIDATE_INT);
+
+        $data_change = array(
+            'id' => $id,
+            'name' => $name,
+            'email' => $email,
+            'studies' => $studies,
+            'job' => $job,
+            'company' => $company,
+            'transfer_privacy' => ($transfer_privacy === true) ? 1 : 0
+        );
+        if($stored = $dataHelper->updateData($data_change)) {
+            $message = "Die Daten des Alumni's "  . $name . " wurden erfolgreich geändert!";
+            $logs->addLogEntry('The data of the alumni ' . $name . ' was successfully changed.');
+        }
+        else {
+            $message = 'An error occurred while updating the data.';
+        }
+
+        $response = [
+            'stored' => $stored,
+            'message' => $message
+        ];
+        break;
+
 }
 
 echo json_encode($response);

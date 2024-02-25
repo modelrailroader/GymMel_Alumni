@@ -1,10 +1,8 @@
 <div class="container mt-5">
-    {% if success_message != '' %}
-        {{ success_message|raw }}
-    {% endif %}
+<div id="alert"></div>
     <h1>Datensatz bearbeiten</h1>
     <div style="margin-top: 30px"></div>
-    <form action="{{ php_self }}" method="post">
+    <form id="editAlumniForm" action="#" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">
                 <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:

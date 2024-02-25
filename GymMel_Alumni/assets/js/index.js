@@ -1,4 +1,12 @@
-import { handleCreateUser, handleEditUser, handleShowData, handleUcp, handleShowUsers, handleFindDuplicates } from './content';
+import {
+    handleCreateUser,
+    handleEditUser,
+    handleShowData,
+    handleUcp,
+    handleShowUsers,
+    handleFindDuplicates,
+    handleEditAlumni
+} from './content';
 import { handlePasswordToggles } from "./utils/password";
 import {easterEggs} from "./utils/easterEggs";
 
@@ -11,6 +19,7 @@ handleUcp();
 // Network administration
 handleShowData();
 handleFindDuplicates();
+handleEditAlumni();
 
 // Handle Show-password buttons
 handlePasswordToggles();
