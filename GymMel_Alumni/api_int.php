@@ -172,7 +172,18 @@ switch ($action) {
             'message' => $message
         ];
         break;
+    case 'mergeDuplicates':
+        $allIds = $postData->allIds;
+        $alumniId = filter_var($postData->alumniId, FILTER_VALIDATE_INT);
 
+        if ($stored = $dataHelper->mergeDuplicates($allIds, $alumniId)) {
+            $logs->addLogEntry('The duplicates ' . json_encode($allIds) . ' were successfully merged to ' . $alumniId . '.');
+        }
+
+        $response = [
+            'stored' => $stored
+        ];
+        break;
 }
 
 echo json_encode($response);

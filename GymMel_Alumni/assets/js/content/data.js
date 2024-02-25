@@ -209,7 +209,7 @@ export const handleFindDuplicates = () => {
                         }
                     });
                     // Send request
-                    fetch('mergeDuplicates.php', {
+                    fetch('api_int.php?action=mergeDuplicates', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -221,19 +221,14 @@ export const handleFindDuplicates = () => {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data.success);
-                            if (data.success === true) {
+                            if (data.stored === true) {
                                 updateStatus('merged', dropdownLink);
-                                console.log("1");
                             } else {
                                 updateStatus('error', dropdownLink);
-                                console.log("2");
                             }
                         })
                         .catch(error => {
-                            console.log(error);
                             updateStatus('error', dropdownLink);
-                            console.log("3");
                         });
                     const collapsesCurrentPage = document.querySelectorAll('.accordion-collapse');
                     collapsesCurrentPage.forEach(function (collapse) {
