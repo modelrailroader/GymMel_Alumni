@@ -185,8 +185,7 @@ class User
             $newQuery = sprintf("UPDATE `alumni_users` SET `login_tries` = %d WHERE `username`= '%s'",
                 $login_tries,
                 $username);
-            $this->dbclient->execute($newQuery);
-            return true;
+            return (bool)$this->dbclient->execute($newQuery);
         }
     }
 
@@ -281,8 +280,7 @@ class User
     {
         $query = sprintf('DELETE FROM `alumni_users` WHERE `userid` = %d',
             $id);
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Crypts a given password.
@@ -297,8 +295,7 @@ class User
         $query = sprintf("UPDATE `alumni_users` SET `password` = '%s' WHERE `userid` = %d",
             $this->cryptPassword($password),
             $id);
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Deletes the 2fa-credentials for a special user.
@@ -307,8 +304,7 @@ class User
         $query = sprintf("UPDATE `alumni_users` SET `2fa` = 0, `secret` = '%s' WHERE `userid` = %d",
             $this->twofactor->createSecret(),
             $id);
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Updates the user data for a special user.
@@ -319,8 +315,7 @@ class User
             $email,
             $twofactor,
             $id);
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Updates the password of a special user.
@@ -331,8 +326,7 @@ class User
             $this->cryptPassword($password),
             $id
         );
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Returns the 2fa-secret for a special user. 
@@ -424,8 +418,7 @@ class User
         $query = sprintf("INSERT INTO `alumni_sessions`(userid, session_id) VALUES (%d, '%s')",
             $userid,
             $session_id);
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Returns the session id of a given user.
@@ -442,8 +435,7 @@ class User
     {
         $query = sprintf("DELETE FROM `alumni_sessions` WHERE `userid` = %d",
             $userid);
-        $this->dbclient->execute($query);
-        return true;
+        return (bool)$this->dbclient->execute($query);
     }
 
     // Checks the database if 2fa is enabled for a given user.

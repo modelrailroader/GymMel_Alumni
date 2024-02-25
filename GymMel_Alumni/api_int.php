@@ -64,21 +64,17 @@ switch ($action) {
         $userid = filter_var($postData->userid, FILTER_VALIDATE_INT);
         $username_deleted = filter_var($postData->username_deleted, FILTER_SANITIZE_SPECIAL_CHARS);
 
-        if (!is_null($userid)) {
-            $user->deleteUser($userid);
+        if ($deleted = $user->deleteUser($userid)) {
             $message = 'Der Benutzer ' . $username_deleted . ' wurde erfolgreich gelöscht!';
             $logs->addLogEntry('The user ' . $username_deleted . ' was successfully deleted.');
-
-            $response = [
-                'deleted' => true,
-                'message' => $message
-            ];
         } else {
-            $response = [
-                'deleted' => false,
-                'message' => "The request didn't contain a userid."
-            ];
+            $message = 'An error occurred while deleting the user.';
         }
+
+        $response = [
+            'deleted' => $deleted,
+            'message' => $message
+        ];
         break;
     case 'editUser':
         $userid = filter_var($postData->userid, FILTER_VALIDATE_INT);
@@ -126,12 +122,11 @@ switch ($action) {
         $id = filter_var($postData->id, FILTER_VALIDATE_INT);
         $alumni_deleted = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
 
-        if($dataHelper->deleteAlumniById($id)) {
+        if ($dataHelper->deleteAlumniById($id)) {
             $message = 'Der Datensatz ' . $alumni_deleted . ' wurde erfolgreich gelöscht.';
             $logs->addLogEntry('The data of the alumni ' . $alumni_deleted . ' was succesfully deleted.');
             $deleted = true;
-        }
-        else {
+        } else {
             $message = 'An error occurred while deleting the data.';
             $deleted = false;
         }
@@ -159,11 +154,10 @@ switch ($action) {
             'company' => $company,
             'transfer_privacy' => ($transfer_privacy === true) ? 1 : 0
         );
-        if($stored = $dataHelper->updateData($data_change)) {
-            $message = "Die Daten des Alumni's "  . $name . " wurden erfolgreich geändert!";
+        if ($stored = $dataHelper->updateData($data_change)) {
+            $message = "Die Daten des Alumni's " . $name . " wurden erfolgreich geändert!";
             $logs->addLogEntry('The data of the alumni ' . $name . ' was successfully changed.');
-        }
-        else {
+        } else {
             $message = 'An error occurred while updating the data.';
         }
 
