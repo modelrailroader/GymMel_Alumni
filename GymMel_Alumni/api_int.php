@@ -178,6 +178,38 @@ switch ($action) {
             'stored' => $stored
         ];
         break;
+    case 'saveUcpData':
+        $username = filter_var($postData->username, FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = filter_var($postData->password, FILTER_UNSAFE_RAW);
+        $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+        $twofactor = filter_var($postData->twofactor, FILTER_VALIDATE_BOOL);
+
+        if ($user->getUsername() !== $username) {
+            if ($user->checkIfUsernameAlreadyExists($username)) {
+                $message = 'Dieser Benutzername existiert bereits!';
+                $stored = false;
+            }
+            else {
+                $user->updateUserData($user->getUserId(), $username, $email, $twofactor ? 1 : 0);
+                $user->updateUserPassword($user->getUserId(), $password);
+                $logs->addLogEntry('The user ' . $username . ' has changed his user data in the ucp.');
+                $message = 'Die Änderungen waren erfolgreich!';
+                $stored = true;
+            }
+        }
+        else {
+            $user->updateUserData($user->getUserId(), $username, $email, $twofactor ? 1 : 0);
+            $user->updateUserPassword($user->getUserId(), $password);
+            $logs->addLogEntry('The user '. $username . ' has changed his user data in the ucp.');
+            $message = 'Die Änderungen waren erfolgreich!';
+            $stored = true;
+        }
+
+        $response = [
+            'stored' => $stored,
+            'message' => $message
+        ];
+        break;
 }
 
 echo json_encode($response);

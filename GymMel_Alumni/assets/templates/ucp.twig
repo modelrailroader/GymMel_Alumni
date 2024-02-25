@@ -1,10 +1,8 @@
 <div class="container mt-5">
-    {% if success_message != '' %}
-        {{ success_message|raw }}
-    {% endif %}
+<div id="alert"></div>
     <h1>Persönlicher Bereich</h1>
     <div style="margin-top: 40px"></div>
-    <form action="{{ php_self }}" method="post" id="ucpForm">
+    <form action="#" method="post" id="ucpForm">
         <div class="mb-3">
             <label for="username" class="form-label">
                 <i class="bi bi-person"></i>&nbsp; Benutzername:

@@ -12,8 +12,9 @@
  * @since     2024-01-01
  */
 
-import { Modal } from 'bootstrap';
+import {Modal, Toast} from 'bootstrap';
 import { validatePassword } from '../utils/password.js';
+import {createToast} from "../utils/notifications";
 
 export const handleUcp = () => {
     const ucpForm = document.getElementById('ucpForm');
@@ -54,17 +55,50 @@ export const handleUcp = () => {
         }
 
         submitButton.addEventListener('click', function () {
+            const checks = [];
             if (validatePassword(passwordInput.value) !== '') {
-                event.preventDefault();
+                checks.push(false);
             }
             if (passwordInput.value !== confirmPasswordInput.value) {
                 helpTextConfirmPassword.textContent = 'Die Passwörter stimmen nicht überein.';
-                event.preventDefault();
+                checks.push(false);
             }
             if (!ucpForm.checkValidity()) {
                 ucpForm.reportValidity();
-                event.preventDefault();
+                checks.push(false);
             }
+            if (checks.length === 0) {
+                const response = fetch('api_int.php?action=saveUcpData', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value,
+                        email: document.getElementById('email').value,
+                        twofactor: document.getElementById('2fa').checked
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                        }
+                    })
+                    .then(responseData => {
+                        const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
+                        document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                        const toast = new Toast(toastElement);
+                        toast.show();
+                        window.scrollTo(0, 0);
+                    })
+                    .catch(error => {
+                        console.error('Fehler bei der Fetch-Anfrage:', error);
+                    });
+            }
+            event.preventDefault();
         });
     }
 };
