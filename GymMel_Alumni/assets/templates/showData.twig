@@ -1,9 +1,5 @@
-<div id="notification"></div>
-
 <div class="container mt-5">
-    {% if success_message != '' %}
-        {{ success_message|raw }}
-    {% endif %}
+    <div id="alert"></div>
     <h1>Netzwerkdatenbank</h1>
     <div style="margin-top: 40px"></div>
 
@@ -40,7 +36,7 @@
         </thead>
         <tbody>
         {% for item in data %}
-            <tr>
+            <tr id="alumni{{ item.id }}">
                 <td>{{ item.name }}</td>
                 <td>{{ item.email }}</td>
                 <td>{{ item.job }}</td>
@@ -54,7 +50,7 @@
                         Nein
                     {% endif %}</td>
                 <td><a href="editData.php?id={{ item.id }}"><i class="bi bi-pencil-square"></i></a>&nbsp;
-                    <a href="showData.php?id={{ item.id }}&action=delete" id="item-delete" data-name="{{ item.name }}">
+                    <a href="#" id="item-delete" data-listener="false" data-name="{{ item.name }}" data-id="{{ item.id }}">
                         <i class="bi bi-trash3"></i></a></td>
             </tr>
         {% endfor %}

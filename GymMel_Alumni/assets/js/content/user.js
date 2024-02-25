@@ -221,7 +221,7 @@ export const handleEditUser = () => {
                 }
                 event.preventDefault();
                 // @todo: refactor all js functions - What is needed due to API refactoring and what is no more needed?
-                // Bring everything into a good structure
+                // @todo: Bring everything into a good structure
             });
         }
     }
@@ -265,33 +265,27 @@ export const handleShowUsers = () => {
                     }
                 }]
         });
-        const delete_items = document.querySelectorAll('#item-delete');
-        delete_items.forEach(function (item) {
-            item.addEventListener('click', function (event) {
-                const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                if (userConfirmation) {
-                    deleteUser(item, table);
-                }
-                event.preventDefault();
-            });
-        });
         // Add EventListener as well to buttons on further pages to show confirmation
         table.on('draw', function () {
             const delete_items = document.querySelectorAll('#item-delete');
             delete_items.forEach(function (item) {
-                item.addEventListener('click', function (event) {
-                    const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                    if (userConfirmation) {
-                        deleteUser(item, table);
-                    }
-                    event.preventDefault();
-                });
+                if (item.getAttribute('data-listener') === 'false') {
+                    item.setAttribute('data-listener', 'true');
+                    item.addEventListener('click', function (event) {
+                        const userConfirmation = confirm('Wollen Sie den Benutzer ' + item.getAttribute('data-name') + ' wirklich löschen?');
+                        if (userConfirmation) {
+                            deleteUser(item, table);
+                        }
+                        event.preventDefault();
+                    });
+                }
             });
         });
+        table.draw();
     }
 };
 
-function deleteUser(item, table) {
+const deleteUser = (item, table) => {
     const userid = item.getAttribute('data-userid');
     const response = fetch('api_int.php?action=deleteUser', {
         method: 'POST',

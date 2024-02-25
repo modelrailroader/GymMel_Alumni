@@ -34,7 +34,7 @@
                     <td>{{ item.last_login|date('d.m.Y - H:i') }}</td>
                     <td><a href="editUser.php?id={{ item.userid }}"><i class="bi bi-pencil-square"></i></a>&nbsp;
                             {%  if item.userid != 1 %}
-                            <a href="#" id="item-delete" data-name="{{ item.username }}" data-userid="{{ item.userid }}">
+                            <a href="#" id="item-delete" data-listener="false" data-name="{{ item.username }}" data-userid="{{ item.userid }}">
                                 <i class="bi bi-trash3"></i></a>
                             {% endif %}
                     </td>

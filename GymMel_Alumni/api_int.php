@@ -19,6 +19,7 @@ include_once('autoload.php');
 
 use src\User;
 use src\Logs;
+use src\DataHelper;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -30,6 +31,7 @@ if (!$user->authenticateWithSession()) {
 }
 
 $logs = new Logs();
+$dataHelper = new DataHelper();
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $postData = json_decode(file_get_contents('php://input'));
@@ -117,6 +119,25 @@ switch ($action) {
 
         $response = [
             'stored' => $stored,
+            'message' => $message
+        ];
+        break;
+    case 'deleteAlumni':
+        $id = filter_var($postData->id, FILTER_VALIDATE_INT);
+        $alumni_deleted = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if($dataHelper->deleteAlumniById($id)) {
+            $message = 'Der Datensatz ' . $alumni_deleted . ' wurde erfolgreich gelöscht.';
+            $logs->addLogEntry('The data of the alumni ' . $alumni_deleted . ' was succesfully deleted.');
+            $deleted = true;
+        }
+        else {
+            $message = 'An error occurs while deleting the data.';
+            $deleted = false;
+        }
+
+        $response = [
+            'deleted' => $deleted,
             'message' => $message
         ];
         break;

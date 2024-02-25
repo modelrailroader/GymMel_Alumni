@@ -19,8 +19,6 @@ include_once('autoload.php');
 
 use src\User;
 use src\DataHelper;
-use src\Alert;
-use src\Logs;
 use src\Template;
 
 if(session_status() === PHP_SESSION_NONE) {
@@ -33,20 +31,6 @@ if(!$user->authenticateWithSession()) {
 }
 
 $dataHelper = new DataHelper();
-$logs = new Logs();
-$alert = new Alert();
-
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
-
-if($action === 'delete') {
-    $deleted_alumni = $dataHelper->getAlumniData($id)['name'];
-    if($dataHelper->deleteAlumniById($id)) {
-        $success_message = $alert->successAlert('Der Datensatz wurde erfolgreich gelöscht.');
-        $logs->addLogEntry('The data of the alumni ' . $deleted_alumni . ' was succesfully deleted.');
-    }
-}
-
 $data = $dataHelper->getAllAlumniData();
 
 // Handle Duplicates
@@ -63,10 +47,8 @@ $template->setTemplate('showData.twig');
 
 $templateVars = [
     'data' => $data,
-    'success_message' => $success_message ?? '',
     'pages' => $pages,
     'number_of_pages' => count($pages),
-    'sourceDir' => __DIR__,
     'duplicatesFound' => empty($pages) ? 'disabled' : ''
 ];
 

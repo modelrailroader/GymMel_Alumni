@@ -11,6 +11,7 @@
  * @copyright 2023-2024 Gymnasium Melle
  * @license   https://www.mozilla.org/MPL/2.0/ Mozilla Public License Version 2.0
  * @since     2024-01-28
+ * @deprecated Has to be moved to internal API
  */
 
 include 'constants.php';

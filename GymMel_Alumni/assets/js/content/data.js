@@ -28,7 +28,8 @@ import 'datatables.net-buttons-dt';
 import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-responsive-dt';
 
-import {Dropdown, Modal} from 'bootstrap';
+import {Dropdown, Modal, Toast} from 'bootstrap';
+import {createToast} from "../utils/notifications";
 
 export const handleShowData = () => {
     pdfmake.vfs = pdfFonts.pdfMake.vfs;
@@ -69,27 +70,20 @@ export const handleShowData = () => {
                     }
                 }]
         });
-        const delete_items = document.querySelectorAll('#item-delete');
-        delete_items.forEach(function (item) {
-            item.addEventListener('click', function (event) {
-                const userConfirmation = confirm('Wollen Sie den Eintrag ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                if (!userConfirmation) {
-                    event.preventDefault();
-                }
-            });
-        });
         // Add EventListener as well to buttons on further pages to show confirmation
         table.on('draw', function () {
             const delete_items = document.querySelectorAll('#item-delete');
             delete_items.forEach(function (item) {
                 item.addEventListener('click', function (event) {
                     const userConfirmation = confirm('Wollen Sie den Eintrag ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                    if (!userConfirmation) {
-                        event.preventDefault();
+                    if (userConfirmation) {
+                        deleteAlumni(item, table);
                     }
+                    event.preventDefault();
                 });
             });
         });
+        table.draw();
     }
 };
 
@@ -262,4 +256,38 @@ const switchPage = (currentPageNumber, direction) => {
         previous.disabled = switchedPageNumber === 1;
         next.disabled = switchedPageNumber === pages.length;
     }
+}
+
+const deleteAlumni = (item, table) => {
+    const id = item.getAttribute('data-id');
+    const response = fetch('api_int.php?action=deleteAlumni', {
+        method: 'POST',
+        body: JSON.stringify({
+            name: item.getAttribute('data-name'),
+            id: id
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+            }
+        })
+        .then(responseData => {
+            const toastElement = createToast(responseData.message, responseData.deleted ? 'success' : 'danger');
+            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+            const toast = new Toast(toastElement);
+            toast.show();
+            window.scrollTo(0, 0);
+            if (responseData.deleted) {
+                table.row('#alumni' + id).remove().draw();
+            }
+        })
+        .catch(error => {
+            console.error('Fehler bei der Fetch-Anfrage:', error);
+        });
 }
