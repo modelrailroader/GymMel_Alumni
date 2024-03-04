@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^6.10.0
     version: 6.10.0(webpack@5.90.3)
   mini-css-extract-plugin:
-    specifier: ^2.8.0
-    version: 2.8.0(webpack@5.90.3)
+    specifier: ^2.8.1
+    version: 2.8.1(webpack@5.90.3)
   sass:
     specifier: ^1.71.1
     version: 1.71.1
@@ -1308,8 +1308,8 @@ packages:
       mime-db: 1.52.0
     dev: true
 
-  /mini-css-extract-plugin@2.8.0(webpack@5.90.3):
-    resolution: {integrity: sha512-CxmUYPFcTgET1zImteG/LZOy/4T5rTojesQXkSNBiquhydn78tfbCE9sjIjnJ/UcjNjOC1bphTCCW5rrS7cXAg==}
+  /mini-css-extract-plugin@2.8.1(webpack@5.90.3):
+    resolution: {integrity: sha512-/1HDlyFRxWIZPI1ZpgqlZ8jMw/1Dp/dl3P0L1jtZ+zVcHqwPhGwaJwKL00WVgfnBy6PWCde9W65or7IIETImuA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
