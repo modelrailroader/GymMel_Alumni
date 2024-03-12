@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   datatables.net-dt:
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: ^2.0.2
+    version: 2.0.2
   datatables.net-plugins:
     specifier: ^1.13.6
     version: 1.13.6
@@ -664,7 +664,7 @@ packages:
     resolution: {integrity: sha512-ZEMHbUAFbXoKIxd3HIwrEkoUo2VhL0ekv8CFG8nKBW4LN+lLChtaXykSDZjWjWgT9LvddRfliEv0OvVwO5uEAw==}
     dependencies:
       datatables.net-buttons: 3.0.0
-      datatables.net-dt: 2.0.1
+      datatables.net-dt: 2.0.2
       jquery: 3.7.1
     dev: false
 
@@ -675,10 +675,10 @@ packages:
       jquery: 3.7.1
     dev: false
 
-  /datatables.net-dt@2.0.1:
-    resolution: {integrity: sha512-XnhFVxNBdKAnqwQa1iEG38Rlgq8jQV89GK2DZMqGX0/N+X/CdPpGGMjGmPtGyhuzt3v5xRSRsyBl8Uuo61Znuw==}
+  /datatables.net-dt@2.0.2:
+    resolution: {integrity: sha512-/Zpy7ZWGgCbCJB9qJZvaB+KFrdo+8JjjOdxL59/QiG3jquz2ZCsE9u814kbaGKTM1ARkvZVUxDB9IlH5qmHaqw==}
     dependencies:
-      datatables.net: 2.0.1
+      datatables.net: 2.0.2
       jquery: 3.7.1
     dev: false
 
@@ -692,7 +692,7 @@ packages:
   /datatables.net-responsive-dt@3.0.0:
     resolution: {integrity: sha512-V1zpnq773TBxiC/xszFs71M9B2e2RF5IRyh6pXoziT38O9i6tdiE5GniHVoBVmecBZXZyjTHxWCtAFUxrEkpOA==}
     dependencies:
-      datatables.net-dt: 2.0.1
+      datatables.net-dt: 2.0.2
       datatables.net-responsive: 3.0.0
       jquery: 3.7.1
     dev: false
@@ -700,7 +700,7 @@ packages:
   /datatables.net-responsive@3.0.0:
     resolution: {integrity: sha512-6O+hZREfZ6bj86bEFOVYH76OgqETX7t0EsfKWwKuo8gpYe50SE9QPcy7DKsuO1swqluwS+442QIVsLfIXoBnNg==}
     dependencies:
-      datatables.net: 2.0.0
+      datatables.net: 2.0.1
       jquery: 3.7.1
     dev: false
 
@@ -718,6 +718,12 @@ packages:
 
   /datatables.net@2.0.1:
     resolution: {integrity: sha512-VvAZWkjkvEF4i3GprHbXrfHoG7gZPAZ5FWXcvkiL4ELFfLIwPUjt8qzCSml7SH5hI8Lm45DYSnp9d0xl/sWrMw==}
+    dependencies:
+      jquery: 3.7.1
+    dev: false
+
+  /datatables.net@2.0.2:
+    resolution: {integrity: sha512-uQM+s1oXhpTajUw5DCxarpfAtQJMh0MKFCLZMCc+UWLWPg8ipe6L2zgDMbRC8n9UCwGVpHOwUYlQu2JU1/PhSg==}
     dependencies:
       jquery: 3.7.1
     dev: false
