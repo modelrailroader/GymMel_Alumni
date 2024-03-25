@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.1
     version: 3.0.1
   datatables.net-dt:
-    specifier: ^2.0.2
-    version: 2.0.2
+    specifier: ^2.0.3
+    version: 2.0.3
   datatables.net-plugins:
     specifier: ^2.0.2
     version: 2.0.2
@@ -664,7 +664,7 @@ packages:
     resolution: {integrity: sha512-kfZrc+954qpg6krz1pcVKVhxOzbZByaGHwwO0CcjKdIREBX4la4HkoIZGWsENSYSfdHUkHu9WWa84p9Rl+JtiQ==}
     dependencies:
       datatables.net-buttons: 3.0.1
-      datatables.net-dt: 2.0.2
+      datatables.net-dt: 2.0.3
       jquery: 3.7.1
     dev: false
 
@@ -675,10 +675,10 @@ packages:
       jquery: 3.7.1
     dev: false
 
-  /datatables.net-dt@2.0.2:
-    resolution: {integrity: sha512-/Zpy7ZWGgCbCJB9qJZvaB+KFrdo+8JjjOdxL59/QiG3jquz2ZCsE9u814kbaGKTM1ARkvZVUxDB9IlH5qmHaqw==}
+  /datatables.net-dt@2.0.3:
+    resolution: {integrity: sha512-1vz0QD+FoC/45J5MSuw2STzt0w6TShtT4QFFp9nLbx7LU1afds6bfVjLXTz12pg6i+2G0JFWKiErcYUSrHXvWQ==}
     dependencies:
-      datatables.net: 2.0.2
+      datatables.net: 2.0.3
       jquery: 3.7.1
     dev: false
 
@@ -692,7 +692,7 @@ packages:
   /datatables.net-responsive-dt@3.0.0:
     resolution: {integrity: sha512-V1zpnq773TBxiC/xszFs71M9B2e2RF5IRyh6pXoziT38O9i6tdiE5GniHVoBVmecBZXZyjTHxWCtAFUxrEkpOA==}
     dependencies:
-      datatables.net-dt: 2.0.2
+      datatables.net-dt: 2.0.3
       datatables.net-responsive: 3.0.0
       jquery: 3.7.1
     dev: false
@@ -700,18 +700,18 @@ packages:
   /datatables.net-responsive@3.0.0:
     resolution: {integrity: sha512-6O+hZREfZ6bj86bEFOVYH76OgqETX7t0EsfKWwKuo8gpYe50SE9QPcy7DKsuO1swqluwS+442QIVsLfIXoBnNg==}
     dependencies:
-      datatables.net: 2.0.1
-      jquery: 3.7.1
-    dev: false
-
-  /datatables.net@2.0.1:
-    resolution: {integrity: sha512-VvAZWkjkvEF4i3GprHbXrfHoG7gZPAZ5FWXcvkiL4ELFfLIwPUjt8qzCSml7SH5hI8Lm45DYSnp9d0xl/sWrMw==}
-    dependencies:
+      datatables.net: 2.0.2
       jquery: 3.7.1
     dev: false
 
   /datatables.net@2.0.2:
     resolution: {integrity: sha512-uQM+s1oXhpTajUw5DCxarpfAtQJMh0MKFCLZMCc+UWLWPg8ipe6L2zgDMbRC8n9UCwGVpHOwUYlQu2JU1/PhSg==}
+    dependencies:
+      jquery: 3.7.1
+    dev: false
+
+  /datatables.net@2.0.3:
+    resolution: {integrity: sha512-phq7jhkjIlVdahZYa2nd/yeiDgFrvT++Sily3GgztG3T7qqdAWkjtLuGA2Pv5p7XBwkJ0zwf+0KDRU54uR7WAg==}
     dependencies:
       jquery: 3.7.1
     dev: false
