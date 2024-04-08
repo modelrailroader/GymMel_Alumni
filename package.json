@@ -26,7 +26,7 @@
   "devDependencies": {
     "css-loader": "^7.1.0",
     "mini-css-extract-plugin": "^2.8.1",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "sass-loader": "^14.1.1",
     "style-loader": "^4.0.0",
     "webpack": "^5.91.0",
