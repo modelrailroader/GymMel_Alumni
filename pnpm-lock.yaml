@@ -15,8 +15,8 @@ importers:
         specifier: ^1.11.3
         version: 1.11.3
       datatables.net-buttons:
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.1.1
+        version: 3.1.1
       datatables.net-buttons-dt:
         specifier: ^3.1.1
         version: 3.1.1
@@ -390,9 +390,6 @@ packages:
   datatables.net-buttons-dt@3.1.1:
     resolution: {integrity: sha512-OqucPPj91fmQFWP5yld7NMb4nJbG546OC579idI76Qe51YOW3PJ/5es8Et7BuCrrfEqveBvSYI/n8Z9AhwdiGw==}
 
-  datatables.net-buttons@3.1.0:
-    resolution: {integrity: sha512-QxB3iOko/pqB6hBMBItvvH2T2cI3EoxQGRI4Soq/gVDDN0qrC0owck14JCvHjlJ5W/qm6gqb9W22vTVoVcKfRQ==}
-
   datatables.net-buttons@3.1.1:
     resolution: {integrity: sha512-B0A+tFNmGurx0h6J4sVBMWOTIvrdevzCeOL/+7R+cBjmEyJnGKqXdBrf+af/dkCGk3s1xZTNNkYjE8aUyrHdeQ==}
 
@@ -410,9 +407,6 @@ packages:
 
   datatables.net@2.0.8:
     resolution: {integrity: sha512-4/2dYx4vl975zQqZbyoVEm0huPe61qffjBRby7K7V+y9E+ORq4R8KavkgrNMmIgO6cl85Pg4AvCbVjvPCIT1Yg==}
-
-  datatables.net@2.1.0:
-    resolution: {integrity: sha512-pFfCCwbMjAY3NY947y6oNMxPwABcsK+YY18/tZdZxp5FLeluWbS93efWVBxeXoHV9mm+hq5KfhYOe6LXtVIe0g==}
 
   datatables.net@2.1.2:
     resolution: {integrity: sha512-FZMH3bVqP6pKq/LwhFRoH22xW45bWt9eAdf7hmFrZkluXId6RNOr1EnrVvwHTo/f7l/rZX4wgHvnGvtOyj9Spw==}
@@ -1578,11 +1572,6 @@ snapshots:
       datatables.net-dt: 2.1.2
       jquery: 3.7.1
 
-  datatables.net-buttons@3.1.0:
-    dependencies:
-      datatables.net: 2.0.8
-      jquery: 3.7.1
-
   datatables.net-buttons@3.1.1:
     dependencies:
       datatables.net: 2.1.2
@@ -1606,14 +1595,10 @@ snapshots:
 
   datatables.net-responsive@3.0.2:
     dependencies:
-      datatables.net: 2.1.0
+      datatables.net: 2.1.2
       jquery: 3.7.1
 
   datatables.net@2.0.8:
-    dependencies:
-      jquery: 3.7.1
-
-  datatables.net@2.1.0:
     dependencies:
       jquery: 3.7.1
 
