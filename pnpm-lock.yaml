@@ -21,8 +21,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       datatables.net-dt:
-        specifier: ^2.1.3
-        version: 2.1.3
+        specifier: ^2.1.4
+        version: 2.1.4
       datatables.net-plugins:
         specifier: ^2.0.8
         version: 2.0.8
@@ -393,8 +393,8 @@ packages:
   datatables.net-buttons@3.1.1:
     resolution: {integrity: sha512-B0A+tFNmGurx0h6J4sVBMWOTIvrdevzCeOL/+7R+cBjmEyJnGKqXdBrf+af/dkCGk3s1xZTNNkYjE8aUyrHdeQ==}
 
-  datatables.net-dt@2.1.3:
-    resolution: {integrity: sha512-8vQRZJ0p1jDrRgegR9JP9M89+akG42ByGUWk68kjZHSNIN8AvLcR9xck0w1xDHYsq/+Z17hjvoGxBpiCs5MW3w==}
+  datatables.net-dt@2.1.4:
+    resolution: {integrity: sha512-bC9+AANUnpe/nrbW6/hulpYfdC9hoheCFy8q4PlAb5Bf7+vEXCRk/B+AGspmFuacjlorDZGG186Kkupc9nAa1Q==}
 
   datatables.net-plugins@2.0.8:
     resolution: {integrity: sha512-9i92JnkefW4qinLaXpe6JmWltYgXnOtNeVACC9F5FHMAEoZU7K8ci9JWGWHhjFQRddBLKPLs73lljJy8dBsA4g==}
@@ -413,6 +413,9 @@ packages:
 
   datatables.net@2.1.3:
     resolution: {integrity: sha512-emlF55eF4fhzOUuE+0dEFZCDbuhXqjvdZagW0bLXaU4nDesCWrjYXj0NdtHTKLhVYyfZhTlA8mEDL2Wa64U0ig==}
+
+  datatables.net@2.1.4:
+    resolution: {integrity: sha512-Qxfsow9o8iYjU/OP9Ju9W46gDj+jD+ZN6qkRLArOvNF0mOKAO8ZvmTe37FhipXh8sH6tPh19oJoRSdZ3GnQUjA==}
 
   deep-equal@1.1.2:
     resolution: {integrity: sha512-5tdhKF6DbU7iIzrIOa1AOUt39ZRm13cmL1cGEh//aqR8x9+tNfbywRf0n5FD/18OKMdo7DNEtrX2t22ZAkI+eg==}
@@ -1572,7 +1575,7 @@ snapshots:
   datatables.net-buttons-dt@3.1.1:
     dependencies:
       datatables.net-buttons: 3.1.1
-      datatables.net-dt: 2.1.3
+      datatables.net-dt: 2.1.4
       jquery: 3.7.1
 
   datatables.net-buttons@3.1.1:
@@ -1580,9 +1583,9 @@ snapshots:
       datatables.net: 2.1.2
       jquery: 3.7.1
 
-  datatables.net-dt@2.1.3:
+  datatables.net-dt@2.1.4:
     dependencies:
-      datatables.net: 2.1.3
+      datatables.net: 2.1.4
       jquery: 3.7.1
 
   datatables.net-plugins@2.0.8:
@@ -1592,13 +1595,13 @@ snapshots:
 
   datatables.net-responsive-dt@3.0.2:
     dependencies:
-      datatables.net-dt: 2.1.3
+      datatables.net-dt: 2.1.4
       datatables.net-responsive: 3.0.2
       jquery: 3.7.1
 
   datatables.net-responsive@3.0.2:
     dependencies:
-      datatables.net: 2.1.2
+      datatables.net: 2.1.3
       jquery: 3.7.1
 
   datatables.net@2.0.8:
@@ -1610,6 +1613,10 @@ snapshots:
       jquery: 3.7.1
 
   datatables.net@2.1.3:
+    dependencies:
+      jquery: 3.7.1
+
+  datatables.net@2.1.4:
     dependencies:
       jquery: 3.7.1
 
