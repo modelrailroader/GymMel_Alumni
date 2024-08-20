@@ -36,8 +36,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       pdfmake:
-        specifier: ^0.2.11
-        version: 0.2.11
+        specifier: ^0.2.12
+        version: 0.2.12
       popper.js:
         specifier: ^1.16.1
         version: 1.16.1
@@ -835,8 +835,8 @@ packages:
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  pdfmake@0.2.11:
-    resolution: {integrity: sha512-Ig9LBhIYWW8t0/MiXQPYOQdMgwjg+f3JS2iWA7q94Ftc4wSDO5VZP+a1+QN7uz3FbA7+vB4EEYfg3xU0wRPk8w==}
+  pdfmake@0.2.12:
+    resolution: {integrity: sha512-TFsqaG6KVtk+TWermmJNNwom3wmB/xiz07prM74KBhdM+7pz3Uwq2b0uoqhhQRn6cYUTpL8lXZY6xF011o1YcQ==}
     engines: {node: '>=12'}
 
   picocolors@1.0.0:
@@ -2008,7 +2008,7 @@ snapshots:
 
   path-parse@1.0.7: {}
 
-  pdfmake@0.2.11:
+  pdfmake@0.2.12:
     dependencies:
       '@foliojs-fork/linebreak': 1.1.1
       '@foliojs-fork/pdfkit': 0.14.0
