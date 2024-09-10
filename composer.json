@@ -13,7 +13,7 @@
     "require": {
         "a1phanumeric/php-mysql-class": "^2.0",
         "robthree/twofactorauth": "^2.0",
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.14.0"
     },
     "config": {
         "vendor-dir": "GymMel_Alumni/vendor",
