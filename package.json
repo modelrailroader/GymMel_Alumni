@@ -20,7 +20,7 @@
     "datatables.net-responsive-dt": "^3.0.3",
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
-    "pdfmake": "^0.2.14",
+    "pdfmake": "^0.2.15",
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
