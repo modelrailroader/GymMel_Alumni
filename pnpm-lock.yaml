@@ -18,8 +18,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
       datatables.net-buttons-dt:
-        specifier: ^3.2.0
-        version: 3.2.0
+        specifier: ^3.2.1
+        version: 3.2.1
       datatables.net-dt:
         specifier: ^2.2.1
         version: 2.2.1
@@ -403,11 +403,14 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  datatables.net-buttons-dt@3.2.0:
-    resolution: {integrity: sha512-bNMYvuNv4f+LyvMH4WQYLMqbl+zS57BiR7QuY7rsMMQcRYIxJo0qqw0nAbatsxT/ImS3eMIlQEIRSevTrTOVTw==}
+  datatables.net-buttons-dt@3.2.1:
+    resolution: {integrity: sha512-kXt+ReMGmGvyUUOGzgPt6PNPoXtIXJNHXiQGesJW7VZQUwR5A5OtEmoTbXqPbyptCNFd8nHO6kQ+aai3KEIWEg==}
 
   datatables.net-buttons@3.2.0:
     resolution: {integrity: sha512-u51/KUvxMJz7ZsmhEUMU3nAh++wU0IYtU/U9TaH5rZR3zVHj+OBepApLIMz/uLjcXpNeIb7kjcKKNkVtxk9kbw==}
+
+  datatables.net-buttons@3.2.1:
+    resolution: {integrity: sha512-zFZgNVodSYfqijTrZ0YPirn6vxmKdGpyEV9FDInwfe90k8S3cTxSLEsSIcAomxGPwamFFmmYHwSLHg0QGzSCEA==}
 
   datatables.net-dt@2.2.1:
     resolution: {integrity: sha512-ca2hFyyuwkLnZxa8hGuSP5oD+r9gQitOrbXRwuT0bPSnIR5qx39KTHbK7QayUjl2iXTUdYah7PnQT8A80RuTXw==}
@@ -1402,15 +1405,20 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  datatables.net-buttons-dt@3.2.0:
+  datatables.net-buttons-dt@3.2.1:
     dependencies:
-      datatables.net-buttons: 3.2.0
+      datatables.net-buttons: 3.2.1
       datatables.net-dt: 2.2.1
       jquery: 3.7.1
 
   datatables.net-buttons@3.2.0:
     dependencies:
       datatables.net: 2.1.8
+      jquery: 3.7.1
+
+  datatables.net-buttons@3.2.1:
+    dependencies:
+      datatables.net: 2.2.1
       jquery: 3.7.1
 
   datatables.net-dt@2.2.1:
