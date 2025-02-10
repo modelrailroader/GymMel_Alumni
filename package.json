@@ -13,7 +13,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "datatables.net-buttons": "^3.2.1",
+    "datatables.net-buttons": "^3.2.2",
     "datatables.net-buttons-dt": "^3.2.1",
     "datatables.net-dt": "^2.2.1",
     "datatables.net-plugins": "^2.1.7",
