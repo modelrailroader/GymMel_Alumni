@@ -15,8 +15,8 @@ importers:
         specifier: ^1.11.3
         version: 1.11.3
       datatables.net-buttons:
-        specifier: ^3.2.2
-        version: 3.2.2
+        specifier: ^3.2.3
+        version: 3.2.3
       datatables.net-buttons-dt:
         specifier: ^3.2.2
         version: 3.2.2
@@ -403,6 +403,9 @@ packages:
 
   datatables.net-buttons@3.2.2:
     resolution: {integrity: sha512-+aLTbkbksNmyGpK+8KXbpwYKXYOXvZQR2ySA/8oOQeJU53Xw/67cOHowenEr2d43/RLaz+I0zvV/1Yn+jMRiDw==}
+
+  datatables.net-buttons@3.2.3:
+    resolution: {integrity: sha512-K+WeQWUYVGe5c3Gwb8Gfi7YpUXbJEerik3B2vynnVKpBlYBF5AHTGbrK1Psek2q/mjxeIVNHafQ9eX2otLhJVw==}
 
   datatables.net-dt@2.2.2:
     resolution: {integrity: sha512-Qfe9g/E3yAPTHoDASc1J0r5Yx++3Y3VdcEOFCupvfGJ8LhRrreebUC70UYEzO8vPOKnkutoRanW/VBMRIbXKXA==}
@@ -1400,6 +1403,11 @@ snapshots:
       jquery: 3.7.1
 
   datatables.net-buttons@3.2.2:
+    dependencies:
+      datatables.net: 2.2.2
+      jquery: 3.7.1
+
+  datatables.net-buttons@3.2.3:
     dependencies:
       datatables.net: 2.2.2
       jquery: 3.7.1
