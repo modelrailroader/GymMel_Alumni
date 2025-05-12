@@ -49,11 +49,11 @@ importers:
         specifier: ^2.9.2
         version: 2.9.2(webpack@5.99.7)
       sass:
-        specifier: ^1.87.0
-        version: 1.87.0
+        specifier: ^1.88.0
+        version: 1.88.0
       sass-loader:
         specifier: ^16.0.5
-        version: 16.0.5(sass@1.87.0)(webpack@5.99.7)
+        version: 16.0.5(sass@1.88.0)(webpack@5.99.7)
       style-loader:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.99.7)
@@ -587,8 +587,8 @@ packages:
   immediate@3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
 
-  immutable@5.1.1:
-    resolution: {integrity: sha512-3jatXi9ObIsPGr3N5hGw/vWWcTkq6hUYhpQz4k0wLC+owqWi/LiugIw9x0EdNZ2yGedKN/HzePiBvaJRXa0Ujg==}
+  immutable@5.1.2:
+    resolution: {integrity: sha512-qHKXW1q6liAk1Oys6umoaZbDRqjcjgSrbnrifHsfsttza7zcvRAsL7mMV6xWcyhwQy7Xj5v4hhbr6b+iDYwlmQ==}
 
   import-local@3.1.0:
     resolution: {integrity: sha512-ASB07uLtnDs1o6EHjKpX34BKYDSqnFerfTOJL2HvMqF70LnxpjkzDB8J44oT9pu4AMPkQwf8jl6szgvNd2tRIg==}
@@ -888,8 +888,8 @@ packages:
       webpack:
         optional: true
 
-  sass@1.87.0:
-    resolution: {integrity: sha512-d0NoFH4v6SjEK7BoX810Jsrhj7IQSYHAHLi/iSpgqKc7LaIDshFRlSg5LOymf9FqQhxEHs2W5ZQXlvy0KD45Uw==}
+  sass@1.88.0:
+    resolution: {integrity: sha512-sF6TWQqjFvr4JILXzG4ucGOLELkESHL+I5QJhh7CNaE+Yge0SI+ehCatsXhJ7ymU1hAFcIS3/PBpjdIbXoyVbg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -1615,7 +1615,7 @@ snapshots:
 
   immediate@3.0.6: {}
 
-  immutable@5.1.1: {}
+  immutable@5.1.2: {}
 
   import-local@3.1.0:
     dependencies:
@@ -1872,17 +1872,17 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass-loader@16.0.5(sass@1.87.0)(webpack@5.99.7):
+  sass-loader@16.0.5(sass@1.88.0)(webpack@5.99.7):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
-      sass: 1.87.0
+      sass: 1.88.0
       webpack: 5.99.7(webpack-cli@6.0.1)
 
-  sass@1.87.0:
+  sass@1.88.0:
     dependencies:
       chokidar: 4.0.3
-      immutable: 5.1.1
+      immutable: 5.1.2
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
