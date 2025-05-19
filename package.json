@@ -12,7 +12,7 @@
   "license": "MPL 2.0",
   "dependencies": {
     "bootstrap": "^5.3.6",
-    "bootstrap-icons": "^1.12.1",
+    "bootstrap-icons": "^1.13.1",
     "datatables.net-buttons": "^3.2.3",
     "datatables.net-buttons-dt": "^3.2.3",
     "datatables.net-dt": "^2.3.1",
