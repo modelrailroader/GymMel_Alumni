@@ -17,7 +17,7 @@
     "datatables.net-buttons-dt": "^3.2.3",
     "datatables.net-dt": "^2.3.2",
     "datatables.net-plugins": "^2.3.0",
-    "datatables.net-responsive-dt": "^3.0.4",
+    "datatables.net-responsive-dt": "^3.0.5",
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
     "pdfmake": "^0.2.20",
