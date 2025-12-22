@@ -36,8 +36,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       pdfmake:
-        specifier: ^0.2.20
-        version: 0.2.20
+        specifier: ^0.2.21
+        version: 0.2.21
       popper.js:
         specifier: ^1.16.1
         version: 1.16.1
@@ -579,8 +579,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  iconv-lite@0.6.3:
-    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
+  iconv-lite@0.7.1:
+    resolution: {integrity: sha512-2Tth85cXwGFHfvRgZWszZSvdo+0Xsqmw8k8ZwxScfcBneNUraK+dxRxRm24nszx80Y0TVio8kKLt5sLE7ZCLlw==}
     engines: {node: '>=0.10.0'}
 
   icss-utils@5.1.0:
@@ -762,8 +762,8 @@ packages:
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  pdfmake@0.2.20:
-    resolution: {integrity: sha512-bGbxbGFP5p8PWNT3Phsu1ZcRLnRfF6jmnuKTkgmt6i5PZzSdX6JaB+NeTz9q+aocfW8SE9GUjL3o/5GroBqGcQ==}
+  pdfmake@0.2.21:
+    resolution: {integrity: sha512-kgBj6Bbj57vY/f0zpBz/OLmO4n248RopEEA+IRkfdKZtravqQL6lEkILYsdjiPFYCXImZA+62EtT2zjUVKb8YQ==}
     engines: {node: '>=18'}
 
   picocolors@1.0.0:
@@ -894,8 +894,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  sax@1.4.1:
-    resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
+  sax@1.4.3:
+    resolution: {integrity: sha512-yqYn1JhPczigF94DMS+shiDMjDowYO6y9+wB/4WgO0Y19jWYk0lQ4tuG5KI7kj4FTp1wxPj5IFfcrz/s1c3jjQ==}
 
   schema-utils@4.3.2:
     resolution: {integrity: sha512-Gn/JaSk/Mt9gYubxTtSn/QCV4em9mpAPiR1rqy/Ocu19u/G9J5WWdNoUT4SiV6mFC3y6cxyFcFwdzPM3FgxGAQ==}
@@ -1066,8 +1066,8 @@ packages:
   wildcard@2.0.1:
     resolution: {integrity: sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==}
 
-  xmldoc@2.0.1:
-    resolution: {integrity: sha512-sOOqgsjl3PU6iBw+fBUGAkTCE+JFK+sBaOL3pnZgzqk2/yvOD7RlFmZtDRJAEBzdpOYxSXyOQH4mjubdfs3MSg==}
+  xmldoc@2.0.3:
+    resolution: {integrity: sha512-6gRk4NY/Jvg67xn7OzJuxLRsGgiXBaPUQplVJ/9l99uIugxh4FTOewYz5ic8WScj7Xx/2WvhENiQKwkK9RpE4w==}
     engines: {node: '>=12.0.0'}
 
   yallist@4.0.0:
@@ -1599,7 +1599,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  iconv-lite@0.6.3:
+  iconv-lite@0.7.1:
     dependencies:
       safer-buffer: 2.1.2
 
@@ -1757,12 +1757,12 @@ snapshots:
 
   path-parse@1.0.7: {}
 
-  pdfmake@0.2.20:
+  pdfmake@0.2.21:
     dependencies:
       '@foliojs-fork/linebreak': 1.1.2
       '@foliojs-fork/pdfkit': 0.15.3
-      iconv-lite: 0.6.3
-      xmldoc: 2.0.1
+      iconv-lite: 0.7.1
+      xmldoc: 2.0.3
 
   picocolors@1.0.0: {}
 
@@ -1879,7 +1879,7 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.5.1
 
-  sax@1.4.1: {}
+  sax@1.4.3: {}
 
   schema-utils@4.3.2:
     dependencies:
@@ -2073,8 +2073,8 @@ snapshots:
 
   wildcard@2.0.1: {}
 
-  xmldoc@2.0.1:
+  xmldoc@2.0.3:
     dependencies:
-      sax: 1.4.1
+      sax: 1.4.3
 
   yallist@4.0.0: {}
