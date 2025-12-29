@@ -24,8 +24,8 @@ importers:
         specifier: ^2.3.6
         version: 2.3.6
       datatables.net-plugins:
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.6
+        version: 2.3.6
       datatables.net-responsive-dt:
         specifier: ^3.0.7
         version: 3.0.7
@@ -192,8 +192,8 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
-  '@types/jquery@3.5.32':
-    resolution: {integrity: sha512-b9Xbf4CkMqS02YH8zACqN1xzdxc3cO735Qe5AbSUFmyOiaWAbcpqh9Wna+Uk0vgACvoQHpWDg2rGdHkYPLmCiQ==}
+  '@types/jquery@3.5.33':
+    resolution: {integrity: sha512-SeyVJXlCZpEki5F0ghuYe+L+PprQta6nRZqhONt9F13dWBtR/ftoaIbdRQ7cis7womE+X2LKhsDdDtkkDhJS6g==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -201,8 +201,8 @@ packages:
   '@types/node@25.0.3':
     resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
 
-  '@types/sizzle@2.3.9':
-    resolution: {integrity: sha512-xzLEyKB50yqCUPUJkIsrVvoWNfFUbIZI+RspLWt8u+tIW/BetMBZtgV2LY/2o+tYH8dRvQ+eoPf3NdhQCcLE2w==}
+  '@types/sizzle@2.3.10':
+    resolution: {integrity: sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -420,17 +420,14 @@ packages:
   datatables.net-dt@2.3.6:
     resolution: {integrity: sha512-8OEUNCEfkeW+TuVUDlT1q6/XXOitgVzCdNqBivw8bK9DnaNk5F6JjT8lE2pQ4uAfoL/dTy2J+HKxTHeTh8HJlg==}
 
-  datatables.net-plugins@2.3.2:
-    resolution: {integrity: sha512-9wY1vhMHqazE4SyeYXO22NJjgf0WBzDhG2XbIY7PynafKBR/+aPqC0gWh9/lRF1eyzYnmKHniW4kBx11YpazoQ==}
+  datatables.net-plugins@2.3.6:
+    resolution: {integrity: sha512-x32KOhw1apu8bLD7GP1/SS86waVEv59DxosLHmXbsRdf7GxXvSULHfo73XKp4gQaD8Q3f7ReM+kRM5r6lK3hGg==}
 
   datatables.net-responsive-dt@3.0.7:
     resolution: {integrity: sha512-YTIVl4F6z+Rgk3v6z3oQWYc61Psu5dskIQTByUUEOK6Glqm7ybOq9vSfr+7xd7BjgUyduDC+9qRRpKPiQn6uXQ==}
 
   datatables.net-responsive@3.0.7:
     resolution: {integrity: sha512-MngWU41M1LDDMjKFJ3rAHc4Zb3QhOysDTh+TfKE1ycrh5dpnKa1vobw2MKMMbvbx4q05OXZY9jtLSPIkaJRsuw==}
-
-  datatables.net@2.3.2:
-    resolution: {integrity: sha512-31TzwIQM0+pr2ZOEOEH6dsHd/WSAl5GDDGPezOHPI3mM2NK4lcDyOoG8xXeWmSbVfbi852LNK5C84fpp4Q+qxg==}
 
   datatables.net@2.3.4:
     resolution: {integrity: sha512-fKuRlrBIdpAl2uIFgl9enKecHB41QmFd/2nN9LBbOvItV/JalAxLcyqdZXex7wX4ZXjnJQEnv6xeS9veOpKzSw==}
@@ -1200,9 +1197,9 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
-  '@types/jquery@3.5.32':
+  '@types/jquery@3.5.33':
     dependencies:
-      '@types/sizzle': 2.3.9
+      '@types/sizzle': 2.3.10
 
   '@types/json-schema@7.0.15': {}
 
@@ -1210,7 +1207,7 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
-  '@types/sizzle@2.3.9': {}
+  '@types/sizzle@2.3.10': {}
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -1445,10 +1442,10 @@ snapshots:
       datatables.net: 2.3.6
       jquery: 3.7.1
 
-  datatables.net-plugins@2.3.2:
+  datatables.net-plugins@2.3.6:
     dependencies:
-      '@types/jquery': 3.5.32
-      datatables.net: 2.3.2
+      '@types/jquery': 3.5.33
+      datatables.net: 2.3.6
 
   datatables.net-responsive-dt@3.0.7:
     dependencies:
@@ -1459,10 +1456,6 @@ snapshots:
   datatables.net-responsive@3.0.7:
     dependencies:
       datatables.net: 2.3.6
-      jquery: 3.7.1
-
-  datatables.net@2.3.2:
-    dependencies:
       jquery: 3.7.1
 
   datatables.net@2.3.4:
