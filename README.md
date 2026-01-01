@@ -35,5 +35,5 @@ If you have any questions or need help at adapting the application for your scho
 
 Created by Jan Harms
 
-Copyright [Gymnasium Melle](https://www.melle-gymnasium.de) © 2025
+Copyright [Gymnasium Melle](https://www.melle-gymnasium.de) © 2026
 This project is licensed under the Mozilla Public License MPL-2.0. Further information are available in the LICENSE-file.

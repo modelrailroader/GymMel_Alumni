@@ -8,7 +8,7 @@
  *
  * @package   GymMel_Alumni
  * @author    Jan Harms <model_railroader@gmx-topmail.de>
- * @copyright 2023-2025 Gymnasium Melle
+ * @copyright 2023-2026 Gymnasium Melle
  * @license   https://www.mozilla.org/MPL/2.0/ Mozilla Public License Version 2.0
  * @since     2024-01-30
  */
