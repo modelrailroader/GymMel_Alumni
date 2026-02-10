@@ -21,6 +21,6 @@
         "sort-packages": true
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.2"
+        "phpunit/phpunit": "^13.0"
     }
 }
