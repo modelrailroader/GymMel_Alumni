@@ -36,8 +36,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       pdfmake:
-        specifier: ^0.3.3
-        version: 0.3.3
+        specifier: ^0.3.4
+        version: 0.3.4
       popper.js:
         specifier: ^1.16.1
         version: 1.16.1
@@ -642,8 +642,8 @@ packages:
   pdfkit@0.17.2:
     resolution: {integrity: sha512-UnwF5fXy08f0dnp4jchFYAROKMNTaPqb/xgR8GtCzIcqoTnbOqtp3bwKvO4688oHI6vzEEs8Q6vqqEnC5IUELw==}
 
-  pdfmake@0.3.3:
-    resolution: {integrity: sha512-jSnF8rVLkbLLX37bnXWRFhEDO48quE7OIg7lgWBa6ihAbpCxASaBLWFOXNxSDeLBNt92304SBwpYcPkJnIArlA==}
+  pdfmake@0.3.4:
+    resolution: {integrity: sha512-zbGBox6pgNeGdG7tlLVBbQJlYIlTHtXo5q8+dNhCb2O0Q2+Nc5bcpsgNzbzqfzlcJ0gX9f+ZBv1z4FuJjUHwVA==}
     engines: {node: '>=20'}
 
   picocolors@1.1.1:
@@ -1465,7 +1465,7 @@ snapshots:
       linebreak: 1.1.0
       png-js: 1.0.0
 
-  pdfmake@0.3.3:
+  pdfmake@0.3.4:
     dependencies:
       linebreak: 1.1.0
       pdfkit: 0.17.2
