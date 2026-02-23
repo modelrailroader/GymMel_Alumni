@@ -4,21 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e3269e0a9dfc9fd15186cb32590b851",
+    "content-hash": "98af3fe04eb0f8fe24769fbefec28daa",
     "packages": [
         {
             "name": "a1phanumeric/php-mysql-class",
-            "version": "2.4",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/a1phanumeric/PHP-MySQL-Class.git",
-                "reference": "e74de62049938b80f896082a39de6fabb0eb17d6"
+                "reference": "6a19fd749b6e8a42132233f93a531d9398d2d680"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a1phanumeric/PHP-MySQL-Class/zipball/e74de62049938b80f896082a39de6fabb0eb17d6",
-                "reference": "e74de62049938b80f896082a39de6fabb0eb17d6",
+                "url": "https://api.github.com/repos/a1phanumeric/PHP-MySQL-Class/zipball/6a19fd749b6e8a42132233f93a531d9398d2d680",
+                "reference": "6a19fd749b6e8a42132233f93a531d9398d2d680",
                 "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=7.4"
+            },
+            "suggest": {
+                "ext-pdo_mysql": "Required to connect to MySQL/MariaDB",
+                "ext-sqlsrv": "Required to connect to Microsoft SQL Server"
             },
             "type": "library",
             "autoload": {
@@ -36,12 +44,19 @@
                     "email": "ed.rackham19@gmail.com"
                 }
             ],
-            "description": "This is a simple to use PHP MySQL class that easily bolts on to any existing PHP application, streamlining your MySQL interactions.",
+            "description": "A lightweight PDO helper for MySQL and SQL Server with prepared queries, transactions, and connection lifecycle utilities.",
+            "keywords": [
+                "database",
+                "mysql",
+                "pdo",
+                "php",
+                "sqlserver"
+            ],
             "support": {
                 "issues": "https://github.com/a1phanumeric/PHP-MySQL-Class/issues",
-                "source": "https://github.com/a1phanumeric/PHP-MySQL-Class/tree/2.4"
+                "source": "https://github.com/a1phanumeric/PHP-MySQL-Class/tree/v3.0.0"
             },
-            "time": "2025-01-17T11:30:26+00:00"
+            "time": "2026-02-23T12:08:04+00:00"
         },
         {
             "name": "robthree/twofactorauth",
