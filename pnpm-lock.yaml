@@ -36,8 +36,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       pdfmake:
-        specifier: ^0.3.5
-        version: 0.3.5
+        specifier: ^0.3.6
+        version: 0.3.6
       popper.js:
         specifier: ^1.16.1
         version: 1.16.1
@@ -643,8 +643,8 @@ packages:
   pdfkit@0.17.2:
     resolution: {integrity: sha512-UnwF5fXy08f0dnp4jchFYAROKMNTaPqb/xgR8GtCzIcqoTnbOqtp3bwKvO4688oHI6vzEEs8Q6vqqEnC5IUELw==}
 
-  pdfmake@0.3.5:
-    resolution: {integrity: sha512-DR7jRrK4lk7UiRT6pi+NeWhW1ToTsL2Y8CH+bFKNYz3M7agIVgeCtwARveEORhCAqoG3AUDrN318xU/lkOr1Bg==}
+  pdfmake@0.3.6:
+    resolution: {integrity: sha512-c3uVTdwaNqE/Qaum8BTi9StbFyrYunaR+c94kA6vZA5eHuLFSnvw3pK6Y/0OU4xTFbjKsaHwdeAJinV9ci+OcQ==}
     engines: {node: '>=20'}
 
   picocolors@1.1.1:
@@ -762,8 +762,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  sax@1.4.4:
-    resolution: {integrity: sha512-1n3r/tGXO6b6VXMdFT54SHzT9ytu9yr7TaELowdYpMqY/Ao7EnlQGmAQ1+RatX7Tkkdm6hONI2owqNx2aZj5Sw==}
+  sax@1.5.0:
+    resolution: {integrity: sha512-21IYA3Q5cQf089Z6tgaUTr7lDAyzoTPx5HRtbhsME8Udispad8dC/+sziTNugOEx54ilvatQ9YCzl4KQLPcRHA==}
     engines: {node: '>=11.0.0'}
 
   schema-utils@4.3.3:
@@ -1457,7 +1457,7 @@ snapshots:
       linebreak: 1.1.0
       png-js: 1.0.0
 
-  pdfmake@0.3.5:
+  pdfmake@0.3.6:
     dependencies:
       linebreak: 1.1.0
       pdfkit: 0.17.2
@@ -1561,7 +1561,7 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.5.6
 
-  sax@1.4.4: {}
+  sax@1.5.0: {}
 
   schema-utils@4.3.3:
     dependencies:
@@ -1720,4 +1720,4 @@ snapshots:
 
   xmldoc@2.0.3:
     dependencies:
-      sax: 1.4.4
+      sax: 1.5.0
