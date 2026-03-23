@@ -36,8 +36,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       pdfmake:
-        specifier: ^0.3.6
-        version: 0.3.6
+        specifier: ^0.3.7
+        version: 0.3.7
       popper.js:
         specifier: ^1.16.1
         version: 1.16.1
@@ -85,6 +85,14 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@noble/ciphers@1.3.0':
+    resolution: {integrity: sha512-2I0gnIVPtfnMw9ee9h1dJG7tp81+8Ob3OJb3Mv37rx5L40/b0i7djjCVvGOVqc9AEIQyvyu1i6ypKdFw8R8gQw==}
+    engines: {node: ^14.21.3 || >=16}
+
+  '@noble/hashes@1.8.0':
+    resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
+    engines: {node: ^14.21.3 || >=16}
 
   '@parcel/watcher-android-arm64@2.5.6':
     resolution: {integrity: sha512-YQxSS34tPF/6ZG7r/Ih9xy+kP/WwediEUsqmtf0cuCV5TPPKw/PQHRhueUo6JdeFJaqV3pyjm0GdYjZotbRt/A==}
@@ -337,9 +345,6 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  crypto-js@4.2.0:
-    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
-
   css-loader@7.1.4:
     resolution: {integrity: sha512-vv3J9tlOl04WjiMvHQI/9tmIrCxVrj6PFbHemBB1iihpeRbi/I4h033eoFIhwxBBqLhI0KYFS7yvynBFhIZfTw==}
     engines: {node: '>= 18.12.0'}
@@ -519,12 +524,11 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
 
-  jpeg-exif@1.1.4:
-    resolution: {integrity: sha512-a+bKEcCjtuW5WTdgeXFzswSrdqi0jk4XlEtZlx5A94wCoBpFjfFTbo/Tra5SpNCl/YFZPvcV1dJc+TAYeg6ROQ==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-
   jquery@4.0.0:
     resolution: {integrity: sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==}
+
+  js-md5@0.8.3:
+    resolution: {integrity: sha512-qR0HB5uP6wCuRMrWPTrkMaev7MJZwJuuw4fnwAzRgP4J4/F8RwtodOKpGp4XpqsLBFzzgqIO42efFAyz2Et6KQ==}
 
   json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
@@ -613,11 +617,11 @@ packages:
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  pdfkit@0.17.2:
-    resolution: {integrity: sha512-UnwF5fXy08f0dnp4jchFYAROKMNTaPqb/xgR8GtCzIcqoTnbOqtp3bwKvO4688oHI6vzEEs8Q6vqqEnC5IUELw==}
+  pdfkit@0.18.0:
+    resolution: {integrity: sha512-NvUwSDZ0eYEzqAiWwVQkRkjYUkZ48kcsHuCO31ykqPPIVkwoSDjDGiwIgHHNtsiwls3z3P/zy4q00hl2chg2Ug==}
 
-  pdfmake@0.3.6:
-    resolution: {integrity: sha512-c3uVTdwaNqE/Qaum8BTi9StbFyrYunaR+c94kA6vZA5eHuLFSnvw3pK6Y/0OU4xTFbjKsaHwdeAJinV9ci+OcQ==}
+  pdfmake@0.3.7:
+    resolution: {integrity: sha512-SwTFcaH3kCJBlPFWi/YB34zRg6lpCxq90tkZ9GxfSi9/v4Tk96cv4IvOstA+CC40rdW1OzQIuNhD2DLD1RDVgA==}
     engines: {node: '>=20'}
 
   picocolors@1.1.1:
@@ -736,8 +740,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  sax@1.5.0:
-    resolution: {integrity: sha512-21IYA3Q5cQf089Z6tgaUTr7lDAyzoTPx5HRtbhsME8Udispad8dC/+sziTNugOEx54ilvatQ9YCzl4KQLPcRHA==}
+  sax@1.6.0:
+    resolution: {integrity: sha512-6R3J5M4AcbtLUdZmRv2SygeVaM7IhrLXu9BmnOGmmACak8fiUtOsYNWUS4uK7upbmHIBbLBeFeI//477BKLBzA==}
     engines: {node: '>=11.0.0'}
 
   schema-utils@4.3.3:
@@ -911,6 +915,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@noble/ciphers@1.3.0': {}
+
+  '@noble/hashes@1.8.0': {}
 
   '@parcel/watcher-android-arm64@2.5.6':
     optional: true
@@ -1159,8 +1167,6 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  crypto-js@4.2.0: {}
-
   css-loader@7.1.4(webpack@5.105.4):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.6)
@@ -1331,9 +1337,9 @@ snapshots:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  jpeg-exif@1.1.4: {}
-
   jquery@4.0.0: {}
+
+  js-md5@0.8.3: {}
 
   json-parse-even-better-errors@2.3.1: {}
 
@@ -1406,18 +1412,19 @@ snapshots:
 
   path-parse@1.0.7: {}
 
-  pdfkit@0.17.2:
+  pdfkit@0.18.0:
     dependencies:
-      crypto-js: 4.2.0
+      '@noble/ciphers': 1.3.0
+      '@noble/hashes': 1.8.0
       fontkit: 2.0.4
-      jpeg-exif: 1.1.4
+      js-md5: 0.8.3
       linebreak: 1.1.0
       png-js: 1.0.0
 
-  pdfmake@0.3.6:
+  pdfmake@0.3.7:
     dependencies:
       linebreak: 1.1.0
-      pdfkit: 0.17.2
+      pdfkit: 0.18.0
       xmldoc: 2.0.3
 
   picocolors@1.1.1: {}
@@ -1518,7 +1525,7 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.5.6
 
-  sax@1.5.0: {}
+  sax@1.6.0: {}
 
   schema-utils@4.3.3:
     dependencies:
@@ -1673,4 +1680,4 @@ snapshots:
 
   xmldoc@2.0.3:
     dependencies:
-      sax: 1.5.0
+      sax: 1.6.0
