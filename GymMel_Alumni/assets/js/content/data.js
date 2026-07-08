@@ -14,10 +14,10 @@
 
 import languageDE from 'datatables.net-plugins/i18n/de-DE.mjs';
 
-import pdfMake from "pdfmake/build/pdfmake.js";
+import pdfmake from "pdfmake/build/pdfmake.js";
 import pdfFonts from "pdfmake/build/vfs_fonts.js";
 
-pdfMake.addVirtualFileSystem(pdfFonts);
+pdfmake.addVirtualFileSystem(pdfFonts);
 
 import * as JSZip from "jszip";
 
@@ -32,7 +32,6 @@ import {Dropdown, Modal, Toast} from 'bootstrap';
 import {createToast} from "../utils/notifications";
 
 export const handleShowData = () => {
-    pdfmake.vfs = pdfFonts.pdfMake.vfs;
     const alumniTable = document.getElementById('alumniTable');
     if (alumniTable) {
         const table = new DataTable(alumniTable, {
