@@ -17,17 +17,7 @@ include 'constants.php';
 include_once(__DIR__.'/vendor/autoload.php');
 include_once('autoload.php');
 
-use src\User;
 use src\Template;
-
-if(session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-$user = new User();
-if(!$user->authenticateWithSession()) {
-    require 'accessDenied.php';
-    exit();
-}
 
 include 'header.php';
 
