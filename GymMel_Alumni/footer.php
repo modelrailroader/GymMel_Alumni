@@ -20,4 +20,8 @@ use src\Template;
 $template = new Template('./assets/templates');
 $template->setTemplate('footer.twig');
 
-echo $template->render([]);
+$templateVars = [
+    'year' => date('Y')
+];
+
+echo $template->render($templateVars);
