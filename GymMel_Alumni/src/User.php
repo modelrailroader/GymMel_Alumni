@@ -18,6 +18,7 @@ namespace src;
 use A1phanumeric\DBPDO;
 use RobThree\Auth\TwoFactorAuth;
 use RobThree\Auth\Algorithm;
+use RobThree\Auth\Providers\Qr\QRServerProvider;
 
 class User
 {
@@ -43,7 +44,7 @@ class User
     {
         include dirname(__DIR__, 1) . '/constants.php';
         $this->dbclient = new DBPDO($db_host, $db_name, $db_user, $db_password);
-        $this->twofactor = new TwoFactorAuth(null, 6, 30, Algorithm::Sha1);
+        $this->twofactor = new TwoFactorAuth(new QRServerProvider(), "Gymnasium Melle", 6, 30, Algorithm::Sha1);
     }
 
     // Provides the data of a special user to be used from another function.
