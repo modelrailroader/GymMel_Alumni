@@ -1,6 +1,7 @@
 // Import Bootstrap
 @use 'bootstrap/scss/bootstrap';
-//@use 'bootstrap-icons/font/bootstrap-icons.css';
+
+@use "bootstrap-icons/font/bootstrap-icons";
 
 // Import DataTables
 @use 'datatables.net-dt/css/dataTables.dataTables.css';
