@@ -28,7 +28,14 @@ class Logs
     private User $user;
     
     public function __construct() {
+        $pathOfFile = dirname(__DIR__, 1) . '/data';
         $this->path = dirname(__DIR__, 1) . '/data/adminlog.log';
+
+        // check if the data folder exists, if not create it
+        if (!is_dir($pathOfFile)) {
+            mkdir($pathOfFile, 0777, true);
+        }
+
         include dirname(__DIR__, 1) . '/constants.php';
         $this->dbclient = new DBPDO($db_host, $db_name, $db_user, $db_password);
         $this->user = new User();
