@@ -1,11 +1,11 @@
 // Import Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-icons/font/bootstrap-icons.css';
+@use 'bootstrap/scss/bootstrap';
+//@use 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Import DataTables
-@import '~datatables.net-dt/css/dataTables.dataTables.css';
-@import '~datatables.net-responsive-dt/css/responsive.dataTables.css';
-@import '~datatables.net-buttons-dt/css/buttons.dataTables.css';
+@use 'datatables.net-dt/css/dataTables.dataTables.css';
+@use 'datatables.net-responsive-dt/css/responsive.dataTables.css';
+@use 'datatables.net-buttons-dt/css/buttons.dataTables.css';
 
 // Import own styles
-@import 'global.css';
+@use 'global.css';

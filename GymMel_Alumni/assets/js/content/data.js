@@ -14,10 +14,10 @@
 
 import languageDE from 'datatables.net-plugins/i18n/de-DE.mjs';
 
-import pdfmake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import pdfMake from "pdfmake/build/pdfmake.js";
+import pdfFonts from "pdfmake/build/vfs_fonts.js";
 
-pdfmake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.addVirtualFileSystem(pdfFonts);
 
 import * as JSZip from "jszip";
 
