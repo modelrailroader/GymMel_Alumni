@@ -27,6 +27,7 @@ import DataTable from 'datatables.net-dt';
 import 'datatables.net-buttons-dt';
 import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-responsive-dt';
+import 'datatables.net-buttons/js/buttons.colVis.mjs';
 
 import {validatePassword} from '../utils/password'
 import {createAlert, createToast} from "../utils/notifications";
@@ -238,7 +239,13 @@ export const handleShowUsers = () => {
                 bottomStart: 'info',
                 bottomEnd: 'paging'
             },
-            "buttons": [{
+            "buttons": [
+                {
+                    extend: 'colvis',
+                    text: 'Spalten ein-/ausblenden',
+                    columns: ':not(.noVis)'
+                },
+                {
                 extend: 'copyHtml5',
                 exportOptions: {
                     columns: [0, 1, 2, 3, 4]
