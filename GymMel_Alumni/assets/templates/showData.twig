@@ -37,11 +37,11 @@
         <tbody>
         {% for item in data %}
             <tr id="alumni{{ item.id }}">
-                <td>{{ item.name }}</td>
+                <td>{{ item.name|raw }}</td>
                 <td>{{ item.email }}</td>
-                <td>{{ item.job }}</td>
-                <td>{{ item.studies }}</td>
-                <td>{{ item.company }}</td>
+                <td>{{ item.job|raw }}</td>
+                <td>{{ item.studies|raw }}</td>
+                <td>{{ item.company|raw }}</td>
                 <td data-order="{{ item.date_registered }}">{{ item.date_registered|date('d.m.Y - H:i') }}</td>
                 <td>
                     {% if item.transfer_privacy == 1 %}
