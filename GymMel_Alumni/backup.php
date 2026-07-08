@@ -31,7 +31,7 @@ if(session_status() === PHP_SESSION_NONE) {
 }
 $user = new User();
 if(!$user->authenticateWithSession()) {
-    require 'accessDenied.php';
+    header("Location: login.php?redirect=backup.php");
     exit();
 }
 include 'header.php';

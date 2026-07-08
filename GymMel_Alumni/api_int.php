@@ -26,7 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $user = new User();
 if (!$user->authenticateWithSession()) {
-    require 'accessDenied.php';
+    header("Location: index.php");
     exit();
 }
 

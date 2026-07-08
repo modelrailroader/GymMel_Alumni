@@ -46,6 +46,7 @@ $submit = filter_input(INPUT_POST, 'submit');
 
 $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
 $password = filter_input(INPUT_POST, 'password');
+$redirectPage = filter_input(INPUT_POST, 'redirect-page', FILTER_SANITIZE_SPECIAL_CHARS);
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $userid = filter_input(INPUT_POST, 'userid', FILTER_VALIDATE_INT);
@@ -65,6 +66,10 @@ if(isset($username) && isset($password)) {
         else {
             $logs->addLogEntry('The user was logged in.');
             $logs->updateLastLogin($_SESSION['userid']);
+            if ($redirectPage !== '') {
+                header('Location: ' . $redirectPage);
+                exit();
+            }
         }
     }
     else {
