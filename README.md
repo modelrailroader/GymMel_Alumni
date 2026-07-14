@@ -28,6 +28,10 @@ You have to configure your database server in the file constants.original.php wh
 
 Additionally you have to create an own database for this application and install the basic table infrastructure. This can be done by loading the database.sql file in the root directory of this repositority into phpMyAdmin.
 
+Using the database.sql-file a user with the following credentials is created to log in as an admin:
+
+Username: admin; Email-address: admin@example.org; Password: adminExample
+
 ## Documentation
 An own documentation is not ready.
 
