@@ -122,7 +122,7 @@ class DataHelper
     public function getDuplicateDetails(array $duplicate): array
     {
         $query = sprintf(
-            "SELECT id, name, email, birhtday, graduation_year, job, studies, company, date_registered FROM alumni_data WHERE name='%s' AND email='%s'",
+            "SELECT id, name, email, birthday, graduation_year, job, studies, company, date_registered FROM alumni_data WHERE name='%s' AND email='%s'",
             $duplicate['name'],
             $duplicate['email']
         );
