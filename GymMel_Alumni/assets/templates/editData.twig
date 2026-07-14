@@ -26,26 +26,40 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="ausbildung" class="form-label">
+            <label for="birthday" class="form-label">
+                <i class="bi bi-calendar-date"></i>&nbsp; Geburtsdatum:
+            </label>
+            <div class="required-field-block">
+                <input type="date" class="form-control" id="birthday" name="birthday" value="{{ data.birthday !== '0000-00-00' ? data.birthday : '' }}" min="{{ minBirthDate }}" max="{{ maxBirthDate }}">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="graduation_year" class="form-label">
+                <i class="bi bi-mortarboard"></i>&nbsp; Abiturjahrgang:
+            </label>
+            <input type="number" class="form-control" id="graduation_year" name="graduation_year" min="1950" max="2100" {{ data.graduation_year != 0 ? 'value="' ~ data.graduation_year ~ '"' }}">
+        </div>
+        <div class="mb-3">
+            <label for="studies" class="form-label">
                 <i class="bi bi-book"></i>&nbsp; Studium/Ausbildung:
             </label>
             <input type="text" class="form-control" id="studies" name="studies" value="{{ data.studies }}">
         </div>
         <div class="mb-3">
-            <label for="beruf" class="form-label">
+            <label for="job" class="form-label">
                 <i class="bi bi-briefcase"></i>&nbsp; Beruf/Tätigkeit:
             </label>
             <input type="text" class="form-control" id="job" name="job" value="{{ data.job }}">
         </div>
         <div class="mb-3">
-            <label for="firma" class="form-label">
-                <i class="bi bi-building"></i>&nbsp; Aktueller Arbeitgeber:in:
+            <label for="company" class="form-label">
+                <i class="bi bi-building"></i>&nbsp; Aktuelle:r Arbeitgeber:in:
             </label>
             <input type="text" class="form-control" id="company" name="company" value="{{ data.company }}">
         </div>
         <div class="mb-3">
             <label for="registrierungszeitpunkt" class="form-label">
-                <i class="bi bi-calendar-date"></i>&nbsp; Registrierung
+                <i class="bi bi-calendar-plus"></i>&nbsp; Registrierung
             </label>
             <input type="text" class="form-control" id="date_registered" name="date_registered"
                    value="{{ data.date_registered|date('d.m.Y - H:i') }}" readonly>

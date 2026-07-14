@@ -30,14 +30,14 @@ class DataHelper
     // Returns an array of the entire Alumni data.
     public function getAllAlumniData(): array
     {
-        $query = "SELECT `name`, `email`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data`";
+        $query = "SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data`";
         return $this->dbclient->fetchAll($query);
     }
 
     // Returns an array of the Alumni data of a special person defined by it's id.
     public function getAlumniData(int $id): array
     {
-        $query = sprintf("SELECT `name`, `email`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data` WHERE `id`=%d",
+        $query = sprintf("SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data` WHERE `id`=%d",
             $id);
         return $this->dbclient->fetch($query);
     }
@@ -54,11 +54,14 @@ class DataHelper
         } else {
             $transfer_privacy_agreed = '';
         }
-        $query = sprintf("UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `studies` = '%s', "
-            . "`job` = '%s', `company` = '%s', `transfer_privacy` = %d %s WHERE `id` = %d",
+        $query = sprintf("UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = '%s',"
+                         . "`graduation_year` = %d, `studies` = '%s', `job` = '%s', `company` = '%s',"
+                         . "`transfer_privacy` = %d %s WHERE `id` = %d",
             $data['id'],
             $data['name'],
             $data['email'],
+            $data['birthday'],
+            $data['graduation_year'],
             $data['studies'],
             $data['job'],
             $data['company'],
@@ -77,12 +80,14 @@ class DataHelper
     }
 
     // Creates a new alumni and saves it's data in the database.
-    public function saveNewAlumni(string $name, string $email, string $studies, string $job, string $company, int $transfer): bool
+    public function saveNewAlumni(string $name, string $email, string $birthday, int $graduation_year, string $studies, string $job, string $company, int $transfer): bool
     {
-        $query = sprintf("INSERT INTO `alumni_data`(name, email, studies, job, company, date_registered, transfer_privacy, date_transfer_privacy_agreed) "
-            . "VALUES ('%s', '%s', '%s', '%s', '%s', %d, %d, %d)",
+        $query = sprintf("INSERT INTO `alumni_data`(name, email, birthday, graduation_year, studies, job, company, date_registered, transfer_privacy, date_transfer_privacy_agreed) "
+            . "VALUES ('%s', '%s', '%s', %d, '%s', '%s', '%s', %d, %d, %d)",
             $name,
             $email,
+            $birthday,
+            $graduation_year,
             $studies,
             $job,
             $company,
@@ -117,7 +122,7 @@ class DataHelper
     public function getDuplicateDetails(array $duplicate): array
     {
         $query = sprintf(
-            "SELECT id, name, email, job, studies, company, date_registered FROM alumni_data WHERE name='%s' AND email='%s'",
+            "SELECT id, name, email, birhtday, graduation_year, job, studies, company, date_registered FROM alumni_data WHERE name='%s' AND email='%s'",
             $duplicate['name'],
             $duplicate['email']
         );

@@ -37,6 +37,8 @@ $return = null;
 
 $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$birthday = filter_input(INPUT_POST, 'birthday', FILTER_SANITIZE_SPECIAL_CHARS);
+$graduation_year = filter_input(INPUT_POST, 'graduation_year', FILTER_VALIDATE_INT);
 $studies = filter_input(INPUT_POST, 'studies', FILTER_SANITIZE_SPECIAL_CHARS);
 $job = filter_input(INPUT_POST, 'job', FILTER_SANITIZE_SPECIAL_CHARS);
 $company = filter_input(INPUT_POST, 'company', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -98,12 +100,17 @@ if(isset($submit) && isset($privacy_checkbox)) {
     else {
         $transfer = 0;
     }
-    $dataHelper->saveNewAlumni($name, $email, $studies, $job, $company, $transfer);
+    $dataHelper->saveNewAlumni($name, $email, $birthday, $graduation_year, $studies, $job, $company, $transfer);
 
-    // Ability to switch easily between to possible success alerts
-    //$success_message = $alert->successAlert('Danke fürs Eingeben deiner Daten!<br>Hast du schon unseren Image-Film für die Ehemaligen-Party gesehen? Nein? Dann <a href="https://www.melle-gymnasium.de/Schulfilm">hier</a> entlang!');
     $success_message = $alert->successAlert('Danke fürs Eingeben deiner Daten!');
 }
+
+// Generate min and max birthdate
+$minBirthDate = new DateTime('first day of january this year');
+$minBirthDate->modify('-100 years');
+
+$maxBirthDate = new DateTime('first day of january this year');
+$maxBirthDate->modify('-16 years');
 
 include 'header.php';
 
@@ -113,6 +120,8 @@ $template->setTemplate('index.twig');
 $templateVars = [
     'success_message' => isset($success_message) ? $success_message : '',
     'php_self' => filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_SPECIAL_CHARS),
+    'minBirthDate' => date('Y-m-d', $minBirthDate->getTimestamp()),
+    'maxBirthDate' => date('Y-m-d', $maxBirthDate->getTimestamp())
 ];
 
 echo $template->render($templateVars);

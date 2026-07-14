@@ -43,6 +43,13 @@ if(is_null($dataid)) {
     exit();
 }
 
+// Generate min and max birthdate
+$minBirthDate = new DateTime('first day of january this year');
+$minBirthDate->modify('-100 years');
+
+$maxBirthDate = new DateTime('first day of january this year');
+$maxBirthDate->modify('-16 years');
+
 include 'header.php';
 
 $template = new Template('./assets/templates');
@@ -50,7 +57,9 @@ $template->setTemplate('editData.twig');
 
 $templateVars = [
     'data' => $data,
-    'dataid' => $dataid
+    'dataid' => $dataid,
+    'minBirthDate' => date('Y-m-d', $minBirthDate->getTimestamp()),
+    'maxBirthDate' => date('Y-m-d', $maxBirthDate->getTimestamp())
 ];
 
 echo $template->render($templateVars);

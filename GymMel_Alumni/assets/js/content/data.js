@@ -104,6 +104,8 @@ export const handleEditAlumni = () => {
                     body: JSON.stringify({
                         name: document.getElementById('name').value,
                         email: document.getElementById('email').value,
+                        birthday: document.getElementById('birthday').value,
+                        graduation_year: document.getElementById('graduation_year').value,
                         studies: document.getElementById('studies').value,
                         job: document.getElementById('job').value,
                         company: document.getElementById('company').value,

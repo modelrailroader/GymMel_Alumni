@@ -139,6 +139,8 @@ switch ($action) {
     case 'editAlumni':
         $name = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+        $birthday = filter_var($postData->birthday, FILTER_SANITIZE_SPECIAL_CHARS);
+        $graduation_year = filter_var($postData->graduation_year, FILTER_VALIDATE_INT);
         $studies = filter_var($postData->studies, FILTER_SANITIZE_SPECIAL_CHARS);
         $job = filter_var($postData->job, FILTER_SANITIZE_SPECIAL_CHARS);
         $company = filter_var($postData->company, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -149,6 +151,8 @@ switch ($action) {
             'id' => $id,
             'name' => $name,
             'email' => $email,
+            'birthday' => $birthday,
+            'graduation_year' => $graduation_year,
             'studies' => $studies,
             'job' => $job,
             'company' => $company,

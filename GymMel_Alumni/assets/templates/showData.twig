@@ -26,12 +26,14 @@
         <tr>
             <th data-priority="1">Name</th>
             <th data-priority="2">E-Mail-Adresse</th>
+            <th>Geburtsdatum</th>
+            <th data-priority="3">Abiturjahrgang</th>
             <th>Beruf</th>
             <th>Ausbildung</th>
             <th>Unternehmen</th>
-            <th data-priority="4">Registrierung</th>
-            <th data-priority="5">Weitergabe der Daten</th>
-            <th class="noVis" data-priority="3" data-orderable="false">Bearbeiten</th>
+            <th data-priority="5">Registrierung</th>
+            <th data-priority="6">Weitergabe der Daten</th>
+            <th class="noVis" data-priority="4" data-orderable="false">Bearbeiten</th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +41,8 @@
             <tr id="alumni{{ item.id }}">
                 <td>{{ item.name|raw }}</td>
                 <td>{{ item.email }}</td>
+                <td>{{ item.birthday !== '0000-00-00' ? item.birthday|date('d.m.Y') : '' }}</td>
+                <td>{{ item.graduation_year != 0 ? item.graduation_year : '' }}</td>
                 <td>{{ item.job|raw }}</td>
                 <td>{{ item.studies|raw }}</td>
                 <td>{{ item.company|raw }}</td>
@@ -103,6 +107,8 @@
                                              data-page="{{ page_counter }}">
                                             <div class="accordion-body">
                                                 <ul>
+                                                    <li>Geburtsdatum: {{ item.birthday ? item.birthday|date('d.m.Y') : '' }}</li>
+                                                    <li>Abiturjahrgang: {{ item.graduation_year }}</li>
                                                     <li>Studium/Ausbildung: {{ duplicate.studies }}</li>
                                                     <li>Beruf/Tätigkeit: {{ duplicate.job }}</li>
                                                     <li>Aktueller Arbeitgeber:in: {{ duplicate.company }}</li>

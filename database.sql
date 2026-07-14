@@ -29,7 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `alumni_data` (
   `id` int(11) NOT NULL,
   `name` varchar(500) DEFAULT NULL,
-  `email` varchar(500) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `graduation_year` YEAR DEFAULT NULL,
   `studies` varchar(1000) DEFAULT NULL,
   `job` varchar(500) DEFAULT NULL,
   `company` varchar(500) DEFAULT NULL,
@@ -57,7 +59,7 @@ CREATE TABLE `alumni_sessions` (
 
 CREATE TABLE `alumni_users` (
   `username` varchar(500) DEFAULT NULL,
-  `email` varchar(500) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `password` varchar(500) DEFAULT NULL,
   `2fa` int(1) DEFAULT NULL,
   `secret` varchar(50) DEFAULT NULL,
