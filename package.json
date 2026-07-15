@@ -8,7 +8,7 @@
     "test": "php ./GymMel_Alumni/vendor/bin/phpunit ./tests"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jan Harms",
   "license": "MPL 2.0",
   "dependencies": {
     "bootstrap": "^5.3.8",
