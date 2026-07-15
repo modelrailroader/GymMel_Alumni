@@ -42,9 +42,9 @@ export const createToast = (message, typ) => {
     toastBody.appendChild(toastMessage);
     const closeButton = document.createElement('button');
     closeButton.classList.add('btn-close');
+    closeButton.classList.add('btn-close-white')
     closeButton.setAttribute('data-bs-dismiss', 'toast');
     closeButton.setAttribute('aria-label', 'close');
-    closeButton.style.color = 'grey';
     toastBody.appendChild(closeButton);
     toastElement.appendChild(toastBody);
     return toastElement;

@@ -91,6 +91,18 @@ export const handleShowData = () => {
         });
         table.draw();
     }
+
+    const message = localStorage.getItem('message');
+    const messageLocation = localStorage.getItem('messageLocation');
+    if (message && messageLocation === 'showData') {
+        const toastElement = createToast(message, 'success');
+        document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+        const toast = new Toast(toastElement);
+        toast.show();
+        window.scrollTo(0, 0);
+        localStorage.removeItem('message');
+        localStorage.removeItem('messageLocation');
+    }
 };
 
 export const handleEditAlumni = () => {
@@ -124,11 +136,18 @@ export const handleEditAlumni = () => {
                         }
                     })
                     .then(responseData => {
-                        const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
-                        document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
-                        const toast = new Toast(toastElement);
-                        toast.show();
-                        window.scrollTo(0, 0);
+                        if (!responseData.stored) {
+                            const toastElement = createToast(responseData.message, 'danger');
+                            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                            const toast = new Toast(toastElement);
+                            toast.show();
+                            window.scrollTo(0, 0);
+                        } else {
+                            // Set localStorage to show success toast on overview-page
+                            localStorage.setItem('message', responseData.message);
+                            localStorage.setItem('messageLocation', 'showData');
+                            window.location.href = 'showData.php';
+                        }
                     })
                     .catch(error => {
                         console.error('Fehler bei der Fetch-Anfrage:', error);

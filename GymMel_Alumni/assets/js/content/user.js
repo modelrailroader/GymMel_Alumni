@@ -49,7 +49,7 @@ export const handleCreateUser = () => {
         const helpTextConfirmPassword = document.getElementById('helpTextConfirmPassword');
 
         document.addEventListener('DOMContentLoaded', function () {
-            submitButton.addEventListener('click', function () {
+            submitButton.addEventListener('click', function (event) {
                 const checks = [];
                 if (validatePassword(passwordInput.value) !== '') {
                     checks.push(false);
@@ -85,15 +85,16 @@ export const handleCreateUser = () => {
                             }
                         })
                         .then(responseData => {
-                            const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
-                            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
-                            const toast = new Toast(toastElement);
-                            toast.show();
-                            window.scrollTo(0, 0);
-                            if (responseData.stored) {
-                                document.getElementById('helpTextConfirmPassword').textContent = '';
-                                document.getElementById('helpTextPassword').textContent = '';
-                                createUserForm.reset();
+                            if (!responseData.stored) {
+                                const toastElement = createToast(responseData.message, 'danger');
+                                document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                                const toast = new Toast(toastElement);
+                                toast.show();
+                                window.scrollTo(0, 0);
+                            } else {
+                                localStorage.setItem('message', responseData.message);
+                                localStorage.setItem('messageLocation', 'users');
+                                window.location.href = 'users.php';
                             }
                         })
                         .catch(error => {
@@ -157,7 +158,7 @@ export const handleEditUser = () => {
             });
 
             // Validate password and check if password and confirmPassword are equal if submit button is triggered and send data
-            submitButton.addEventListener('click', function () {
+            submitButton.addEventListener('click', function (event) {
                 const checks = [];
                 if (newPassword.checked) {
                     if (validatePassword(passwordInput.value) !== '') {
@@ -196,24 +197,16 @@ export const handleEditUser = () => {
                             }
                         })
                         .then(responseData => {
-                            const toastElement = createToast(responseData.message, responseData.stored ? 'success' : 'danger');
-                            document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
-                            const toast = new Toast(toastElement);
-                            toast.show();
-                            window.scrollTo(0, 0);
-                            if (responseData.stored) {
-                                helpTextConfirmPasswordInput.textContent = '';
-                                helpTextPasswordInput.textContent = '';
-                                passwordInput.value = '';
-                                confirmPasswordInput.value = '';
-                                newPassword.checked = false;
-                                if (twofactor_active.checked) {
-                                    document.getElementById('new_2fa_div').style.display = 'block';
-                                } else {
-                                    document.getElementById('new_2fa_div').style.display = 'none'
-                                }
-                                passwordDiv.style.display = 'none';
-                                confirmPasswordDiv.style.display = 'none';
+                            if (!responseData.stored) {
+                                const toastElement = createToast(responseData.message, 'danger');
+                                document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+                                const toast = new Toast(toastElement);
+                                toast.show();
+                                window.scrollTo(0, 0);
+                            } else {
+                                localStorage.setItem('message', responseData.message);
+                                localStorage.setItem('messageLocation', 'users');
+                                window.location.href = 'users.php';
                             }
                         })
                         .catch(error => {
@@ -287,6 +280,16 @@ export const handleShowUsers = () => {
             });
         });
         table.draw();
+    }
+
+    const message = localStorage.getItem('message');
+    const messageLocation = localStorage.getItem('messageLocation');
+    if (message && messageLocation === 'users') {
+        const toastElement = createToast(message, 'success');
+        document.getElementById('alert').insertAdjacentElement('beforeend', toastElement);
+        const toast = new Toast(toastElement);
+        toast.show();
+        window.scrollTo(0, 0);
     }
 };
 
