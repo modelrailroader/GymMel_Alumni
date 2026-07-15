@@ -22,7 +22,32 @@ use src\Template;
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
+// @todo behaviour if id is not given
+
 $dataHelper = new DataHelper();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+
+// Send user to emailToken.php if they are not already verified
+$alumniVerified = false;
+if (isset($_SESSION['id']) && isset($_SESSION['alumniVerified'])) {
+    if ($_SESSION['alumniVerified'] === true && $_SESSION['id'] === $id) {
+        if ((time() - $_SESSION['verificationTime']) < 1800) {
+            $alumniVerified = true;
+        }
+    }
+}
+
+if (!$alumniVerified) {
+    $dataHelper->requestEmailTokenForDataChange($id);
+    header('Location: emailToken.php?id=' . $id);
+    exit();
+}
+
 
 $alumniData = $dataHelper->getAlumniData($id);
 

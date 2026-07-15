@@ -8,9 +8,9 @@
  *
  * @package   GymMel_Alumni
  * @author    Jan Harms <model_railroader@gmx-topmail.de>
- * @copyright 2023-2026 Gymnasium Melle
+ * @copyright 2026 Gymnasium Melle
  * @license   https://www.mozilla.org/MPL/2.0/ Mozilla Public License Version 2.0
- * @since     2024-02-23
+ * @since     2026-07-15
  */
 
 include 'constants.php';
@@ -18,6 +18,10 @@ include_once(__DIR__ . '/vendor/autoload.php');
 include_once('autoload.php');
 
 use src\DataHelper;
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $dataHelper = new DataHelper();
 
@@ -58,6 +62,24 @@ switch ($action) {
             'message' => $message
         ];
         break;
+    case 'emailToken':
+        $id = filter_var($postData->id, FILTER_VALIDATE_INT);
+        $code = filter_var($postData->code, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        // @todo Prüfe Gültigkeit Token
+
+        if ($dataHelper->verifyEmailToken($id, $code)) {
+            $success = true;
+            $message = '';
+        } else {
+            $success = false;
+            $message = 'Der eingegebene Code war nicht korrekt.';
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message
+        ];
 }
 
 echo json_encode($response);

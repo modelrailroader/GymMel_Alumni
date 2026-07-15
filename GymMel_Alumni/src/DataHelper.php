@@ -16,6 +16,7 @@
 namespace src;
 
 use A1phanumeric\DBPDO;
+use DateTime;
 
 class DataHelper
 {
@@ -55,8 +56,8 @@ class DataHelper
             $transfer_privacy_agreed = '';
         }
         $query = sprintf("UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = '%s',"
-                         . "`graduation_year` = %d, `studies` = '%s', `job` = '%s', `company` = '%s',"
-                         . "`transfer_privacy` = %d %s WHERE `id` = %d",
+            . "`graduation_year` = %d, `studies` = '%s', `job` = '%s', `company` = '%s',"
+            . "`transfer_privacy` = %d %s WHERE `id` = %d",
             $data['id'],
             $data['name'],
             $data['email'],
@@ -138,12 +139,88 @@ class DataHelper
                 if ($alumni !== (string)$alumniId) {
                     $success[] = $this->deleteAlumniById($alumni);
                 }
-            }
-            else {
+            } else {
                 return false;
             }
         }
         return !in_array(false, $success);
     }
-}
 
+    public function requestEmailTokenForDataChange(int $id): bool
+    {
+        $alumniData = $this->getAlumniData($id);
+
+        // Generate token and save it to database
+        $token = $this->generateEmailToken();
+        $this->saveTokenToDatabase($token, $id);
+
+        $emailBody = sprintf(
+            "<p>Du möchtest deine bei der Alumni-Datenbank hinterlegten Daten ändern oder löschen und hast einen Verifizierungscode angefordert.</p>"
+            . "<p>Dein Code lautet:</p><p style='font-size: 28px; margin-left: 30px'><b>%s</b></p><p>Dein Code ist 10 Minuten gültig.</p><p>Du hast diesen Code nicht angefordert? Dann kannst du diese E-Mail einfach ignorieren.</p>",
+            $token
+        );
+        $emailAltBody = sprintf(
+            "Du möchtest deine bei der Alumni-Datenbank hinterlegten Daten ändern oder löschen und hast einen Verifizierungscode angefordert.\n\n"
+            . "Dein Code lautet:\n"
+            . "%s\n\n"
+            . "Dein Code ist 10 Minuten gültig.\n\n"
+            . "Du hast diesen Code nicht angefordert? Dann kannst du diese E-Mail einfach ignorieren.",
+            $token
+        );
+
+        $mailer = new Mail();
+        $mailer->setHTML(true);
+        $mailer->addAddress($alumniData['email'], $alumniData['name']);
+        $mailer->addSubject('Dein Verifizierungscode');
+        $mailer->addHTMLBody($emailBody);
+        $mailer->addAltBody($emailAltBody);
+        return $mailer->send();
+    }
+
+    private function saveTokenToDatabase(string $token, int $id): bool
+    {
+        $query = sprintf("UPDATE `alumni_data` SET `token` = '%s', `token_generation_time` = '%s' WHERE `id` = %d",
+            $token,
+            date('Y-m-d H:i:s', time()),
+            $id
+        );
+        return (bool)$this->dbclient->execute($query);
+    }
+
+    private function generateEmailToken(): string
+    {
+        return sprintf('%03d-%03d', random_int(0, 999), random_int(0, 999));
+    }
+
+    public function verifyEmailToken(int $id, string $token): bool
+    {
+        $query = sprintf('SELECT `token`, `token_generation_time` FROM `alumni_data` WHERE `id` = %d',
+            $id
+        );
+        $response = $this->dbclient->fetch($query);
+
+        $tokenGenerationTime = new DateTime($response['token_generation_time']);
+
+        if ($token === $response['token'] && (time() - $tokenGenerationTime->getTimestamp() < 600)) {
+            $_SESSION['id'] = $id;
+            $_SESSION['alumniVerified'] = true;
+            $_SESSION['verificationTime'] = time();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function anonymizeEmailAddress(string $email): string
+    {
+        [$localPart, $domain] = explode('@', $email, 2);
+
+        if (strlen($localPart) <= 3) {
+            $maskedLocalPart = substr($localPart, 0, 1) . str_repeat('*', max(1, strlen($localPart) - 1));
+        } else {
+            $maskedLocalPart = substr($localPart, 0, 3) . str_repeat('*', strlen($localPart) - 3);
+        }
+
+        return $maskedLocalPart . '@' . $domain;
+    }
+}

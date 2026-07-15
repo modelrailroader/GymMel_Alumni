@@ -159,7 +159,7 @@ switch ($action) {
             'transfer_privacy' => ($transfer_privacy === true) ? 1 : 0
         );
         if ($stored = $dataHelper->updateData($data_change)) {
-            $message = "Die Daten des Alumni's " . $name . " wurden erfolgreich geändert!";
+            $message = "Die Daten des Alumnis " . $name . " wurden erfolgreich geändert!";
             $logs->addLogEntry('The data of the alumni ' . $name . ' was successfully changed.');
         } else {
             $message = 'An error occurred while updating the data.';

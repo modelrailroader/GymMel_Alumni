@@ -52,7 +52,7 @@
                         <i class="bi bi-mortarboard"></i>&nbsp; Abiturjahrgang:
                     </label>
                     <div class="required-field-block">
-                        <input type="number" class="form-control" id="graduation_year" name="graduation_year" min="1950" max="2100" value="{{ data.graduation_year }}">
+                        <input type="number" class="form-control" id="graduation_year" name="graduation_year" min="1950" max="2100" value="{{ data.graduation_year != 0 ? data.graduation_year : '' }}">
                     </div>
                 </div>
             </div>

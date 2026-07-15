@@ -210,6 +210,96 @@ export const handleChangeData = () => {
     }
 }
 
+export const handleEmailToken = () => {
+    const code1 = document.getElementById('code1');
+    const code2 = document.getElementById('code2');
+    const code3 = document.getElementById('code3');
+    const code4 = document.getElementById('code4');
+    const code5 = document.getElementById('code5');
+    const code6 = document.getElementById('code6');
+
+    if (code1 && code2 && code3 && code4 && code5 && code6) {
+        // Simplify entering code through jumping automatically to next fields
+        const inputs = document.querySelectorAll('.code-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/g, '');
+
+                // Jump to next field
+                if (input.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                // At backspace, jumpp to previus field
+                if (e.key === 'Backspace' && !input.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Paste entire code
+        inputs[0].addEventListener('paste', (e) => {
+            e.preventDefault();
+
+            const pasted = e.clipboardData
+                .getData('text')
+                .replace(/\D/g, '')
+                .substring(0, inputs.length);
+
+            [...pasted].forEach((char, index) => {
+                inputs[index].value = char;
+            });
+
+            // Fokus auf nächstes leeres Feld setzen
+            const nextIndex = pasted.length < inputs.length ? pasted.length : inputs.length - 1;
+            inputs[nextIndex].focus();
+        });
+    }
+
+    const emailTokenForm = document.getElementById('emailTokenForm');
+    if (emailTokenForm) {
+        const id = document.getElementById('id');
+        const submitButton = document.getElementById('submit');
+
+        submitButton.addEventListener('click', function (event) {
+            const code = code1.value + code2.value + code3.value + '-' + code4.value + code5.value + code6.value;
+            event.preventDefault();
+            const response = fetch('api.php?action=emailToken', {
+                method: 'POST',
+                body: JSON.stringify({
+                    code: code,
+                    id: id.value
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                    }
+                })
+                .then(responseData => {
+                    if (responseData.success) {
+                        window.location.href = 'changeData.php?id=' + id.value;
+                    } else {
+                        const alert = document.getElementById('alert');
+                        alert.innerText = responseData.message;
+                        alert.style.display = 'block';
+                        window.scrollTo(0, 0);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler bei der Fetch-Anfrage:', error);
+                });
+        });
+    }
+}
+
 export const handleFindDuplicates = () => {
     const modal = document.getElementById('modalDuplicates');
     const findDuplicatesButton = document.getElementById('findDuplicatesButton');

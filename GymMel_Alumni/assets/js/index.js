@@ -6,7 +6,8 @@ import {
     handleShowUsers,
     handleFindDuplicates,
     handleEditAlumni,
-    handleChangeData
+    handleChangeData,
+    handleEmailToken
 } from './content';
 import { handlePasswordToggles } from "./utils/password";
 import {easterEggs} from "./utils/easterEggs";
@@ -24,6 +25,7 @@ handleEditAlumni();
 
 // Handle change data
 handleChangeData();
+handleEmailToken();
 
 // Handle Show-password buttons
 handlePasswordToggles();
