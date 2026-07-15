@@ -161,6 +161,55 @@ export const handleEditAlumni = () => {
     }
 };
 
+export const handleChangeData = () => {
+    const changeDataForm = document.getElementById('changeDataForm');
+    if (changeDataForm) {
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            if (changeDataForm.checkValidity()) {
+                const response = fetch('api.php?action=editAlumni', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        birthday: document.getElementById('birthday').value,
+                        graduation_year: document.getElementById('graduation_year').value,
+                        studies: document.getElementById('studies').value,
+                        job: document.getElementById('job').value,
+                        company: document.getElementById('company').value,
+                        transfer_privacy: document.getElementById('transfer-privacy').checked,
+                        id: document.getElementById('id').value
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                        }
+                    })
+                    .then(responseData => {
+                        const alert = document.getElementById('alert');
+                        alert.classList.add(responseData.stored ? 'alert-success' : 'alert-danger');
+                        alert.innerText = responseData.message;
+                        alert.style.display = 'block';
+                        window.scrollTo(0, 0);
+                    })
+                    .catch(error => {
+                        console.error('Fehler bei der Fetch-Anfrage:', error);
+                    });
+            }
+            else {
+                changeDataForm.reportValidity();
+            }
+        });
+    }
+}
+
 export const handleFindDuplicates = () => {
     const modal = document.getElementById('modalDuplicates');
     const findDuplicatesButton = document.getElementById('findDuplicatesButton');

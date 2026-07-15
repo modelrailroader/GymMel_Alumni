@@ -1,0 +1,97 @@
+<div class="container mt-5">
+    <div class="alert" id="alert" style="display: none" role="alert"></div>
+    <h2>Persönliche Alumni-Daten bearbeiten</h2>
+    <div style="margin-top: 20px"></div>
+    <p>Bitte aktualisiere über dieses Formular deine aktuell bei uns gespeicherten Daten, damit wir dich weiterhin zielgerecht kontaktieren können.
+    Wenn du deine Daten stattdessen komplett aus unserer Datenbank löschen möchtest, klicke bitte hier.</p>
+    <div style="margin-top: 20px"></div>
+    <form id="changeDataForm" action="#" method="post">
+        <input type="hidden" value="{{ data.id }}" id="id" name="id" />
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="name" class="form-label">
+                        <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ data.name|raw }}" required>
+                        <div class="required-icon">
+                            <div class="text">*</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}" required>
+                        <div class="required-icon">
+                            <div class="text">*</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="birthday" class="form-label">
+                        <i class="bi bi-calendar-date"></i>&nbsp; Geburtsdatum:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="date" class="form-control" id="birthday" name="birthday" min="{{ minBirthDate }}" max="{{ maxBirthDate }}" value="{{ data.birthday != '0000-00-00' ? data.birthday : '' }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="graduation_year" class="form-label">
+                        <i class="bi bi-mortarboard"></i>&nbsp; Abiturjahrgang:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="number" class="form-control" id="graduation_year" name="graduation_year" min="1950" max="2100" value="{{ data.graduation_year }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="studies" class="form-label">
+                <i class="bi bi-book"></i>&nbsp; Studium/Ausbildung:
+            </label>
+            <input type="text" class="form-control" id="studies" name="studies" value="{{ data.studies|raw }}">
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="job" class="form-label">
+                        <i class="bi bi-briefcase"></i>&nbsp; Beruf/Tätigkeit:
+                    </label>
+                    <input type="text" class="form-control" id="job" name="job" value="{{ data.job|raw }}">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="company" class="form-label">
+                        <i class="bi bi-building"></i>&nbsp; Aktuelle:r Arbeitgeber:in:
+                    </label>
+                    <input type="text" class="form-control" id="company" name="company" value="{{ data.company|raw }}">
+                </div>
+            </div>
+        </div>
+        <p style="font-size: 14px"><span style="color: red">*</span> Pflichtfeld</p>
+        <div style="margin-top: 30px"></div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="transfer-privacy" name="transfer-privacy" {{ data.transfer_privacy == 1 ? 'checked' : '' }}>
+            <label class="form-check-label" for="transfer-privacy">
+                Ich stimme der Weitergabe meiner Daten insbesondere meiner E-Mail-Adresse an Schüler:innen zur Kontaktaufnahme zu. Meine Einwilligung kann ich jederzeit widerrufen.
+            </label>
+        </div>
+        <div style="margin-top: 20px"></div>
+        <button type="submit" id="submit" name="submit" class="btn btn-primary"><i class="bi bi-save"></i> Speichern</button>
+    </form>
+</div>
+
+<div style="margin-top: 50px;"></div>

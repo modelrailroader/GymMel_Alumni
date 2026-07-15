@@ -1,0 +1,63 @@
+<?php
+/**
+ * External API for handling all public user post actions.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License,
+ * v. 2.0. If a copy of the MPL was not distributed with this file, You can
+ * obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * @package   GymMel_Alumni
+ * @author    Jan Harms <model_railroader@gmx-topmail.de>
+ * @copyright 2023-2026 Gymnasium Melle
+ * @license   https://www.mozilla.org/MPL/2.0/ Mozilla Public License Version 2.0
+ * @since     2024-02-23
+ */
+
+include 'constants.php';
+include_once(__DIR__ . '/vendor/autoload.php');
+include_once('autoload.php');
+
+use src\DataHelper;
+
+$dataHelper = new DataHelper();
+
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
+$postData = json_decode(file_get_contents('php://input'));
+
+switch ($action) {
+    case 'editAlumni':
+        $name = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+        $birthday = filter_var($postData->birthday, FILTER_SANITIZE_SPECIAL_CHARS);
+        $graduation_year = filter_var($postData->graduation_year, FILTER_VALIDATE_INT);
+        $studies = filter_var($postData->studies, FILTER_SANITIZE_SPECIAL_CHARS);
+        $job = filter_var($postData->job, FILTER_SANITIZE_SPECIAL_CHARS);
+        $company = filter_var($postData->company, FILTER_SANITIZE_SPECIAL_CHARS);
+        $transfer_privacy = filter_var($postData->transfer_privacy, FILTER_VALIDATE_BOOL);
+        $id = filter_var($postData->id, FILTER_VALIDATE_INT);
+
+        $data_change = array(
+            'id' => $id,
+            'name' => $name,
+            'email' => $email,
+            'birthday' => $birthday,
+            'graduation_year' => $graduation_year,
+            'studies' => $studies,
+            'job' => $job,
+            'company' => $company,
+            'transfer_privacy' => ($transfer_privacy === true) ? 1 : 0
+        );
+        if ($stored = $dataHelper->updateData($data_change)) {
+            $message = "Deine Daten wurden erfolgreich geändert.";
+        } else {
+            $message = 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
+        }
+
+        $response = [
+            'stored' => $stored,
+            'message' => $message
+        ];
+        break;
+}
+
+echo json_encode($response);
