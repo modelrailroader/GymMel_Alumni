@@ -290,6 +290,8 @@ export const handleShowUsers = () => {
         const toast = new Toast(toastElement);
         toast.show();
         window.scrollTo(0, 0);
+        localStorage.removeItem('message');
+        localStorage.removeItem('messageLocation');
     }
 };
 
