@@ -154,6 +154,7 @@ class DataHelper
         // Generate token and save it to database
         $token = $this->generateEmailToken();
         $this->saveTokenToDatabase($token, $id);
+        $_SESSION['tokenCreated'] = time();
 
         $emailBody = sprintf(
             "<p>Du möchtest deine bei der Alumni-Datenbank hinterlegten Daten ändern oder löschen und hast einen Verifizierungscode angefordert.</p>"

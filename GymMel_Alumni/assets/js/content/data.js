@@ -218,11 +218,65 @@ export const handleEmailToken = () => {
     const code5 = document.getElementById('code5');
     const code6 = document.getElementById('code6');
 
-    // Focus first code-field if site is loaded
     if (code1) {
         document.addEventListener('DOMContentLoaded', function () {
+            // Focus first code-field if site is loaded
             code1.focus();
+
+            // Timer for resending token
+            let timeTokenResend = 59;
+            const secondsResend = document.getElementById('secondsResend');
+            const buttonTokenResend = document.getElementById('buttonTokenResend');
+
+            const timerTokenResend = setInterval(() => {
+                secondsResend.innerText = timeTokenResend.toString();
+
+                if (timeTokenResend <= 0) {
+                    clearInterval(timerTokenResend);
+                    buttonTokenResend.style.pointerEvents = 'auto';
+                    buttonTokenResend.style.textDecoration = 'underline';
+                    buttonTokenResend.style.cursor = 'pointer';
+                    buttonTokenResend.innerText = 'Verifizierungscode jetzt neu senden';
+                    return;
+                }
+
+                timeTokenResend--;
+            }, 1000);
+
+            buttonTokenResend.addEventListener('click', function (event) {
+                event.preventDefault();
+                const response = fetch('api.php?action=resendToken', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        id: id.value
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                        }
+                    })
+                    .then(responseData => {
+                        if (responseData.success) {
+                            window.location.reload();
+                        } else {
+                            const alert = document.getElementById('alert');
+                            alert.innerText = responseData.message;
+                            alert.style.display = 'block';
+                            window.scrollTo(0, 0);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fehler bei der Fetch-Anfrage:', error);
+                    });
+            })
         });
+
     }
 
     if (code1 && code2 && code3 && code4 && code5 && code6) {

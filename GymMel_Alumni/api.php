@@ -78,6 +78,23 @@ switch ($action) {
             'success' => $success,
             'message' => $message
         ];
+        break;
+    case 'resendToken':
+        $id = filter_var($postData->id, FILTER_VALIDATE_INT);
+
+        if (isset($_SESSION['tokenCreated'])) {
+            // Resend token only after 1 minute (60s)
+            if (time() - $_SESSION['tokenCreated'] > 60) {
+                $success = $dataHelper->requestEmailTokenForDataChange($id);
+            }
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
+        ];
+
+        break;
 }
 
 echo json_encode($response);
