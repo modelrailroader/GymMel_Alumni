@@ -201,6 +201,7 @@ class DataHelper
 
         $tokenGenerationTime = new DateTime($response['token_generation_time']);
 
+        // Token is valid for 10 minutes (600s)
         if ($token === $response['token'] && (time() - $tokenGenerationTime->getTimestamp() < 600)) {
             $_SESSION['id'] = $id;
             $_SESSION['alumniVerified'] = true;
@@ -209,6 +210,19 @@ class DataHelper
         } else {
             return false;
         }
+    }
+
+    public function checkIfAlumniIsLoggedInForDataChange(int $id): bool
+    {
+        if (isset($_SESSION['alumniVerified']) && $_SESSION['alumniVerified']) {
+            if ($_SESSION['id'] === $id) {
+                // Alumni is logged out after 30 minutes (1800s)
+                if (time() - $_SESSION['verificationTime'] < 1800) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public function anonymizeEmailAddress(string $email): string

@@ -27,18 +27,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$dataHelper = new DataHelper();
+
+// If emailToken.php is called without id parameter
 if (!$id) {
     header('Location: index.php');
     exit();
 } else {
-    if (isset($_SESSION['alumniVerified']) && $_SESSION['alumniVerified']) {
-        if (time() - $_SESSION['verificationTime'] < 1800) {
-            header('Location: changeData.php?id=' . $id);
-        }
+    // if id parameter is located, check if alumni is verified and send them to changeData.php
+    if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
+        header('Location: changeData.php?id=' . $id);
     }
 }
-
-$dataHelper = new DataHelper();
 
 $alumniData = $dataHelper->getAlumniData($id);
 
