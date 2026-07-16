@@ -57,7 +57,7 @@ class DataHelper
         }
         $query = sprintf("UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = '%s',"
             . "`graduation_year` = %d, `studies` = '%s', `job` = '%s', `company` = '%s',"
-            . "`transfer_privacy` = %d %s WHERE `id` = %d",
+            . "`transfer_privacy` = %d, `date_last_changed` = '%s' %s WHERE `id` = %d",
             $data['id'],
             $data['name'],
             $data['email'],
@@ -67,6 +67,7 @@ class DataHelper
             $data['job'],
             $data['company'],
             $data['transfer_privacy'],
+            date('Y-m-d H:i:s', time()),
             $transfer_privacy_agreed,
             $data['id']);
         return (bool)$this->dbclient->execute($query);
