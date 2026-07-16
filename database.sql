@@ -36,8 +36,11 @@ CREATE TABLE `alumni_data` (
   `job` varchar(500) DEFAULT NULL,
   `company` varchar(500) DEFAULT NULL,
   `date_registered` int(20) DEFAULT NULL,
+  `date_last_changed` datetime DEFAULT NULL,
   `transfer_privacy` int(1) DEFAULT NULL,
-  `date_transfer_privacy_agreed` int(20) DEFAULT NULL
+  `date_transfer_privacy_agreed` int(20) DEFAULT NULL,
+  `token` varchar(7) DEFAULT NULL,
+  `token_generation_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
