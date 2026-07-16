@@ -47,19 +47,14 @@ class Mail
         return $this->mailer->addAddress($email, $name);
     }
 
-    public function setHTML(bool $html): bool
-    {
-        $this->mailer->isHTML($html);
-        return true;
-    }
-
     public function addSubject(string $subject): bool
     {
         return $this->mailer->Subject = $subject;
     }
 
-    public function addHTMLBody(string $body): bool
+    public function addBody(string $body, bool $isHtml): bool
     {
+        $this->mailer->isHTML($isHtml);
         return $this->mailer->Body = $body;
     }
 

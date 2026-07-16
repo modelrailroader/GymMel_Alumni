@@ -19,6 +19,7 @@ use A1phanumeric\DBPDO;
 use RobThree\Auth\TwoFactorAuth;
 use RobThree\Auth\Algorithm;
 use RobThree\Auth\Providers\Qr\QRServerProvider;
+use src\Mail;
 
 class User
 {
@@ -484,7 +485,11 @@ class User
                 . "und lege im Persönlichen Bereich ein neues Passwort fest. Wenn du diese Mail nicht angefordert hast, kannst du diese ignorieren.",
                 $username,
                 $password);
-            if (mail($this->email, 'Dein neues Passwort', $message, 'From: Alumni-Netzwerk Gymnasium Melle')) {
+            $mailer = new Mail();
+            $mailer->addAddress($this->email);
+            $mailer->addSubject('Dein neues Password');
+            $mailer->addBody($message, false);
+            if ($mailer->send()) {
                 $this->overwriteTwofactor($this->userid);
                 $this->setNewPassword($this->userid, $password);
                 $this->updateLoginTries($username, true);

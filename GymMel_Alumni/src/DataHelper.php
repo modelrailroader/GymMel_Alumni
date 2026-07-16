@@ -169,10 +169,9 @@ class DataHelper
         );
 
         $mailer = new Mail();
-        $mailer->setHTML(true);
         $mailer->addAddress($alumniData['email'], $alumniData['name']);
         $mailer->addSubject('Dein Verifizierungscode');
-        $mailer->addHTMLBody($emailBody);
+        $mailer->addBody($emailBody, true);
         $mailer->addAltBody($emailAltBody);
         return $mailer->send();
     }
