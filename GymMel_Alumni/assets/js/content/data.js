@@ -218,6 +218,13 @@ export const handleEmailToken = () => {
     const code5 = document.getElementById('code5');
     const code6 = document.getElementById('code6');
 
+    // Focus first code-field if site is loaded
+    if (code1) {
+        document.addEventListener('DOMContentLoaded', function () {
+            code1.focus();
+        });
+    }
+
     if (code1 && code2 && code3 && code4 && code5 && code6) {
         // Simplify entering code through jumping automatically to next fields
         const inputs = document.querySelectorAll('.code-input');
@@ -232,7 +239,7 @@ export const handleEmailToken = () => {
             });
 
             input.addEventListener('keydown', (e) => {
-                // At backspace, jumpp to previus field
+                // At backspace, jump to previous field
                 if (e.key === 'Backspace' && !input.value && index > 0) {
                     inputs[index - 1].focus();
                 }
@@ -252,7 +259,7 @@ export const handleEmailToken = () => {
                 inputs[index].value = char;
             });
 
-            // Fokus auf nächstes leeres Feld setzen
+            // Set focus to next empty field
             const nextIndex = pasted.length < inputs.length ? pasted.length : inputs.length - 1;
             inputs[nextIndex].focus();
         });
