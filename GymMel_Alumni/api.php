@@ -65,7 +65,7 @@ switch ($action) {
     case 'emailToken':
         $id = filter_var($postData->id, FILTER_VALIDATE_INT);
         $code = filter_var($postData->code, FILTER_SANITIZE_SPECIAL_CHARS);
-        
+
         if ($dataHelper->verifyEmailToken($id, $code)) {
             $success = true;
             $message = '';

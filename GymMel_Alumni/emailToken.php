@@ -29,13 +29,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
 if (!$id) {
     header('Location: index.php');
+    exit();
 } else {
-    if (isset($_SESSION['verificationTime'])) {
-        if (time() - $_SESSION['verificationTime'] < 1800 && $_SESSION['alumniVerified'] === true) {
+    if (isset($_SESSION['alumniVerified']) && $_SESSION['alumniVerified']) {
+        if (time() - $_SESSION['verificationTime'] < 1800) {
             header('Location: changeData.php?id=' . $id);
         }
-    } else {
-        header('Location: changeData.php?id=' . $id);
     }
 }
 
