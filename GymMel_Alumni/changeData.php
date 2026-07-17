@@ -22,25 +22,25 @@ use src\Template;
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-// @todo behaviour if id is not given
-
 $dataHelper = new DataHelper();
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
-
-// Send user to emailToken.php if they are not already verified
-if (!$dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
-    $dataHelper->requestEmailTokenForDataChange($id);
-    header('Location: emailToken.php?id=' . $id);
-    exit();
+if (!is_null($id)) {
+    if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
+        $alumniData = $dataHelper->getAlumniData($id);
+        $alumniVerified = true;
+    } else {
+        // Send user to emailToken.php if they are not already verified
+        $dataHelper->requestEmailTokenForDataChange($id);
+        header('Location: emailToken.php?id=' . $id);
+        exit();
+    }
+} else {
+    $alumniVerified = $dataHelper->checkIfAlumniIsLoggedInForDataChange();
 }
-
-
-$alumniData = $dataHelper->getAlumniData($id);
 
 // Generate min and max birthdate
 $minBirthDate = new DateTime('first day of january this year');
@@ -55,9 +55,10 @@ $template = new Template('./assets/templates');
 $template->setTemplate('changeData.twig');
 
 $templateVars = [
-    'data' => $alumniData,
+    'data' => $alumniData ?? null,
     'minBirthDate' => date('YYYY-m-d', $minBirthDate->getTimestamp()),
-    'maxBirthDate' => date('YYYY-m-d', $maxBirthDate->getTimestamp())
+    'maxBirthDate' => date('YYYY-m-d', $maxBirthDate->getTimestamp()),
+    'alumniVerified' => $alumniVerified
 ];
 
 echo $template->render($templateVars);

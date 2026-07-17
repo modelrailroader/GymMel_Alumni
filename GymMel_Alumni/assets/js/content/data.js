@@ -208,6 +208,44 @@ export const handleChangeData = () => {
             }
         });
     }
+
+    const emailDataRequestForm = document.getElementById('emailDataRequestForm');
+    if (emailDataRequestForm) {
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            const response = fetch('api.php?action=requestData', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: document.getElementById('email').value,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                    }
+                })
+                .then(responseData => {
+                    if (responseData.success) {
+                        window.location.href = 'emailToken.php?id=' + responseData.id;
+                    } else {
+                        const alert = document.getElementById('alert');
+                        alert.classList.add('alert-danger');
+                        alert.innerText = responseData.message;
+                        alert.style.display = 'block';
+                        window.scrollTo(0, 0);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler bei der Fetch-Anfrage:', error);
+                });
+        });
+    }
 }
 
 export const handleEmailToken = () => {

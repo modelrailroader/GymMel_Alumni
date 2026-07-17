@@ -28,6 +28,8 @@ $dataHelper = new DataHelper();
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $postData = json_decode(file_get_contents('php://input'));
 
+$response = [];
+
 switch ($action) {
     case 'editAlumni':
         $name = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -91,10 +93,26 @@ switch ($action) {
 
         $response = [
             'success' => $success,
-            'message' => 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
+            'message' => !$success ?? 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
         ];
 
         break;
+    case 'requestData':
+        $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+
+        $id = $dataHelper->getIdByEmail($email);
+
+        if (!$id) {
+            $success = false;
+        } else {
+            $success = $dataHelper->requestEmailTokenForDataChange($id);
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => !$success ? 'Deine E-Mail-Adresse befindet sich nicht in unserer Datenbank.' : '',
+            'id' => $id
+        ];
 }
 
 echo json_encode($response);

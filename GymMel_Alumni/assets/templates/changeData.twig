@@ -1,7 +1,7 @@
 <div class="container mt-5">
-    <div class="alert" id="alert" style="display: none" role="alert"></div>
-    <h2>Persönliche Alumni-Daten bearbeiten</h2>
-    <div style="margin-top: 20px"></div>
+    <h2 class="pb-4">Persönliche Alumni-Daten bearbeiten</h2>
+    <div class="alert mb-2" id="alert" style="display: none" role="alert"></div>
+    {% if alumniVerified %}
     <p>Bitte aktualisiere über dieses Formular deine aktuell bei uns gespeicherten Daten, damit wir dich weiterhin zielgerecht kontaktieren können.
     Wenn du deine Daten stattdessen komplett aus unserer Datenbank löschen möchtest, klicke bitte hier.</p>
     <div style="margin-top: 20px"></div>
@@ -92,6 +92,26 @@
         <div style="margin-top: 20px"></div>
         <button type="submit" id="submit" name="submit" class="btn btn-primary"><i class="bi bi-save"></i> Speichern</button>
     </form>
+    {% else %}
+    <div class="container mt-5 justify-content-center align-items-center" style="max-width: 500px; display: flex">
+        <div class="login-form" style="width: 100%; border: 0.5px solid #ccc; border-radius: 10px; padding: 40px">
+            <h2>E-Mail-Verifizierung</h2>
+            <div style="margin-top: 20px"></div>
+            <p>Zum Ändern deiner Daten musst du deine Identität verifizieren. Bitte gib deine E-Mail-Adresse ein, mit der du in der Alumni-Datenbank registriert bist.</p>
+            <div style="margin-top: 20px"></div>
+            <form id="emailDataRequestForm" action="#" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        <i class="bi bi-envelope-at"></i> E-Mail-Adresse:
+                    </label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div style="margin-top: 20px;"></div>
+                <button type="submit" id="submit" class="btn btn-primary mt-3">Verifizierungscode senden <i class="bi bi-send-check"></i></button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 <div style="margin-top: 50px;"></div>

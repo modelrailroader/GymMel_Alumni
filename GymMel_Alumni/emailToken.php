@@ -30,7 +30,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $dataHelper = new DataHelper();
 
 // If emailToken.php is called without id parameter
-/*if (!$id) {
+if (!$id) {
     header('Location: index.php');
     exit();
 } else {
@@ -38,7 +38,7 @@ $dataHelper = new DataHelper();
     if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
         header('Location: changeData.php?id=' . $id);
     }
-}*/
+}
 
 $alumniData = $dataHelper->getAlumniData($id);
 
