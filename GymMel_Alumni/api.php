@@ -124,6 +124,23 @@ switch ($action) {
             'message' => $success ? 'Die Daten wurden erfolgreich gelöscht.' : 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
         ];
         break;
+    case 'addAlumni':
+        $name = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
+        $birthday = filter_var($postData->birthday, FILTER_SANITIZE_SPECIAL_CHARS);
+        $graduation_year = filter_var($postData->graduation_year, FILTER_VALIDATE_INT);
+        $studies = filter_var($postData->studies, FILTER_SANITIZE_SPECIAL_CHARS);
+        $job = filter_var($postData->job, FILTER_SANITIZE_SPECIAL_CHARS);
+        $company = filter_var($postData->company, FILTER_SANITIZE_SPECIAL_CHARS);
+        $transfer = filter_var($postData->transfer_privacy, FILTER_VALIDATE_BOOL);
+
+        $success = $dataHelper->saveNewAlumni($name, $email, $birthday, $graduation_year, $studies, $job, $company, $transfer);
+
+        $response = [
+            'stored' => $success,
+            'message' => $success ? 'Danke fürs Eingeben deiner Daten!' : 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
+        ];
+        break;
 }
 
 echo json_encode($response);

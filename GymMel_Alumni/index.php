@@ -35,17 +35,6 @@ if(session_status() === PHP_SESSION_NONE) {
 $dbclient = new DBPDO($db_host, $db_name, $db_user, $db_password);
 $return = null;
 
-$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-$birthday = filter_input(INPUT_POST, 'birthday', FILTER_SANITIZE_SPECIAL_CHARS);
-$graduation_year = filter_input(INPUT_POST, 'graduation_year', FILTER_VALIDATE_INT);
-$studies = filter_input(INPUT_POST, 'studies', FILTER_SANITIZE_SPECIAL_CHARS);
-$job = filter_input(INPUT_POST, 'job', FILTER_SANITIZE_SPECIAL_CHARS);
-$company = filter_input(INPUT_POST, 'company', FILTER_SANITIZE_SPECIAL_CHARS);
-$privacy_checkbox = filter_input(INPUT_POST, 'data-privacy');
-$transfer_checkbox = filter_input(INPUT_POST, 'transfer-privacy');
-$submit = filter_input(INPUT_POST, 'submit');
-
 $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
 $password = filter_input(INPUT_POST, 'password');
 $redirectPage = filter_input(INPUT_POST, 'redirect-page', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -90,19 +79,6 @@ if($action === 'twofactor') {
         header('Location: twofactor_code.php?userid=' . $userid . '&error=1');
         exit();
     }
-}
-
-// If alumni-form-data is submitted
-if(isset($submit) && isset($privacy_checkbox)) {
-    if(isset($transfer_checkbox)) {
-        $transfer = 1;
-    }
-    else {
-        $transfer = 0;
-    }
-    $dataHelper->saveNewAlumni($name, $email, $birthday, $graduation_year, $studies, $job, $company, $transfer);
-
-    $success_message = $alert->successAlert('Danke fürs Eingeben deiner Daten!');
 }
 
 // Generate min and max birthdate
