@@ -32,6 +32,7 @@
             <th>Ausbildung</th>
             <th>Unternehmen</th>
             <th data-priority="5">Registrierung</th>
+            <th>Letzte Änderung</th>
             <th data-priority="6">Weitergabe der Daten</th>
             <th class="noVis" data-priority="4" data-orderable="false">Bearbeiten</th>
             <th>URL zur Datenänderung</th>
@@ -48,6 +49,7 @@
                 <td>{{ item.studies|raw }}</td>
                 <td>{{ item.company|raw }}</td>
                 <td data-order="{{ item.date_registered }}">{{ item.date_registered|date('d.m.Y - H:i', 'Europe/Berlin') }}</td>
+                <td data-order="{{ item.date_last_changed }}">{{ item.date_last_changed|date('d.m.Y - H:i', 'Europe/Berlin') }}</td>
                 <td>
                     {% if item.transfer_privacy == 1 %}
                         Ja

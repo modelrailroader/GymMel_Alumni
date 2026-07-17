@@ -33,7 +33,7 @@ class DataHelper
     // Returns an array of the entire Alumni data.
     public function getAllAlumniData(): array
     {
-        $query = "SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data`";
+        $query = "SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id`, `date_last_changed` FROM `alumni_data`";
         $responseData = $this->dbclient->fetchAll($query);
 
         // Add url for data change

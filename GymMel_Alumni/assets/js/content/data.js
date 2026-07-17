@@ -106,7 +106,7 @@ export const handleShowData = () => {
             },
             columnDefs: [
                 {
-                    targets: 10, // Index der zusätzlichen Spalte
+                    targets: 11, // Index der zusätzlichen Spalte
                     visible: false,
                     searchable: false
                 }
@@ -120,25 +120,25 @@ export const handleShowData = () => {
                 {
                 extend: 'copyHtml5',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
                 }
             },
                 {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 9, 11]
                     }
                 },
                 {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 9, 11]
                     }
                 },
                 {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 9, 11]
                     }
                 }]
         });
