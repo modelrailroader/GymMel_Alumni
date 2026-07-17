@@ -65,6 +65,15 @@ class Mail
 
     public function send(): bool
     {
-        return $this->mailer->send();
+        // Only sent 10 emails at maximum per session to prevent abuse
+        if (!isset($_SESSION['mail_count'])) {
+            $_SESSION['mail_count'] = 0;
+        }
+        if (isset($_SESSION['mail_count']) && $_SESSION['mail_count'] <= 10) {
+            $_SESSION['mail_count']++;
+            return $this->mailer->send();
+        } else {
+            return false;
+        }
     }
 }
