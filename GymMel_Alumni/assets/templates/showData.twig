@@ -34,6 +34,7 @@
             <th data-priority="5">Registrierung</th>
             <th data-priority="6">Weitergabe der Daten</th>
             <th class="noVis" data-priority="4" data-orderable="false">Bearbeiten</th>
+            <th>URL zur Datenänderung</th>
         </tr>
         </thead>
         <tbody>
@@ -56,6 +57,7 @@
                 <td><a href="editData.php?id={{ item.id }}"><i class="bi bi-pencil-square"></i></a>&nbsp;
                     <a href="#" id="item-delete" data-listener="false" data-name="{{ item.name }}" data-id="{{ item.id }}">
                         <i class="bi bi-trash3"></i></a></td>
+                <td>{{ item.url|raw }}</td>
             </tr>
         {% endfor %}
         </tbody>

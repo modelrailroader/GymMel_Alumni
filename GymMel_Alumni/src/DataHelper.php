@@ -22,6 +22,8 @@ class DataHelper
 {
     private DBPDO $dbclient;
 
+    private string $url = 'https://melle-gymnasium.de/alumni';
+
     public function __construct()
     {
         include dirname(__DIR__, 1) . '/constants.php';
@@ -32,7 +34,15 @@ class DataHelper
     public function getAllAlumniData(): array
     {
         $query = "SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data`";
-        return $this->dbclient->fetchAll($query);
+        $responseData = $this->dbclient->fetchAll($query);
+
+        // Add url for data change
+        $newResponseData = [];
+        foreach ($responseData as $alumni) {
+            $alumni['url'] = $this->url . '/changeData.php?id=' . $alumni['id'];
+            $newResponseData[] = $alumni;
+        }
+        return $newResponseData;
     }
 
     // Returns an array of the Alumni data of a special person defined by it's id.

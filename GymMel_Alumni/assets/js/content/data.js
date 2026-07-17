@@ -104,6 +104,13 @@ export const handleShowData = () => {
                 bottomStart: 'info',
                 bottomEnd: 'paging'
             },
+            columnDefs: [
+                {
+                    targets: 10, // Index der zusätzlichen Spalte
+                    visible: false,
+                    searchable: false
+                }
+            ],
             "buttons": [
                 {
                     extend: 'colvis',
@@ -113,25 +120,25 @@ export const handleShowData = () => {
                 {
                 extend: 'copyHtml5',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
                 }
             },
                 {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
                     }
                 },
                 {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
                     }
                 },
                 {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
                     }
                 }]
         });
