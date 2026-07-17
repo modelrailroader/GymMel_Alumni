@@ -30,7 +30,7 @@ if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if($user->authenticateWithSession()) {
-    require 'index.php';
+    header('Location: index.php');
     exit();
 }
 

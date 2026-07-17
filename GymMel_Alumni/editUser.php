@@ -25,7 +25,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $user = new User();
 if (!$user->authenticateWithSession()) {
-    require 'login.php';
+    header('Location: login.php?redirect=editUser.php');
     exit();
 }
 
