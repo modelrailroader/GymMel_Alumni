@@ -46,7 +46,7 @@
                 <td>{{ item.job|raw }}</td>
                 <td>{{ item.studies|raw }}</td>
                 <td>{{ item.company|raw }}</td>
-                <td data-order="{{ item.date_registered }}">{{ item.date_registered|date('d.m.Y - H:i') }}</td>
+                <td data-order="{{ item.date_registered }}">{{ item.date_registered|date('d.m.Y - H:i', 'Europe/Berlin') }}</td>
                 <td>
                     {% if item.transfer_privacy == 1 %}
                         Ja
