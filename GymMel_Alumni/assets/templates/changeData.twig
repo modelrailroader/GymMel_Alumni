@@ -3,7 +3,7 @@
     <div class="alert mb-2" id="alert" style="display: none" role="alert"></div>
     {% if alumniVerified %}
     <p>Bitte aktualisiere über dieses Formular deine aktuell bei uns gespeicherten Daten, damit wir dich weiterhin zielgerecht kontaktieren können.
-    Wenn du deine Daten stattdessen komplett aus unserer Datenbank löschen möchtest, klicke bitte hier.</p>
+    Wenn du deine Daten stattdessen komplett aus unserer Datenbank löschen möchtest, klicke bitte <a href="#" style="color: var(--bs-body-color)" id="buttonRequestDeleteData">hier</a>.</p>
     <div style="margin-top: 20px"></div>
     <form id="changeDataForm" action="#" method="post">
         <input type="hidden" value="{{ data.id }}" id="id" name="id" />
@@ -92,6 +92,34 @@
         <div style="margin-top: 20px"></div>
         <button type="submit" id="submit" name="submit" class="btn btn-primary"><i class="bi bi-save"></i> Speichern</button>
     </form>
+
+        <!-- Delete Data Modal -->
+        <div class="modal fade" id="deleteDataModal" tabindex="-1" aria-labelledby="deleteData_configLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteData_configLabel">Persönliche Daten aus der Alumni-Datenbank löschen</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="alert" style="display: none" class="alert pb-2"></div>
+                        <p>Schade, dass du gehen möchtest! <b>Bist du sicher, dass du deine Daten aus der Alumni-Datenbank
+                                des Gymnasiums Melle löschen möchtest?</b> Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" id="buttonDeleteData" class="btn btn-danger">Daten unwiderruflich löschen</button>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Abbrechen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% else %}
     <div class="container mt-5 justify-content-center align-items-center" style="max-width: 500px; display: flex">
         <div class="login-form" style="width: 100%; border: 0.5px solid #ccc; border-radius: 10px; padding: 40px">

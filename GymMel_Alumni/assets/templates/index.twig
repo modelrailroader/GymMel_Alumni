@@ -2,11 +2,12 @@
     {% if success_message != '' %}
         {{ success_message|raw }}
     {% endif %}
+    <div class="alert" id="alert" style="display: none"></div>
     <h2>Alumni werden</h2>
     <div style="margin-top: 20px"></div>
     <p>Danke, dass du Interesse hast, unserem Alumni-Netzwerk beizutreten. Fülle dazu einfach das Formular aus.</p>
     <div style="margin-top: 20px"></div>
-    <form action="{{ php_self }}" method="post">
+    <form id="formAddData" action="{{ php_self }}" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">
                 <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:

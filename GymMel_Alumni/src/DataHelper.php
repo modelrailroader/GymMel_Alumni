@@ -43,6 +43,14 @@ class DataHelper
         return $this->dbclient->fetch($query);
     }
 
+    public function checkIfIdExists(int $id)
+    {
+        $query = sprintf("SELECT `id` FROM `alumni_data` WHERE `id`=%d",
+            $id
+        );
+        return $this->dbclient->fetch($query) !== null;
+    }
+
     // Saves new data in the database.
     public function updateData(array $data): bool
     {
@@ -263,7 +271,7 @@ class DataHelper
     {
         if (is_null($id)) {
             // If there is already an id saved in session, continue checking
-            if (isset($_SESSION['id'])) {
+            if (isset($_SESSION['id']) && $this->checkIfIdExists($_SESSION['id'])) {
                 $id = $_SESSION['id'];
             } else {
                 // If not, alumni is not logged in for data change

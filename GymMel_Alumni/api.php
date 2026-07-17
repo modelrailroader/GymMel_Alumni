@@ -113,6 +113,17 @@ switch ($action) {
             'message' => !$success ? 'Deine E-Mail-Adresse befindet sich nicht in unserer Datenbank.' : '',
             'id' => $id
         ];
+        break;
+    case 'deleteAlumni':
+        $id = filter_var($postData->id, FILTER_VALIDATE_INT);
+
+        $success = $dataHelper->deleteAlumniById($id);
+
+        $response = [
+            'success' => $success,
+            'message' => $success ? 'Die Daten wurden erfolgreich gelöscht.' : 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
+        ];
+        break;
 }
 
 echo json_encode($response);

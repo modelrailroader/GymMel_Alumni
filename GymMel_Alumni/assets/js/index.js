@@ -7,10 +7,14 @@ import {
     handleFindDuplicates,
     handleEditAlumni,
     handleChangeData,
-    handleEmailToken
+    handleEmailToken,
+    handleAddData
 } from './content';
 import { handlePasswordToggles } from "./utils/password";
 import {easterEggs} from "./utils/easterEggs";
+
+// Front form to add new alumni
+handleAddData();
 
 // User administration
 handleShowUsers();

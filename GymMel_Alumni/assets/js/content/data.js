@@ -32,6 +32,29 @@ import 'datatables.net-buttons/js/buttons.colVis.mjs';
 import {Dropdown, Modal, Toast} from 'bootstrap';
 import {createToast} from "../utils/notifications";
 
+export const handleAddData = () => {
+    const formAddData = document.getElementById('formAddData');
+    if (formAddData) {
+
+        // Show success alert if data is successfully deleted
+        document.addEventListener('DOMContentLoaded', function () {
+            const message = localStorage.getItem('message');
+            const messageType = localStorage.getItem('messageType');
+            console.log(message);
+            console.log(messageType);
+            if (message != null && messageType != null) {
+                const alert = document.getElementById('alert');
+                alert.classList.add(messageType);
+                alert.innerText = message;
+                alert.style.display = 'block';
+                window.scrollTo(0, 0);
+                localStorage.removeItem('message');
+                localStorage.removeItem('messageType');
+            }
+        });
+    }
+};
+
 export const handleShowData = () => {
     const alumniTable = document.getElementById('alumniTable');
     if (alumniTable) {
@@ -207,6 +230,53 @@ export const handleChangeData = () => {
                 changeDataForm.reportValidity();
             }
         });
+
+        // Show confirmation dialogue if user requests deletion of data
+        const buttonRequestDeleteData = document.getElementById('buttonRequestDeleteData');
+        if (buttonRequestDeleteData) {
+            buttonRequestDeleteData.addEventListener('click', function (event) {
+                event.preventDefault();
+                const modalDeleteData = new Modal(document.getElementById('deleteDataModal'));
+                modalDeleteData.show();
+            });
+        }
+
+        const buttonDeleteData = document.getElementById('buttonDeleteData');
+        if (buttonDeleteData) {
+            buttonDeleteData.addEventListener('click', function (event) {
+                const response = fetch('api.php?action=deleteAlumni', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        id: document.getElementById('id').value,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                        }
+                    })
+                    .then(responseData => {
+                        if (responseData.success) {
+                            localStorage.setItem('message', responseData.message);
+                            localStorage.setItem('messageType', 'alert-success');
+                            window.location.href = 'index.php';
+                        } else {
+                            const alert = document.getElementById('alert');
+                            alert.classList.add('alert-danger');
+                            alert.innerText = responseData.message;
+                            alert.style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fehler bei der Fetch-Anfrage:', error);
+                    });
+            });
+        }
     }
 
     const emailDataRequestForm = document.getElementById('emailDataRequestForm');
