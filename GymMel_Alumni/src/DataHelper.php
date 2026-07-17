@@ -48,17 +48,31 @@ class DataHelper
     // Returns an array of the Alumni data of a special person defined by it's id.
     public function getAlumniData(int $id): array
     {
-        $query = sprintf("SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data` WHERE `id`=%d",
+        $query = sprintf(
+            "SELECT `name`, `email`, `birthday`, `graduation_year`, `studies`, `job`, `company`, `date_registered`, `transfer_privacy`, `id` FROM `alumni_data` WHERE `id`=%d",
             $id);
         return $this->dbclient->fetch($query);
     }
 
     public function checkIfIdExists(int $id)
     {
-        $query = sprintf("SELECT `id` FROM `alumni_data` WHERE `id`=%d",
+        $query = sprintf(
+            "SELECT `id` FROM `alumni_data` WHERE `id`=%d",
             $id
         );
         return $this->dbclient->fetch($query) !== null;
+    }
+
+    public function checkIfEmailExists(string $email): bool
+    {
+        $query = sprintf(
+            "SELECT `id` FROM `alumni_data` WHERE `email`=%s",
+            $email
+        );
+        if (is_null($this->dbclient->fetchAll($query))) {
+            return false;
+        }
+        return true;
     }
 
     // Saves new data in the database.
@@ -73,7 +87,8 @@ class DataHelper
         } else {
             $transfer_privacy_agreed = '';
         }
-        $query = sprintf("UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = '%s',"
+        $query = sprintf(
+            "UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = '%s',"
             . "`graduation_year` = %d, `studies` = '%s', `job` = '%s', `company` = '%s',"
             . "`transfer_privacy` = %d, `date_last_changed` = '%s' %s WHERE `id` = %d",
             $data['id'],
@@ -94,7 +109,8 @@ class DataHelper
     // Deletes a special person defined by it's id.
     public function deleteAlumniById(int $id): bool
     {
-        $query = sprintf("DELETE FROM `alumni_data` WHERE `id` = %d",
+        $query = sprintf(
+            "DELETE FROM `alumni_data` WHERE `id` = %d",
             $id);
         return (bool)$this->dbclient->execute($query);
     }

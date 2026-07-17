@@ -16,11 +16,11 @@ either via an editing link or after entering the own email address
 - Added option to turn on/off columns in network table
 - Added more filtering options in network table (todo)
 - Improved success messages after editing and deleting an alumni in the backend
-- Redesigned form for editing an alumni in the backend (todo)
+- Redesigned form for editing an alumni in the backend
 - Added functionality that redirects user after login to dedicated page
 - Refactored code to register as alumni
 - Added PHPMailer to send emails via SMTP per default
-- Added PHPUnit tests (todo)
+- Added new PHPUnit tests (todo)
 
 ### GymMel_Alumni v2.0.2
 

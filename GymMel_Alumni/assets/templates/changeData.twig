@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h2 class="pb-4">Persönliche Alumni-Daten bearbeiten</h2>
+    <h2 class="pb-2">Persönliche Alumni-Daten bearbeiten</h2>
     <div class="alert mb-2" id="alert" style="display: none" role="alert"></div>
     {% if alumniVerified %}
     <p>Bitte aktualisiere über dieses Formular deine aktuell bei uns gespeicherten Daten, damit wir dich weiterhin zielgerecht kontaktieren können.
@@ -132,7 +132,7 @@
                     <label for="email" class="form-label">
                         <i class="bi bi-envelope-at"></i> E-Mail-Adresse:
                     </label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" value="{{ email }}" id="email" name="email" required>
                 </div>
                 <div style="margin-top: 20px;"></div>
                 <button type="submit" id="submit" class="btn btn-primary mt-3">Verifizierungscode senden <i class="bi bi-send-check"></i></button>

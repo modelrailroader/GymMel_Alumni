@@ -146,6 +146,15 @@ switch ($action) {
         $company = filter_var($postData->company, FILTER_SANITIZE_SPECIAL_CHARS);
         $transfer = filter_var($postData->transfer_privacy, FILTER_VALIDATE_BOOL);
 
+        if ($dataHelper->checkIfEmailExists($email)) {
+            $response = [
+                'stored' => false,
+                'message' => 'Deine E-Mail-Adresse ist bereits in unserer Datenbank registriert. Möchtest du stattdessen
+                deine Daten ändern? Dann klicke <a href="changeData.php?email=' . $email . '">hier</a>.'
+            ];
+            break;
+        }
+
         $success = $dataHelper->saveNewAlumni($name, $email, $birthday, $graduation_year, $studies, $job, $company, $transfer);
 
         $response = [

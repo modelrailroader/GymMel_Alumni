@@ -21,6 +21,7 @@ use src\DataHelper;
 use src\Template;
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$email = filter_input(INPUT_GET, 'email', FILTER_VALIDATE_EMAIL);
 
 $dataHelper = new DataHelper();
 
@@ -64,7 +65,8 @@ $templateVars = [
     'data' => $alumniData ?? null,
     'minBirthDate' => date('YYYY-m-d', $minBirthDate->getTimestamp()),
     'maxBirthDate' => date('YYYY-m-d', $maxBirthDate->getTimestamp()),
-    'alumniVerified' => $alumniVerified
+    'alumniVerified' => $alumniVerified,
+    'email' => $email ?? '',
 ];
 
 echo $template->render($templateVars);

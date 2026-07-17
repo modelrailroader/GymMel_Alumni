@@ -54,6 +54,10 @@ export const handleAddData = () => {
         const submitButton = document.getElementById('submit');
         submitButton.addEventListener('click', function (event) {
             event.preventDefault();
+            if (!formAddData.checkValidity()) {
+                formAddData.reportValidity();
+                return;
+            }
             const response = fetch('api.php?action=addAlumni', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -80,7 +84,7 @@ export const handleAddData = () => {
                 .then(responseData => {
                     const alert = document.getElementById('alert');
                     alert.classList.add(responseData.stored ? 'alert-success' : 'alert-danger');
-                    alert.innerText = responseData.message;
+                    alert.innerHTML = responseData.message;
                     alert.style.display = 'block';
                     window.scrollTo(0, 0);
                 })
