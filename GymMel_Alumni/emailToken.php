@@ -31,9 +31,13 @@ $dataHelper = new DataHelper();
 
 // If emailToken.php is called without id parameter
 if (!$id) {
-    header('Location: index.php');
+    header('Location: changeData.php');
     exit();
 } else {
+    if (!$dataHelper->checkIfIdExists($id)) {
+        header('Location: changeData.php');
+        exit();
+    }
     // if id parameter is located, check if alumni is verified and send them to changeData.php
     if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
         header('Location: changeData.php?id=' . $id);

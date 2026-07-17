@@ -476,6 +476,10 @@ export const handleEmailToken = () => {
         const submitButton = document.getElementById('submit');
 
         submitButton.addEventListener('click', function (event) {
+            if (!emailTokenForm.checkValidity()) {
+                emailTokenForm.reportValidity();
+                return;
+            }
             const code = code1.value + code2.value + code3.value + '-' + code4.value + code5.value + code6.value;
             event.preventDefault();
             const response = fetch('api.php?action=emailToken', {

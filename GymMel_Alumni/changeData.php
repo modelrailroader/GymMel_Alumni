@@ -29,17 +29,23 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!is_null($id)) {
-    if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
+    if ($alumniVerified = $dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
         $alumniData = $dataHelper->getAlumniData($id);
-        $alumniVerified = true;
     } else {
+        if (!$dataHelper->checkIfIdExists($id)) {
+            header('Location: changeData.php');
+            exit();
+        }
         // Send user to emailToken.php if they are not already verified
         $dataHelper->requestEmailTokenForDataChange($id);
         header('Location: emailToken.php?id=' . $id);
         exit();
     }
 } else {
-    $alumniVerified = $dataHelper->checkIfAlumniIsLoggedInForDataChange();
+    if ($alumniVerified = $dataHelper->checkIfAlumniIsLoggedInForDataChange()) {
+        $id = $_SESSION['id'];
+        $alumniData = $dataHelper->getAlumniData($id);
+    }
 }
 
 // Generate min and max birthdate
