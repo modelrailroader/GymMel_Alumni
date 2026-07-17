@@ -3,66 +3,90 @@
     <h1>Datensatz bearbeiten</h1>
     <div style="margin-top: 30px"></div>
     <form id="editAlumniForm" action="#" method="post">
-        <div class="mb-3">
-            <label for="name" class="form-label">
-                <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:
-            </label>
-            <div class="required-field-block">
-                <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" required>
-                <div class="required-icon">
-                    <div class="text">*</div>
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="name" class="form-label">
+                        <i class="bi bi-person"></i>&nbsp; Vor- und Nachname:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" required>
+                        <div class="required-icon">
+                            <div class="text">*</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}" required>
+                        <div class="required-icon">
+                            <div class="text">*</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">
-                <i class="bi bi-envelope-at"></i>&nbsp; E-Mail-Adresse:
-            </label>
-            <div class="required-field-block">
-                <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}" required>
-                <div class="required-icon">
-                    <div class="text">*</div>
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="birthday" class="form-label">
+                        <i class="bi bi-calendar-date"></i>&nbsp; Geburtsdatum:
+                    </label>
+                    <div class="required-field-block">
+                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{ data.birthday !== '0000-00-00' ? data.birthday : '' }}" min="{{ minBirthDate }}" max="{{ maxBirthDate }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="graduation_year" class="form-label">
+                        <i class="bi bi-mortarboard"></i>&nbsp; Abiturjahrgang:
+                    </label>
+                    <input type="number" class="form-control" id="graduation_year" name="graduation_year" min="1950" max="2100" {{ data.graduation_year != 0 ? 'value="' ~ data.graduation_year ~ '"' }}">
                 </div>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="birthday" class="form-label">
-                <i class="bi bi-calendar-date"></i>&nbsp; Geburtsdatum:
-            </label>
-            <div class="required-field-block">
-                <input type="date" class="form-control" id="birthday" name="birthday" value="{{ data.birthday !== '0000-00-00' ? data.birthday : '' }}" min="{{ minBirthDate }}" max="{{ maxBirthDate }}">
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="studies" class="form-label">
+                        <i class="bi bi-book"></i>&nbsp; Studium/Ausbildung:
+                    </label>
+                    <input type="text" class="form-control" id="studies" name="studies" value="{{ data.studies }}">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="job" class="form-label">
+                        <i class="bi bi-briefcase"></i>&nbsp; Beruf/Tätigkeit:
+                    </label>
+                    <input type="text" class="form-control" id="job" name="job" value="{{ data.job }}">
+                </div>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="graduation_year" class="form-label">
-                <i class="bi bi-mortarboard"></i>&nbsp; Abiturjahrgang:
-            </label>
-            <input type="number" class="form-control" id="graduation_year" name="graduation_year" min="1950" max="2100" {{ data.graduation_year != 0 ? 'value="' ~ data.graduation_year ~ '"' }}">
-        </div>
-        <div class="mb-3">
-            <label for="studies" class="form-label">
-                <i class="bi bi-book"></i>&nbsp; Studium/Ausbildung:
-            </label>
-            <input type="text" class="form-control" id="studies" name="studies" value="{{ data.studies }}">
-        </div>
-        <div class="mb-3">
-            <label for="job" class="form-label">
-                <i class="bi bi-briefcase"></i>&nbsp; Beruf/Tätigkeit:
-            </label>
-            <input type="text" class="form-control" id="job" name="job" value="{{ data.job }}">
-        </div>
-        <div class="mb-3">
-            <label for="company" class="form-label">
-                <i class="bi bi-building"></i>&nbsp; Aktuelle:r Arbeitgeber:in:
-            </label>
-            <input type="text" class="form-control" id="company" name="company" value="{{ data.company }}">
-        </div>
-        <div class="mb-3">
-            <label for="registrierungszeitpunkt" class="form-label">
-                <i class="bi bi-calendar-plus"></i>&nbsp; Registrierung
-            </label>
-            <input type="text" class="form-control" id="date_registered" name="date_registered"
-                   value="{{ data.date_registered|date('d.m.Y - H:i') }}" readonly>
+        <div class="row">
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="company" class="form-label">
+                        <i class="bi bi-building"></i>&nbsp; Aktuelle:r Arbeitgeber:in:
+                    </label>
+                    <input type="text" class="form-control" id="company" name="company" value="{{ data.company }}">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="mb-3">
+                    <label for="registrierungszeitpunkt" class="form-label">
+                        <i class="bi bi-calendar-plus"></i>&nbsp; Registrierung:
+                    </label>
+                    <input type="text" style="color: gray" class="form-control" id="date_registered" name="date_registered"
+                           value="{{ data.date_registered|date('d.m.Y - H:i') }}" readonly>
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <div class="form-check">
@@ -70,7 +94,7 @@
                         {% if data.transfer_privacy == 1 %}
                 checked
                         {% endif %}>
-                <label class="form-check-label" for="datenschutz">Weitergabe der Daten an Schüler:innen</label>
+                <label class="form-check-label" for="datenschutz">Einwilligung zur Weitergabe der Daten an Schüler:innen</label>
             </div>
         </div>
         <input type="hidden" id="id" name="id" value="{{ dataid }}">
