@@ -186,42 +186,6 @@ class DataHelper
         return $mailer->send();
     }
 
-    public function requestEmailTokenForDataChangeByEmail(string $email): bool
-    {
-        $id = $this->getIdByEmail($email);
-        if (!$id) {
-            return false;
-        } else {
-            // Generate token and save it to database
-            $token = $this->generateEmailToken();
-            $this->saveTokenToDatabase($token, $id);
-            $_SESSION['tokenCreated'] = time();
-
-            $alumniData = $this->getAlumniData($id);
-
-            $emailBody = sprintf(
-                "<p>Du möchtest deine bei der Alumni-Datenbank hinterlegten Daten ändern oder löschen und hast einen Verifizierungscode angefordert.</p>"
-                . "<p>Dein Code lautet:</p><p style='font-size: 28px; margin-left: 30px'><b>%s</b></p><p>Dein Code ist 10 Minuten gültig.</p><p>Du hast diesen Code nicht angefordert? Dann kannst du diese E-Mail einfach ignorieren.</p>",
-                $token
-            );
-            $emailAltBody = sprintf(
-                "Du möchtest deine bei der Alumni-Datenbank hinterlegten Daten ändern oder löschen und hast einen Verifizierungscode angefordert.\n\n"
-                . "Dein Code lautet:\n"
-                . "%s\n\n"
-                . "Dein Code ist 10 Minuten gültig.\n\n"
-                . "Du hast diesen Code nicht angefordert? Dann kannst du diese E-Mail einfach ignorieren.",
-                $token
-            );
-
-            $mailer = new Mail();
-            $mailer->addAddress($alumniData['email'], $alumniData['name']);
-            $mailer->addSubject('Dein Verifizierungscode');
-            $mailer->addBody($emailBody, true);
-            $mailer->addAltBody($emailAltBody);
-            return $mailer->send();
-        }
-    }
-
     private function saveTokenToDatabase(string $token, int $id): bool
     {
         $query = sprintf("UPDATE `alumni_data` SET `token` = '%s', `token_generation_time` = '%s' WHERE `id` = %d",

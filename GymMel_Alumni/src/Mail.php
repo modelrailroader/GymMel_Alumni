@@ -11,7 +11,6 @@
  * @copyright 2026 Gymnasium Melle
  * @license   https://www.mozilla.org/MPL/2.0/ Mozilla Public License Version 2.0
  * @since     2026-07-15
- * @todo Replace php mail function with new class at "forgetPassword"
  */
 
 

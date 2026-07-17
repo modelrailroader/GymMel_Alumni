@@ -42,21 +42,26 @@ switch ($action) {
         $transfer_privacy = filter_var($postData->transfer_privacy, FILTER_VALIDATE_BOOL);
         $id = filter_var($postData->id, FILTER_VALIDATE_INT);
 
-        $data_change = array(
-            'id' => $id,
-            'name' => $name,
-            'email' => $email,
-            'birthday' => $birthday,
-            'graduation_year' => $graduation_year,
-            'studies' => $studies,
-            'job' => $job,
-            'company' => $company,
-            'transfer_privacy' => ($transfer_privacy === true) ? 1 : 0
-        );
-        if ($stored = $dataHelper->updateData($data_change)) {
-            $message = "Deine Daten wurden erfolgreich geändert.";
+        if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
+            $data_change = array(
+                'id' => $id,
+                'name' => $name,
+                'email' => $email,
+                'birthday' => $birthday,
+                'graduation_year' => $graduation_year,
+                'studies' => $studies,
+                'job' => $job,
+                'company' => $company,
+                'transfer_privacy' => ($transfer_privacy === true) ? 1 : 0
+            );
+            if ($stored = $dataHelper->updateData($data_change)) {
+                $message = "Deine Daten wurden erfolgreich geändert.";
+            } else {
+                $message = 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
+            }
         } else {
-            $message = 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
+            $stored = false;
+            $message = 'Der Alumni konnte nicht verifiziert werden.';
         }
 
         $response = [
@@ -92,8 +97,8 @@ switch ($action) {
         }
 
         $response = [
-            'success' => $success,
-            'message' => !$success ?? 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
+            'success' => $success ?? false,
+            'message' => !$success ? 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.' : ''
         ];
 
         break;
@@ -117,12 +122,19 @@ switch ($action) {
     case 'deleteAlumni':
         $id = filter_var($postData->id, FILTER_VALIDATE_INT);
 
-        $success = $dataHelper->deleteAlumniById($id);
+        if ($dataHelper->checkIfAlumniIsLoggedInForDataChange($id)) {
+            $success = $dataHelper->deleteAlumniById($id);
 
-        $response = [
-            'success' => $success,
-            'message' => $success ? 'Die Daten wurden erfolgreich gelöscht.' : 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
-        ];
+            $response = [
+                'success' => $success,
+                'message' => $success ? 'Die Daten wurden erfolgreich gelöscht.' : 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Der Alumni konnte nicht verifiziert werden.'
+            ];
+        }
         break;
     case 'addAlumni':
         $name = filter_var($postData->name, FILTER_SANITIZE_SPECIAL_CHARS);
