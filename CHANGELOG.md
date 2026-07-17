@@ -11,10 +11,10 @@ Fixed some minor issues and introduced a lot of new features:
 - Added possibility for alumnis to edit and delete their own data (with email verification) - 
 either via an editing link or after entering the own email address
 - Added new fields for registering as an alumni (birthday and year of graduation)
-- Added check before registering if alumni is already registered (todo)
+- Added check before registering if alumni is already registered
 - Redesigned form for registering as an alumni
 - Added option to turn on/off columns in network table
-- Added more filtering options in network table (todo)
+- Added more filtering options in network table
 - Improved success messages after editing and deleting an alumni in the backend
 - Redesigned form for editing an alumni in the backend
 - Added functionality that redirects user after login to dedicated page

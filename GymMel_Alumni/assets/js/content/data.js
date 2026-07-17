@@ -28,6 +28,8 @@ import 'datatables.net-buttons-dt';
 import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-responsive-dt';
 import 'datatables.net-buttons/js/buttons.colVis.mjs';
+import 'datatables.net-searchpanes';
+import 'datatables.net-select';
 
 import {Dropdown, Modal, Toast} from 'bootstrap';
 import {createToast} from "../utils/notifications";
@@ -101,32 +103,31 @@ export const handleShowData = () => {
         const table = new DataTable(alumniTable, {
             "language": languageDE,
             responsive: true,
+            searchPanes: {
+                viewTotal: true,
+                cascadePanes: true,
+                initCollapsed: true
+            },
             layout: {
                 top1Start: 'buttons',
                 topStart: 'pageLength',
+                top2: "searchPanes",
                 topEnd: 'search',
                 bottomStart: 'info',
                 bottomEnd: 'paging'
             },
-            columnDefs: [
-                {
-                    targets: 11, // Index der zusätzlichen Spalte
-                    visible: false,
-                    searchable: false
-                }
-            ],
-            "buttons": [
+            buttons: [
                 {
                     extend: 'colvis',
                     text: 'Spalten ein-/ausblenden',
                     columns: ':not(.noVis)'
                 },
                 {
-                extend: 'copyHtml5',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+                    extend: 'copyHtml5',
+                     exportOptions: {
+                       columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
                 }
-            },
+                },
                 {
                     extend: 'csvHtml5',
                     exportOptions: {
@@ -144,7 +145,26 @@ export const handleShowData = () => {
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 9, 11]
                     }
-                }]
+                }],
+        columnDefs: [
+            {
+                targets: 11, // Index der zusätzlichen Spalte
+                visible: false,
+                searchable: false
+            },
+            {
+                searchPanes: {
+                    show: true
+                },
+                targets: [3, 4, 5, 6]
+            },
+            {
+                searchPanes: {
+                    show: false
+                },
+                targets: [0, 1, 2, 7, 8, 9, 10, 11]
+            }
+        ]
         });
         // Add EventListener as well to buttons on further pages to show confirmation
         table.on('draw', function () {

@@ -146,7 +146,7 @@ switch ($action) {
         $company = filter_var($postData->company, FILTER_SANITIZE_SPECIAL_CHARS);
         $transfer = filter_var($postData->transfer_privacy, FILTER_VALIDATE_BOOL);
 
-        if ($dataHelper->checkIfEmailExists($email)) {
+        if (!$dataHelper->checkIfEmailExists($email)) {
             $response = [
                 'stored' => false,
                 'message' => 'Deine E-Mail-Adresse ist bereits in unserer Datenbank registriert. Möchtest du stattdessen

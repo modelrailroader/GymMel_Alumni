@@ -29,6 +29,18 @@ importers:
       datatables.net-responsive-dt:
         specifier: ^3.0.8
         version: 3.0.8
+      datatables.net-searchpanes:
+        specifier: ^2.3.5
+        version: 2.3.5
+      datatables.net-searchpanes-dt:
+        specifier: ^2.3.5
+        version: 2.3.5
+      datatables.net-select:
+        specifier: ^3.1.3
+        version: 3.1.3
+      datatables.net-select-dt:
+        specifier: ^3.1.3
+        version: 3.1.3
       jquery:
         specifier: ^4.0.0
         version: 4.0.0
@@ -397,6 +409,18 @@ packages:
 
   datatables.net-responsive@3.0.8:
     resolution: {integrity: sha512-htslaX9g/9HFrJeyFQKEe/XJWpawPxpvy+M6vc/NkKQIrKhbxSoPc3phPqmlnZth6b9hgawqWDT0e0lwf5p+KA==}
+
+  datatables.net-searchpanes-dt@2.3.5:
+    resolution: {integrity: sha512-8mEP0mXdqCltPSSKH9DEl1CCdCutsj/xICpH4e5rMvuQRK9VxoQpS32zjXuLVj5fvB7qm8knMOEX2NWqDN+PAA==}
+
+  datatables.net-searchpanes@2.3.5:
+    resolution: {integrity: sha512-e8c1IJULwqbPANfgFe3Nwlb+QGfeXPtIT348si95iQER94CcEbt0Eps9iA7Ql0IYm4sDlaHGt1Bdm6GjiqmzIA==}
+
+  datatables.net-select-dt@3.1.3:
+    resolution: {integrity: sha512-g/3gCXmYhyR0j0qq5gqGzJLZbCSVRFd2HGHyUYtfJwjaFyubEYKvB3G+1+uX1sYpeqhHPcSrAKzi1D/2mW1v+Q==}
+
+  datatables.net-select@3.1.3:
+    resolution: {integrity: sha512-IzikFqvYshnuPZVRi/xBvPcSMBNqzhzh9VGO0DtzsOU4w5uBLN/z9dOqAEUUJk1v6qkMOnBMg5NE/35cbdhPeQ==}
 
   datatables.net@2.3.8:
     resolution: {integrity: sha512-uhViowhlDlheAuo5a8TrkQqADsjrtGeOyvrigvr4t0+K3MyAWqClORXWAYIcN9VLX6iIX0C8O9gwJNd01hITRg==}
@@ -1359,6 +1383,28 @@ snapshots:
       jquery: 4.0.0
 
   datatables.net-responsive@3.0.8:
+    dependencies:
+      datatables.net: 2.3.8
+      jquery: 4.0.0
+
+  datatables.net-searchpanes-dt@2.3.5:
+    dependencies:
+      datatables.net-dt: 2.3.8
+      datatables.net-searchpanes: 2.3.5
+      jquery: 4.0.0
+
+  datatables.net-searchpanes@2.3.5:
+    dependencies:
+      datatables.net: 2.3.8
+      jquery: 4.0.0
+
+  datatables.net-select-dt@3.1.3:
+    dependencies:
+      datatables.net-dt: 2.3.8
+      datatables.net-select: 3.1.3
+      jquery: 4.0.0
+
+  datatables.net-select@3.1.3:
     dependencies:
       datatables.net: 2.3.8
       jquery: 4.0.0
