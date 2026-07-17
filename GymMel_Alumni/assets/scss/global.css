@@ -91,3 +91,12 @@
     color: black !important;
 }
 
+.footer-link {
+    color: black;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: gray;
+}
+
