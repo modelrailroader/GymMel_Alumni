@@ -20,7 +20,6 @@ either via an editing link or after entering the own email address
 - Added functionality that redirects user after login to dedicated page
 - Refactored code to register as alumni
 - Added PHPMailer to send emails via SMTP per default
-- Added new PHPUnit tests (todo)
 
 ### GymMel_Alumni v2.0.2
 
