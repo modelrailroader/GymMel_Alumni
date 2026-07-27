@@ -17,7 +17,7 @@
     "datatables.net-buttons-dt": "^3.2.6",
     "datatables.net-dt": "^3.0.0",
     "datatables.net-plugins": "^3.0.0",
-    "datatables.net-responsive-dt": "^3.0.8",
+    "datatables.net-responsive-dt": "^4.0.0",
     "datatables.net-searchpanes": "^2.3.5",
     "datatables.net-searchpanes-dt": "^2.3.5",
     "datatables.net-select": "^3.1.3",
