@@ -102,6 +102,7 @@ export const handleShowData = () => {
     const alumniTable = document.getElementById('alumniTable');
     if (alumniTable) {
         const table = new DataTable(alumniTable, {
+            stateSave: false,
             "language": languageDE,
             responsive: true,
             searchPanes: {
