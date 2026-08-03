@@ -37,6 +37,11 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $postData = json_decode(file_get_contents('php://input'));
 
 switch ($action) {
+    default:
+        $response = [
+            'message' => 'This is the internal API of GymMel_Alumni. This request was not successful. Please check your request and try again.'
+        ];
+        break;
     case 'createUser':
         $username = filter_var($postData->username, FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_var($postData->email, FILTER_VALIDATE_EMAIL);
@@ -54,11 +59,6 @@ switch ($action) {
                 'message' => $message
             ];
         }
-        break;
-    default:
-        $response = [
-            'message' => 'This is the internal API of GymMel_Alumni. This request was not successful. Please check your request and try again.'
-        ];
         break;
     case 'deleteUser':
         $userid = filter_var($postData->userid, FILTER_VALIDATE_INT);

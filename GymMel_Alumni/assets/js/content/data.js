@@ -170,13 +170,16 @@ export const handleShowData = () => {
         table.on('draw', function () {
             const delete_items = document.querySelectorAll('#item-delete');
             delete_items.forEach(function (item) {
-                item.addEventListener('click', function (event) {
-                    const userConfirmation = confirm('Wollen Sie den Eintrag ' + item.getAttribute('data-name') + ' wirklich löschen?');
-                    if (userConfirmation) {
-                        deleteAlumni(item, table);
-                    }
-                    event.preventDefault();
-                });
+                if (item.getAttribute('data-listener') === 'false') {
+                    item.addEventListener('click', function (event) {
+                        const userConfirmation = confirm('Wollen Sie den Eintrag ' + item.getAttribute('data-name') + ' wirklich löschen?');
+                        if (userConfirmation) {
+                            deleteAlumni(item, table);
+                        }
+                        event.preventDefault();
+                    });
+                    item.setAttribute('data-listener', 'true');
+                }
             });
         });
         table.draw();
