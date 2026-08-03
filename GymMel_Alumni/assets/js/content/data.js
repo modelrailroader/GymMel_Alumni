@@ -89,6 +89,7 @@ export const handleAddData = () => {
                     alert.innerHTML = responseData.message;
                     alert.style.display = 'block';
                     window.scrollTo(0, 0);
+                    formAddData.reset();
                 })
                 .catch(error => {
                     console.error('Fehler bei der Fetch-Anfrage:', error);
