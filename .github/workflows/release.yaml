@@ -11,6 +11,10 @@ on:
         description: 'Did you changed the version number?'
         required: true
 
+permissions:
+  contents: write
+  packages: read
+
 jobs:
   build:
     name: Build Application and Create Release
