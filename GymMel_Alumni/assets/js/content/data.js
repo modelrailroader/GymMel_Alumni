@@ -355,6 +355,9 @@ export const handleChangeData = () => {
         const submitButton = document.getElementById('submit');
         submitButton.addEventListener('click', function (event) {
             event.preventDefault();
+            const spinner = document.getElementById('spinner');
+            spinner.classList.remove('d-none');
+            submitButton.disabled = true;
             const response = fetch('api.php?action=requestData', {
                 method: 'POST',
                 body: JSON.stringify({
