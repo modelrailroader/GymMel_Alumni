@@ -26,7 +26,7 @@ $mail_from = '';
 // Mail password
 $mail_password = '';
 // Mail port for SSL/TLS Encryption
-$mail_port = 465;
+$mail_port = 587;
 
 // DEBUG-Modus:
 // True: Error reporting is set to All.

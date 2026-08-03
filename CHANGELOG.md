@@ -4,6 +4,16 @@
 
 This is a log of major user-visible changes in each GymMel_Alumni release.
 
+### GymMel_Alumni v2.1.2
+
+Fixed some minor issues and introduced the following new features:
+
+- Changed default SMTP-port in constants.original.php according to GymMelle-configuration
+
+### GymMel_Alumni v2.1.1
+
+Fixed some minor security issues and updated dependencies.
+
 ### GymMel_Alumni v2.1.0
 
 Fixed some minor issues and introduced a lot of new features:

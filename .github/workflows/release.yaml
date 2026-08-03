@@ -11,6 +11,10 @@ on:
         description: 'Did you changed the version number?'
         required: true
 
+permissions:
+  contents: write
+  packages: read
+
 jobs:
   build:
     name: Build Application and Create Release
@@ -31,7 +35,7 @@ jobs:
       - name: Set up PHP environment
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.4'
 
       - name: Install Composer dependencies
         run: composer install

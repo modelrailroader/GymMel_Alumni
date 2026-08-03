@@ -532,7 +532,8 @@ export const handleEmailToken = () => {
                 })
                 .then(responseData => {
                     if (responseData.success) {
-                        window.location.href = 'changeData.php?id=' + id.value;
+                        const query = new URLSearchParams({id: id.value}).toString();
+                        window.location.href = 'changeData.php?' + query;
                     } else {
                         const alert = document.getElementById('alert');
                         alert.innerText = responseData.message;
