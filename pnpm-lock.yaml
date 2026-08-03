@@ -18,8 +18,8 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1
       datatables.net-buttons-dt:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.1
+        version: 4.0.1
       datatables.net-dt:
         specifier: ^3.0.1
         version: 3.0.1
@@ -374,11 +374,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  datatables.net-buttons-dt@4.0.0:
-    resolution: {integrity: sha512-46dcmrawSRaRGVezf4Hcv1QsXt5KoB/Oy+QG3UwaAtpNB6i5/up3dt+H0og3rJFRGI2jZMNjfrcWP9h6X2PGRw==}
-
-  datatables.net-buttons@4.0.0:
-    resolution: {integrity: sha512-6ZNaSbx+wTGbkF4V2IXCeiTFUMvIGjaxuMd+jj25UOcM4R0wgBDROFgS2RqhMz4FLhA/Ef5Le7tgGGJGEfX1CQ==}
+  datatables.net-buttons-dt@4.0.1:
+    resolution: {integrity: sha512-PXh8vYDdvHsIdjTLkEzZWK8jmAU1DdxiWSo2GeVLbakSTph0TzmyDaD5MquJWkJdIq9g++2C9V5twC8Rcsucxw==}
 
   datatables.net-buttons@4.0.1:
     resolution: {integrity: sha512-cEiqdM65THR7hpDgz9KZEZdPNorHxieTJPQYTVG5kpivxmK57tdkoYa5cdmvg99bSaLIYUfr9Rp/j7GCMjYQZA==}
@@ -1334,14 +1331,10 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  datatables.net-buttons-dt@4.0.0:
+  datatables.net-buttons-dt@4.0.1:
     dependencies:
-      datatables.net-buttons: 4.0.0
+      datatables.net-buttons: 4.0.1
       datatables.net-dt: 3.0.1
-
-  datatables.net-buttons@4.0.0:
-    dependencies:
-      datatables.net: 3.0.0
 
   datatables.net-buttons@4.0.1:
     dependencies:
