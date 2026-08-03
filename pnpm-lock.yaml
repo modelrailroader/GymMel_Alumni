@@ -39,8 +39,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       datatables.net-select-dt:
-        specifier: ^3.1.3
-        version: 3.1.3
+        specifier: ^4.0.0
+        version: 4.0.0
       jquery:
         specifier: ^4.0.0
         version: 4.0.0
@@ -404,11 +404,8 @@ packages:
   datatables.net-searchpanes@2.3.5:
     resolution: {integrity: sha512-e8c1IJULwqbPANfgFe3Nwlb+QGfeXPtIT348si95iQER94CcEbt0Eps9iA7Ql0IYm4sDlaHGt1Bdm6GjiqmzIA==}
 
-  datatables.net-select-dt@3.1.3:
-    resolution: {integrity: sha512-g/3gCXmYhyR0j0qq5gqGzJLZbCSVRFd2HGHyUYtfJwjaFyubEYKvB3G+1+uX1sYpeqhHPcSrAKzi1D/2mW1v+Q==}
-
-  datatables.net-select@3.1.3:
-    resolution: {integrity: sha512-IzikFqvYshnuPZVRi/xBvPcSMBNqzhzh9VGO0DtzsOU4w5uBLN/z9dOqAEUUJk1v6qkMOnBMg5NE/35cbdhPeQ==}
+  datatables.net-select-dt@4.0.0:
+    resolution: {integrity: sha512-vFsCZhXFzr6F/4qV+ZFarKglfObu7BeDtsfAfhYpEUmvnvFdCTSa/aJcRACe6H5zQhV9dH6v+Lsh8BX0t92yCQ==}
 
   datatables.net-select@4.0.0:
     resolution: {integrity: sha512-05oNQ7l1ETbHQ1SFfWTNq1SEe9FqA+NycIA14csVZ1z9bUndegRy/z5MwnOJreZlya5kbtPVv9R6jwMtrebY/g==}
@@ -1380,16 +1377,10 @@ snapshots:
       datatables.net: 2.3.8
       jquery: 4.0.0
 
-  datatables.net-select-dt@3.1.3:
+  datatables.net-select-dt@4.0.0:
     dependencies:
-      datatables.net-dt: 2.3.8
-      datatables.net-select: 3.1.3
-      jquery: 4.0.0
-
-  datatables.net-select@3.1.3:
-    dependencies:
-      datatables.net: 2.3.8
-      jquery: 4.0.0
+      datatables.net-dt: 3.0.1
+      datatables.net-select: 4.0.0
 
   datatables.net-select@4.0.0:
     dependencies:
