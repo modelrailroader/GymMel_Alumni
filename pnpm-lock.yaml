@@ -27,8 +27,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       datatables.net-responsive-dt:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.1
+        version: 4.0.1
       datatables.net-searchpanes:
         specifier: ^2.3.5
         version: 2.3.5
@@ -389,11 +389,11 @@ packages:
   datatables.net-plugins@3.0.0:
     resolution: {integrity: sha512-WK/SNu3bQpJF4A7HgDQ9yrWbP/qXhSHOeMEyT2hzZns+SbfXS/Mt2SEZlmelInj40fP6iQzMbl/VClrgNNz9qQ==}
 
-  datatables.net-responsive-dt@4.0.0:
-    resolution: {integrity: sha512-ujspxnEekpRiZGSjX0uHssxv1hDHFIldE38pZ00DtaVAS6scrPyQYoD5pa2rJat4ArNtZbQePpv/2HzTrHZFRw==}
+  datatables.net-responsive-dt@4.0.1:
+    resolution: {integrity: sha512-DGqGq9euWKfBVbrcq2BqWtbl2yQKJ0RDPwxEcMQSNlokaprctvI51KAiA0+TDuzHFNVUkVvt1GIIriVXrk/eLg==}
 
-  datatables.net-responsive@4.0.0:
-    resolution: {integrity: sha512-OyFSJIHweiHZxfuWaYVXmlhTwvNp6EjNde9fqFpwc3VCrWWmmezyW0YeFju5TYvQy30TnQbhwxAs6Fx3ZHbFSQ==}
+  datatables.net-responsive@4.0.1:
+    resolution: {integrity: sha512-cc2/cjaEqhNXZ80bzPCiOhlqIwPJNeVTXA1J9W0mc2BO+B/aPPYfy2rGkixKaOtdjEzepprWtFNCIQ7R3DCGIQ==}
 
   datatables.net-searchpanes-dt@2.3.5:
     resolution: {integrity: sha512-8mEP0mXdqCltPSSKH9DEl1CCdCutsj/xICpH4e5rMvuQRK9VxoQpS32zjXuLVj5fvB7qm8knMOEX2NWqDN+PAA==}
@@ -1350,12 +1350,12 @@ snapshots:
     dependencies:
       datatables.net: 3.0.0
 
-  datatables.net-responsive-dt@4.0.0:
+  datatables.net-responsive-dt@4.0.1:
     dependencies:
       datatables.net-dt: 3.0.1
-      datatables.net-responsive: 4.0.0
+      datatables.net-responsive: 4.0.1
 
-  datatables.net-responsive@4.0.0:
+  datatables.net-responsive@4.0.1:
     dependencies:
       datatables.net: 3.0.1
 
