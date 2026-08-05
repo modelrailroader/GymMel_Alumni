@@ -79,7 +79,7 @@ class DataHelper
     public function updateData(array $data): bool
     {
         if ($this->getAlumniData($data['id'])['transfer_privacy'] !== $data['transfer_privacy']) {
-            if ($data['transfer_privacy'] === 1) {
+            if ($data['transfer_privacy']) {
                 $transfer_privacy_agreed = ",`date_transfer_privacy_agreed`='" . time() . "'";
             } else {
                 $transfer_privacy_agreed = ",`date_transfer_privacy_agreed`=0";
@@ -87,14 +87,20 @@ class DataHelper
         } else {
             $transfer_privacy_agreed = '';
         }
+
+        if ($data['birthday'] === '') {
+            $birthday = "NULL";
+        } else {
+            $birthday = "'" . $data['birthday'] . "'";
+        }
         $query = sprintf(
-            "UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = '%s',"
+            "UPDATE `alumni_data` SET `id` = %d, `name` = '%s', `email` = '%s', `birthday` = %s,"
             . "`graduation_year` = %d, `studies` = '%s', `job` = '%s', `company` = '%s',"
             . "`transfer_privacy` = %d, `date_last_changed` = '%s' %s WHERE `id` = %d",
             $data['id'],
             $data['name'],
             $data['email'],
-            $data['birthday'],
+            $birthday,
             $data['graduation_year'],
             $data['studies'],
             $data['job'],
