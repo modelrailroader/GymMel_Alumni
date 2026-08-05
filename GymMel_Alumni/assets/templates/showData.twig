@@ -113,9 +113,9 @@
                                                 <ul>
                                                     <li>Geburtsdatum: {{ item.birthday ? item.birthday|date('d.m.Y') : '' }}</li>
                                                     <li>Abiturjahrgang: {{ item.graduation_year }}</li>
-                                                    <li>Studium/Ausbildung: {{ duplicate.studies }}</li>
-                                                    <li>Beruf/Tätigkeit: {{ duplicate.job }}</li>
-                                                    <li>Aktueller Arbeitgeber:in: {{ duplicate.company }}</li>
+                                                    <li>Studium/Ausbildung: {{ duplicate.studies|raw }}</li>
+                                                    <li>Beruf/Tätigkeit: {{ duplicate.job|raw }}</li>
+                                                    <li>Aktueller Arbeitgeber:in: {{ duplicate.company|raw }}</li>
                                                     <li>
                                                         Registrierungszeitpunkt: {{ duplicate.date_registered|date('d.m.Y - H:i') }}</li>
                                                 </ul>
