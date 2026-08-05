@@ -43,7 +43,7 @@
             <tr id="alumni{{ item.id }}">
                 <td>{{ item.name|raw }}</td>
                 <td>{{ item.email }}</td>
-                <td>{{ item.birthday !== '0000-00-00' ? item.birthday|date('d.m.Y') : '' }}</td>
+                <td>{{ item.birthday !== null ? item.birthday|date('d.m.Y') : '' }}</td>
                 <td>{{ item.graduation_year != 0 ? item.graduation_year : '' }}</td>
                 <td>{{ item.job|raw }}</td>
                 <td>{{ item.studies|raw }}</td>
