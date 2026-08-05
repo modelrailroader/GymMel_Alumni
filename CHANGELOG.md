@@ -4,6 +4,12 @@
 
 This is a log of major user-visible changes in each GymMel_Alumni release.
 
+### GymMel_Alumni v2.1.3
+
+Fixed some minor issues and introduced the following new features:
+
+- Specified backup filename with timestamp
+
 ### GymMel_Alumni v2.1.2
 
 Fixed some minor issues and introduced the following new features:

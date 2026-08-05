@@ -23,11 +23,14 @@ class Backup
     
     private array $tables = array();
     
-    private string $filename = 'backup.sql';
+    private string $filename;
     
     public function __construct() {
         include dirname(__DIR__, 1) . '/constants.php';
         $this->dbclient = new PDO("mysql:host=$db_host;dbname=$db_name; charset=utf8", $db_user, $db_password);
+
+        // prepare filename with timestamp
+        $this->filename = 'backup_' . date('Y-m-d_H:i:s') . '.sql';
     }
     
     // Author: https://gist.github.com/fotan/4accf4587e93c6bf4062
