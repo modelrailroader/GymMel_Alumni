@@ -22,6 +22,6 @@
         "sort-packages": true
     },
     "require-dev": {
-        "phpunit/phpunit": "13.3.0"
+        "phpunit/phpunit": "13.3.1"
     }
 }
