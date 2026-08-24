@@ -24,8 +24,8 @@ importers:
         specifier: 2.3.8
         version: 2.3.8
       datatables.net-plugins:
-        specifier: 2.3.6
-        version: 2.3.6
+        specifier: 3.0.2
+        version: 3.0.2
       datatables.net-responsive-dt:
         specifier: 4.0.2
         version: 4.0.2
@@ -197,17 +197,11 @@ packages:
   '@types/estree@1.0.9':
     resolution: {integrity: sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==}
 
-  '@types/jquery@3.5.34':
-    resolution: {integrity: sha512-3m3939S3erqmTLJANS/uy0B6V7BorKx7RorcGZVjZ62dF5PAGbKEDZK1CuLtKombJkFA2T1jl8LAIIs7IV6gBQ==}
-
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
   '@types/node@26.2.0':
     resolution: {integrity: sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==}
-
-  '@types/sizzle@2.3.10':
-    resolution: {integrity: sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -377,8 +371,8 @@ packages:
   datatables.net-dt@3.0.2:
     resolution: {integrity: sha512-qG0T4hCIfjo+VK6in/anSxwufRNGKiAEp53y+/gBsWp8R7Ik0ZB++J4pq8qAFEKmnSPFIcGSKk1sLLzpXbvcIw==}
 
-  datatables.net-plugins@2.3.6:
-    resolution: {integrity: sha512-x32KOhw1apu8bLD7GP1/SS86waVEv59DxosLHmXbsRdf7GxXvSULHfo73XKp4gQaD8Q3f7ReM+kRM5r6lK3hGg==}
+  datatables.net-plugins@3.0.2:
+    resolution: {integrity: sha512-dAwLqGRJ5+CapiaLVL0NPD6adZ3cR+3uRGeDOqGQn7TEy7uKRd3zDnNiWrohuDaSkC06yfz/a7eKmNd8i9BBmA==}
 
   datatables.net-responsive-dt@4.0.2:
     resolution: {integrity: sha512-ZDWh80x/HFHgqyZHlU8q8QhysRhKtKWm+190UkyF4Hpy6siFVrkilZOBmmQ/rN7Ioo8jjx8yf4kI8dLBX1Z5tA==}
@@ -1023,17 +1017,11 @@ snapshots:
 
   '@types/estree@1.0.9': {}
 
-  '@types/jquery@3.5.34':
-    dependencies:
-      '@types/sizzle': 2.3.10
-
   '@types/json-schema@7.0.15': {}
 
   '@types/node@26.2.0':
     dependencies:
       undici-types: 8.3.0
-
-  '@types/sizzle@2.3.10': {}
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -1226,10 +1214,9 @@ snapshots:
     dependencies:
       datatables.net: 3.0.2
 
-  datatables.net-plugins@2.3.6:
+  datatables.net-plugins@3.0.2:
     dependencies:
-      '@types/jquery': 3.5.34
-      datatables.net: 2.3.8
+      datatables.net: 3.0.2
 
   datatables.net-responsive-dt@4.0.2:
     dependencies:
