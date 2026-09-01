@@ -10,6 +10,17 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "datatables.net-buttons"
+      - dependency-name: "datatables.net-buttons-dt"
+      - dependency-name: "datatables.net-dt"
+      - dependency-name: "datatables.net-plugins"
+      - dependency-name: "datatables.net-responsive-dt"
+      - dependency-name: "datatables.net-searchpanes"
+      - dependency-name: "datatables.net-searchpanes-dt"
+      - dependency-name: "datatables.net-select"
+      - dependency-name: "datatables.net-select-dt"
+      - dependency-name: "pdfmake"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
