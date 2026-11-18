@@ -11,7 +11,7 @@
   "author": "Jan Harms",
   "license": "MPL 2.0",
   "dependencies": {
-    "bootstrap": "^5.3.8",
+    "bootstrap": "^5.3.9",
     "bootstrap-icons": "^1.13.2",
     "datatables.net-buttons": "3.2.6",
     "datatables.net-buttons-dt": "3.2.6",
