@@ -42,8 +42,8 @@ importers:
         specifier: 3.1.3
         version: 3.1.3
       jquery:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       jszip:
         specifier: ^3.10.2
         version: 3.10.2
@@ -578,8 +578,8 @@ packages:
     resolution: {integrity: sha512-a+bKEcCjtuW5WTdgeXFzswSrdqi0jk4XlEtZlx5A94wCoBpFjfFTbo/Tra5SpNCl/YFZPvcV1dJc+TAYeg6ROQ==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
-  jquery@4.0.0:
-    resolution: {integrity: sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==}
+  jquery@4.1.0:
+    resolution: {integrity: sha512-tnN2N83S+xD3yhmdBP4nnJ1XOO0Fl586rG23FA5h/JAe8XN3W9a1zGwDMltBptn+UpcqEKicnO61+jQ0EiF2fw==}
 
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
@@ -1267,17 +1267,17 @@ snapshots:
     dependencies:
       datatables.net-buttons: 3.2.6
       datatables.net-dt: 2.3.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-buttons@3.2.6:
     dependencies:
       datatables.net: 2.3.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-dt@2.3.8:
     dependencies:
       datatables.net: 2.3.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-plugins@2.3.6:
     dependencies:
@@ -1288,38 +1288,38 @@ snapshots:
     dependencies:
       datatables.net-dt: 2.3.8
       datatables.net-responsive: 3.0.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-responsive@3.0.8:
     dependencies:
       datatables.net: 2.3.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-searchpanes-dt@2.3.5:
     dependencies:
       datatables.net-dt: 2.3.8
       datatables.net-searchpanes: 2.3.5
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-searchpanes@2.3.5:
     dependencies:
       datatables.net: 2.3.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-select-dt@3.1.3:
     dependencies:
       datatables.net-dt: 2.3.8
       datatables.net-select: 3.1.3
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net-select@3.1.3:
     dependencies:
       datatables.net: 2.3.8
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   datatables.net@2.3.8:
     dependencies:
-      jquery: 4.0.0
+      jquery: 4.1.0
 
   deep-equal@1.1.2:
     dependencies:
@@ -1481,7 +1481,7 @@ snapshots:
 
   jpeg-exif@1.1.4: {}
 
-  jquery@4.0.0: {}
+  jquery@4.1.0: {}
 
   json-schema-traverse@1.0.0: {}
 
